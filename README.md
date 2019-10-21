@@ -20,4 +20,3 @@ Restaurants die wir dartstellen wollen:
 5)Aposto
 6)Vapiano
 7)Badisches Brauhaus
-8)Kühler Krug
