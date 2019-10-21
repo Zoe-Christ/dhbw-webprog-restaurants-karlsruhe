@@ -5,9 +5,10 @@ Comitting:
 1) Git Link unten rechts
 2) Stage all oder einzelne Files stagen (= git add . "xyz")
 3) Commit message eingeben, dann Commit to Master drücken
-4) Pull drücken
+4) Push drücken
 5) Eventuelle Konflikte lösen
 
+<<<<<<< HEAD
 Restaurants die wir dartstellen wollen:
 1)Emaillle
 2)Cafe Bleu
@@ -17,3 +18,9 @@ Restaurants die wir dartstellen wollen:
 6)Vapiano
 7)Badisches Brauhaus
 8)Kühler Krug
+=======
+
+Updaten:
+1) Fetch drücken
+2) Pull drücken
+>>>>>>> 220d27ee14441ccf103725569303808d4101fd8e
