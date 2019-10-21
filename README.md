@@ -8,7 +8,10 @@ Comitting:
 4) Push drücken
 5) Eventuelle Konflikte lösen
 
-<<<<<<< HEAD
+Updaten:
+1) Fetch drücken
+2) Pull drücken
+
 Restaurants die wir dartstellen wollen:
 1)Emaillle
 2)Cafe Bleu
@@ -18,9 +21,3 @@ Restaurants die wir dartstellen wollen:
 6)Vapiano
 7)Badisches Brauhaus
 8)Kühler Krug
-=======
-
-Updaten:
-1) Fetch drücken
-2) Pull drücken
->>>>>>> 220d27ee14441ccf103725569303808d4101fd8e
