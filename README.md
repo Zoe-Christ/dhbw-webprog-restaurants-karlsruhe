@@ -7,3 +7,13 @@ Comitting:
 3) Commit message eingeben, dann Commit to Master drücken
 4) Pull drücken
 5) Eventuelle Konflikte lösen
+
+Restaurants die wir dartstellen wollen:
+1)Emaillle
+2)Cafe Bleu
+3)Oxford Cafe
+4)Stövchen
+5)Aposto
+6)Vapiano
+7)Badisches Brauhaus
+8)Kühler Krug
