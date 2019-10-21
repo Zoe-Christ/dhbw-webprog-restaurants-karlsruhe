@@ -18,7 +18,7 @@ class Database {
             {
                 id:          1,
                 img:        "emaille.jpg",
-                name:       "Petrine",
+                name:       "Cafe Emaille",
                 typ:        "Ewer",
                 stapellauf: 1909,
                 verbleib:   "In Fahrt",
@@ -26,7 +26,7 @@ class Database {
             },{
                 id:          2,
                 img:        "bleu.jpg",
-                name:       "Falado",
+                name:       "Cafe Bleu",
                 typ:        "Brigatine",
                 stapellauf: 1968,
                 verbleib:   "Westlich von Island gesunken",
@@ -34,7 +34,7 @@ class Database {
             },{
                 id:          3,
                 img:        "oxford.png",
-                name:       "Gorch Fock",
+                name:       "Oxford Cafe",
                 typ:        "Segelschiff",
                 stapellauf: 1958,
                 verbleib:   "In Fahrt",
@@ -42,7 +42,7 @@ class Database {
             },{
                 id:          4,
                 img:        "stoevchen.jpg",
-                name:       "Mare Frisium",
+                name:       "Stoevchen",
                 typ:        "Dreimastmarstoppsegelschoner",
                 stapellauf: 1916,
                 verbleib:   "In Fahrt",
@@ -50,7 +50,7 @@ class Database {
             },{
                 id:          5,
                 img:        "aposto.jpg",
-                name:       "Preußen",
+                name:       "Aposto",
                 typ:        "Frachtsegler",
                 stapellauf: 1902,
                 verbleib:   "Kollision im Ärmelkanal",
@@ -58,7 +58,7 @@ class Database {
             },{
                 id:          6,
                 img:        "vapiano.jpg",
-                name:       "HMS Victory",
+                name:       "Vapiano",
                 typ:        "Linienschiff",
                 stapellauf: 1765,
                 verbleib:   "Museum im Portsmouth",
@@ -66,7 +66,7 @@ class Database {
             },{
                 id:          7,
                 img:        "badisches_brauhaus.jpg",
-                name:       "Schulschiff Deutschland",
+                name:       "Badisches Brauhaus",
                 typ:        "Segelschulschiff",
                 stapellauf: 1927,
                 verbleib:   "Kulturdenkmal in Bremen-Vegesack",
