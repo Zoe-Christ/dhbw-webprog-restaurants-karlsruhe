@@ -17,7 +17,7 @@ class Database {
         this._data = [
             {
                 id:          1,
-                img:        "boats/emaille.jpg",
+                img:        "restaurants/emaille.jpg",
                 name:       "Cafe Emaille",
                 typ:        "Ewer",
                 stapellauf: 1909,
@@ -25,7 +25,7 @@ class Database {
                 link:       "https://de.wikipedia.org/wiki/Petrine",
             },{
                 id:          2,
-                img:        "boats/bleu.jpg",
+                img:        "restaurants/bleu.jpg",
                 name:       "Cafe Bleu",
                 typ:        "Brigatine",
                 stapellauf: 1968,
@@ -33,7 +33,7 @@ class Database {
                 link:       "https://de.wikipedia.org/wiki/Falado_von_Rhodos",
             },{
                 id:          3,
-                img:        "boats/oxford.png",
+                img:        "restaurants/oxford.png",
                 name:       "Oxford Cafe",
                 typ:        "Segelschiff",
                 stapellauf: 1958,
@@ -41,7 +41,7 @@ class Database {
                 link:       "https://de.wikipedia.org/wiki/Gorch_Fock_(Schiff,_1958)",
             },{
                 id:          4,
-                img:        "boats/stoevchen.jpg",
+                img:        "restaurants/stoevchen.jpg",
                 name:       "Stoevchen",
                 typ:        "Dreimastmarstoppsegelschoner",
                 stapellauf: 1916,
@@ -49,7 +49,7 @@ class Database {
                 link:       "https://de.wikipedia.org/wiki/Mare_Frisium",
             },{
                 id:          5,
-                img:        "boats/aposto.jpg",
+                img:        "restaurants/aposto.jpg",
                 name:       "Aposto",
                 typ:        "Frachtsegler",
                 stapellauf: 1902,
@@ -57,7 +57,7 @@ class Database {
                 link:       "https://de.wikipedia.org/wiki/Preu%C3%9Fen_(Schiff,_1902)",
             },{
                 id:          6,
-                img:        "boats/vapiano.jpg",
+                img:        "restaurants/vapiano.jpg",
                 name:       "Vapiano",
                 typ:        "Linienschiff",
                 stapellauf: 1765,
@@ -65,7 +65,7 @@ class Database {
                 link:       "https://de.wikipedia.org/wiki/HMS_Victory",
             },{
                 id:          7,
-                img:        "boats/badisches_brauhaus.jpg",
+                img:        "restaurants/badisches_brauhaus.jpg",
                 name:       "Badisches Brauhaus",
                 typ:        "Segelschulschiff",
                 stapellauf: 1927,
