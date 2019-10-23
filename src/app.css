@@ -67,7 +67,7 @@ body {
 
 /* Allgemeine Darstellung der Menüzeile */
 header {
-    --text-color: white;
+    --text-color: purple;
     --icon-color: rgb(0, 90, 115);
 }
 header nav {
