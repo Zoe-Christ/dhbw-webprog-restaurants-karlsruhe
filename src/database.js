@@ -22,7 +22,7 @@ class Database {
                 typ:        "Mittag- und Abendessen",
                 gruendungsjahr: 2005,
                 bewertung:   "In Fahrt",
-                link:       "https://de.wikipedia.org/wiki/Petrine",
+                link:       "https://cafeemaille.de/",
             },{
                 id:          2,
                 img:        "restaurants/bleu.jpg",
@@ -52,7 +52,7 @@ class Database {
                 img:        "restaurants/aposto.jpg",
                 name:       "Aposto",
                 typ:        "Mittag- und Abendessen",
-                gruendungsjahr: 1902,
+                gruendungsjahr: 2006,
                 bewertung:   "Kollision im Ärmelkanal",
                 link:       "https://de.wikipedia.org/wiki/Preu%C3%9Fen_(Schiff,_1902)",
             },{
@@ -60,7 +60,7 @@ class Database {
                 img:        "restaurants/vapiano.jpg",
                 name:       "Vapiano",
                 typ:        "Mittag- und Abendessen",
-                gruendungsjahr: 1765,
+                gruendungsjahr: 2010,
                 bewertung:   "Museum im Portsmouth",
                 link:       "https://de.wikipedia.org/wiki/HMS_Victory",
             },{
@@ -68,7 +68,7 @@ class Database {
                 img:        "restaurants/badisches_brauhaus.jpg",
                 name:       "Badisches Brauhaus",
                 typ:        "Mittag- und Abendessen",
-                gruendungsjahr: 1927,
+                gruendungsjahr: 1999,
                 bewertung:   "Kulturdenkmal in Bremen-Vegesack",
                 link:       "https://de.wikipedia.org/wiki/Schulschiff_Deutschland",
             },
