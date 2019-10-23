@@ -152,7 +152,7 @@ header .content h6 {
 }
 
 header .content h1 {
-    color: white;
+    color: black;
     text-shadow: 1px 1px 1px rgba(0,0,0, 0.2);
     font-size: 175%;
     text-align: center;
@@ -219,5 +219,6 @@ main a:visited {
 }
 
 main a:hover {
-    color: darkgreen;
+    color: black;
+    font-weight: 800;
 }
