@@ -144,7 +144,7 @@ header nav .menu-left li {
 ub {
     padding: var(--content-padding);
 
-    background: darkgrey;
+    background: linear-gradient(to bottom, darkgrey, white);
     border: 0px solid lightgrey;
     border-bottom-width: 1px;
     box-shadow: 1px 1px 2px rgba(0,0,0, 0.9);
