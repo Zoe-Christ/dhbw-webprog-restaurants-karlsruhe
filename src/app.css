@@ -133,13 +133,27 @@ header nav .menu-left li {
 }
 
 /* Kopfinhalt der Seite */
-header .content {
+/* header .content {
     padding: var(--content-padding);
 
     background: darkgrey;
     border: 0px solid lightgrey;
     border-bottom-width: 1px;
     box-shadow: 1px 1px 2px rgba(0,0,0, 0.9);
+}*/
+ub {
+    padding: var(--content-padding);
+
+    background: darkgrey;
+    border: 0px solid lightgrey;
+    border-bottom-width: 1px;
+    box-shadow: 1px 1px 2px rgba(0,0,0, 0.9);
+}
+ub h2{
+    font-family: Arial;
+    text-align: center;
+    color: black;
+    font-size: 170%;
 }
 
 header .content h1,
@@ -253,11 +267,11 @@ nav a {
 	font-weight: bold;
 	text-align: center;
 	border: 1px solid black;
-	border-radius: 10px;
 	box-shadow: 0 5px 10px white inset;
 	color: black;
 	background-color: darkgrey;
 	transition: all .25s ease-in;
+    font-family: arial;
 }
 
 nav li[aria-current] a {
