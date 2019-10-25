@@ -25,7 +25,7 @@ class Database {
                 link:       "https://de.wikipedia.org/wiki/Petrine",
             },{
                 id:          2,
-                img:        "restaurants/bleu.jpg",
+                img:        "restaurants/bleu.png",
                 name:       "Cafe Bleu",
                 typ:        "Mittag- und Abendessen",
                 gruendungsjahr: 1968,
