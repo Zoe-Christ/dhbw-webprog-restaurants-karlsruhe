@@ -59,6 +59,7 @@ class PageDetail {
         html = html.replace(/{GRUENDUNGSJAHR}/g, this._data.gruendungsjahr);
         html = html.replace(/{BEWERTUNG}/g, this._data.bewertung);
         html = html.replace(/{LINK}/g, this._data.link);
+        html = html.replace(/{BESCHREIBUNG}/g, this._data.beschreibung);
 
         // HTML-Template in echte DOM-Objekte umwandeln, damit wir es mit den
         // DOM-Methoden von JavaScript weiterbearbeiten können

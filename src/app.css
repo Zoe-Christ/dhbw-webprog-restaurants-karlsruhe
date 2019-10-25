@@ -24,7 +24,7 @@ html {
     line-height: 1.6;
 
     /* https://pixabay.com/photos/ship-boat-lake-sailing-boat-italy-952292/ */
-    background-color: black;
+    background-color: lightgrey;
     /*background-image: url(background2.png);*/
     background-size: cover;
     background-attachment: fixed;

@@ -23,6 +23,7 @@ class Database {
                 gruendungsjahr: 2005,
                 bewertung:   "In Fahrt",
                 link:       "https://cafeemaille.de/",
+                beschreibung:"Das Studentenlokal mit Emailleschildern an den Wänden und Biergarten serviert Frühstück und herzhafte Küche.",
             },{
                 id:          2,
                 img:        "restaurants/bleu.png",
