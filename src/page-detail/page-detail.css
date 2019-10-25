@@ -1,6 +1,10 @@
 /**
  * Stylesheet zur Klasse PageDetail: Detailseite der App
  */
+ html {
+      background-color: darkgrey;
+
+ }
 
 .page-heading > div {
     order: 1;
