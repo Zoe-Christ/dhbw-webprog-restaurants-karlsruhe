@@ -57,7 +57,7 @@ class PageDetail {
         html = html.replace(/{NAME}/g, this._data.name);
         html = html.replace(/{TYP}/g, this._data.typ);
         html = html.replace(/{GRUENDUNGSJAHR}/g, this._data.gruendungsjahr);
-        html = html.replace(/{BEWERTUNG}/g, this._data.bewertung);
+        //html = html.replace(/{BEWERTUNG}/g, this._data.bewertung);
         html = html.replace(/{LINK}/g, this._data.link);
         html = html.replace(/{BESCHREIBUNG}/g, this._data.beschreibung);
 

@@ -2,7 +2,7 @@
  * Stylesheet zur Klasse PageDetail: Detailseite der App
  */
  html {
-      background-color: darkgrey;
+      background-color: black;
 
  }
 
@@ -25,14 +25,15 @@
 .boat-info {
     font-size: 90%;
 }
-
+/*Leiste mit Typ, Bewertung, Gründungsjahr */
 .boat-info .label {
-    color: darkgrey;
+    color: white;
     display: inline-block;
 }
 
 .boat-info .value {
     display: inline-block;
+    color: white;
 }
 
 @media (min-width: 50em) {
