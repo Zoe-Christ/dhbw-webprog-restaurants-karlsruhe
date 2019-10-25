@@ -32,6 +32,7 @@ class Database {
                 gruendungsjahr: 1968,
                 bewertung:   "Westlich von Island gesunken",
                 link:       "https://www.cafe-bleu.de/",
+                beschreibung:"Das Café-Restaurant mit Biergarten bietet deftige Hausmannskost in uriger Aufmachung mit Emailleschildern."
             },{
                 id:          3,
                 img:        "restaurants/oxford.png",
@@ -40,6 +41,7 @@ class Database {
                 gruendungsjahr: 1958,
                 bewertung:   "In Fahrt",
                 link:       "https://oxford-cafe.de/",
+                beschreibung:"Das Oxford Cafe begeistert dich täglich mit seiner vielfältigen Auswahl an Getränken und internationalen Bieren."
             },{
                 id:          4,
                 img:        "restaurants/stoevchen.jpg",
@@ -48,6 +50,7 @@ class Database {
                 gruendungsjahr: 1916,
                 bewertung:   "In Fahrt",
                 link:       "https://www.stoevchen.com/",
+                beschreibung:"Leckere Cocktails, Hammer Frühstück und gutes Essen zu günstigen Preisen gibt es bei uns im Stövchen Karlsruhe."
             },{
                 id:          5,
                 img:        "restaurants/aposto.jpg",
@@ -56,6 +59,7 @@ class Database {
                 gruendungsjahr: 2006,
                 bewertung:   "Kollision im Ärmelkanal",
                 link:       "https://karlsruhe.aposto.eu/",
+                beschreibung:"Hausgemachte Pasta, Pizza und Grillgerichte an edlen hellen Holztischen zwischen Säulen und auf der Terrasse."
             },{
                 id:          6,
                 img:        "restaurants/vapiano.jpg",
@@ -64,6 +68,7 @@ class Database {
                 gruendungsjahr: 2010,
                 bewertung:   "Museum im Portsmouth",
                 link:       "https://de.vapiano.com/de/nc/restaurants/vapiano-karlsruhe-karlstrasse-11-1/",
+                beschreibung:"Mischung aus Pasta-Lokal, Pizzeria, Lounge und Bar nach italienischem Vorbild. Selbstbedienung ist ein wesentliches Element des Konzepts von Vapiano."
             },{
                 id:          7,
                 img:        "restaurants/badisches_brauhaus.jpg",
@@ -72,6 +77,7 @@ class Database {
                 gruendungsjahr: 1999,
                 bewertung:   "Kulturdenkmal in Bremen-Vegesack",
                 link:       "https://www.badisch-brauhaus.de/",
+                beschreibung: "Umfangreich und vielfältig, für jeden etwas. Mit Produkten aus der Region, ausgezeichnet von Schmeck-den-Süden."
             },
         ];
     }
