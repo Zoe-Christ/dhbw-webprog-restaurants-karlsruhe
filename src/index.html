@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <title>Lösung: Meine App</title>
-        <link rel="shortcut icon" href="favicon.png" />
+     <link rel="shortcut icon" href="favicon.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 
         <!-- Klasse App: Steuert die gesamte Anwendung -->
@@ -50,20 +50,43 @@
     </head>
     <body>
         <!-- Kopfbereich der App -->
-        <header>
+
+
+        <nav>
+	<ul>
+		<li><a href="#">Übersicht</a>
+		</li>
+		<li><a href="#">Seite 2</a>
+		</li>
+		<li><a href="#">Seite 3</a>
+		</li>
+		<li><a href="#">Über uns</a>
+		</li>
+		<li><a href="#">Impressum</a>
+		</li>
+	</ul>
+</nav>
+
+<div class="ueberschrift">
+    <img src=schloss.jpg alt="schloss" style="width:100%;"/>
+    <div class="centered">Restaurants in Karlsruhe</div>
+
+</div>
+
+         <header>
+
+
             <nav>
-                <!-- Logo, Zurück-Button und Titel der Seite -->
-                <img class="logo" src="logo.jpg" alt="Logo" />
+
 
                 <ul class="menu-left">
                     <li class="go-back">
                         <a href="#">
                             <i class="icon-left-open"></i>
-                            <span class="page-name">Name der Seite</span>
+                         <span class="page-name">Name der Seite</span>
                         </a>
                     </li>
                     <li class="dont-go-back hidden">
-                        <span class="page-name">Name der Seite</span>
                     </li>
                     <li class="toggle-menu small-screen-only">
                         <a href="#">
@@ -72,21 +95,6 @@
                     </li>
                 </ul>
 
-                <!-- Übergreifendes App-Menü -->
-                <ul class="menu-right small-screen-hidden">
-                    <li>
-                        <a href="#/messages">
-                            <i class="icon-chat-empty"></i>
-                            <span class="small-screen-only">Benachrichtigungen</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#/profile">
-                            <i class="icon-user"></i>
-                            <span class="small-screen-only">Benutzerprofil</span>
-                        </a>
-                    </li>
-                </ul>
             </nav>
 
             <div class="content">
