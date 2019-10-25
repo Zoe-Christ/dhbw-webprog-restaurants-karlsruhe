@@ -30,7 +30,7 @@ class Database {
                 typ:        "Mittag- und Abendessen",
                 gruendungsjahr: 1968,
                 bewertung:   "Westlich von Island gesunken",
-                link:       "https://de.wikipedia.org/wiki/Falado_von_Rhodos",
+                link:       "https://www.cafe-bleu.de/",
             },{
                 id:          3,
                 img:        "restaurants/oxford.png",
@@ -38,7 +38,7 @@ class Database {
                 typ:        "Mittag- und Abendessen",
                 gruendungsjahr: 1958,
                 bewertung:   "In Fahrt",
-                link:       "https://de.wikipedia.org/wiki/Gorch_Fock_(Schiff,_1958)",
+                link:       "https://oxford-cafe.de/",
             },{
                 id:          4,
                 img:        "restaurants/stoevchen.jpg",
@@ -46,7 +46,7 @@ class Database {
                 typ:        "Frühstück-, Mittag- und Abendessen",
                 gruendungsjahr: 1916,
                 bewertung:   "In Fahrt",
-                link:       "https://de.wikipedia.org/wiki/Mare_Frisium",
+                link:       "https://www.stoevchen.com/",
             },{
                 id:          5,
                 img:        "restaurants/aposto.jpg",
@@ -54,7 +54,7 @@ class Database {
                 typ:        "Mittag- und Abendessen",
                 gruendungsjahr: 2006,
                 bewertung:   "Kollision im Ärmelkanal",
-                link:       "https://de.wikipedia.org/wiki/Preu%C3%9Fen_(Schiff,_1902)",
+                link:       "https://karlsruhe.aposto.eu/",
             },{
                 id:          6,
                 img:        "restaurants/vapiano.jpg",
@@ -62,7 +62,7 @@ class Database {
                 typ:        "Mittag- und Abendessen",
                 gruendungsjahr: 2010,
                 bewertung:   "Museum im Portsmouth",
-                link:       "https://de.wikipedia.org/wiki/HMS_Victory",
+                link:       "https://de.vapiano.com/de/nc/restaurants/vapiano-karlsruhe-karlstrasse-11-1/",
             },{
                 id:          7,
                 img:        "restaurants/badisches_brauhaus.jpg",
@@ -70,7 +70,7 @@ class Database {
                 typ:        "Mittag- und Abendessen",
                 gruendungsjahr: 1999,
                 bewertung:   "Kulturdenkmal in Bremen-Vegesack",
-                link:       "https://de.wikipedia.org/wiki/Schulschiff_Deutschland",
+                link:       "https://www.badisch-brauhaus.de/",
             },
         ];
     }
