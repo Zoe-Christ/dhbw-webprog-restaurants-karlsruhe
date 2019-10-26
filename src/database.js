@@ -9,11 +9,25 @@
  * der Daten fehlen komplett, könnten aber in einer echten Anwendung relativ
  * einfach hinzugefügt werden.
  */
+ 
+ // const db = firebase.firestore();
+ // db.collection('restaurants').add({
+ //   img:        "restaurants/emaille.jpg",
+ //   name:       "Cafe Emaille",
+ //   typ:        "Mittag- und Abendessen",
+ //   gruendungsjahr: 2005,
+ //   bewertung:   "In Fahrt",
+ //   link:       "https://cafeemaille.de/",
+ //   beschreibung:"Das Studentenlokal mit Emailleschildern an den Wänden und Biergarten serviert Frühstück und herzhafte Küche.",
+ // });
+
 class Database {
     /**
      * Konstruktor.
      */
+
     constructor() {
+
         this._data = [
             {
                 id:          1,
