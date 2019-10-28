@@ -16,6 +16,7 @@
         <!-- Klassen für die einzelnen App-Seiten -->
         <script src="page-overview/page-overview.js"></script>
         <script src="page-detail/page-detail.js"></script>
+        <script src="ueber-uns/ueber-uns.js"></script>
         <script src="page-not-found/page-not-found.js"></script>
 
         <!-- Fontello Icon Font (generiert auf fontello.com) -->
@@ -35,6 +36,9 @@
                 },{
                     url: "^/Detail/(.*)$",
                     klass: PageDetail,
+                },{
+                    url: "^/Wir/(.*)$",
+                    klase: PageUeberUns,
                 },{
                     url: ".*",
                     klass: PageNotFound,
