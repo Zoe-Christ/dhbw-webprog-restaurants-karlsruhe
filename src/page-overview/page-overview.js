@@ -47,10 +47,13 @@ class PageOverview {
      * @param {HTMLElement} pageDom Wurzelelement der eingelesenen HTML-Datei
      * mit den HTML-Templates dieser Seite.
      */
-    _renderBoatTiles(pageDom) {
+    async _renderBoatTiles(pageDom) {
         let mainElement = pageDom.querySelector("main");
         let templateElement = pageDom.querySelector("#template-tile");
 
+        let restaurants = await this._app.database.selectAllRestaurants();
+        console.log(restaurants);
+        /*
         this._app.database.getAllRecords().forEach(boat => {
             let html = templateElement.innerHTML;
             html = html.replace("{HREF}", `#/Detail/${boat.id}`);
@@ -59,5 +62,6 @@ class PageOverview {
 
             mainElement.innerHTML += html;
         });
+        */
     }
 }

@@ -20,7 +20,7 @@ class PageDetail {
     async show(matches) {
         // URL-Parameter auswerten
         this._recordId = matches[1];
-        this._data = this._app.database.getRecordById(this._recordId);
+        this._data = await this._app.database.selectRestaurantById(this._recordId);
 
         // Anzuzeigenden Seiteninhalt nachladen
         let html = await fetch("page-detail/page-detail.html");
@@ -79,6 +79,6 @@ class PageDetail {
      * Button aufgerufen wird.
      */
     _onReviewButtonClicked() {
-        location.hash = "Reviews";
+        location.hash = "#Reviews";
     }
 }

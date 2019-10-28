@@ -3,6 +3,11 @@
     <head>
         <meta charset="utf-8" />
         <title>Lösung: Meine App</title>
+        <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+
+
      <link rel="shortcut icon" href="favicon.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 
@@ -16,7 +21,7 @@
         <!-- Klassen für die einzelnen App-Seiten -->
         <script src="page-overview/page-overview.js"></script>
         <script src="page-detail/page-detail.js"></script>
-         <script src="ueber-uns/ueber-uns.js"></script>
+         <!-- <script src="ueber-uns/ueber-uns.js"></script> -->
         <script src="reviews/reviews.js"></script>
         <script src="page-not-found/page-not-found.js"></script>
 
@@ -38,10 +43,10 @@
                     url: "^/Detail/(.*)$",
                     klass: PageDetail,
                 },
-                {
-                     url: "^/Wir/(.*)$",
-                     klass: UeberUns,
-                 }
+                // {
+                //      url: "^/Wir/(.*)$",
+                //      klass: UeberUns,
+                //  }
                 ,{
                     url: "^/Reviews/(.*)$",
                     klass: Reviews,
@@ -117,26 +122,5 @@
         <main id="app-main-area">
             Inhalt des Hauptbereichs
         </main>
-
-        <script>
-          // const firebase = require("firebase");
-          // // Required for side-effects
-          // require("firebase/firestore");
-          // Your web app's Firebase configuration
-          var firebaseConfig = {
-            apiKey: "AIzaSyB4-Qmsf9E7A3DcXR82uvyNiuDfu23X1R0",
-            authDomain: "restaurantfinder-3c68a.firebaseapp.com",
-            databaseURL: "https://restaurantfinder-3c68a.firebaseio.com",
-            projectId: "restaurantfinder-3c68a",
-            storageBucket: "restaurantfinder-3c68a.appspot.com",
-            messagingSenderId: "780563355843",
-            appId: "1:780563355843:web:8dee4f8a79f37e5fcfaa76"
-          };
-          // Initialize Firebase
-          firebase.initializeApp(firebaseConfig);
-
-          // const db = firebase.firestore();
-          // db.settings({timestampsInSnapshots: true});
-        </script>
     </body>
 </html>
