@@ -26,11 +26,17 @@ class Reviews {
       }
 
       // Seite zur Anzeige bringen
-      // let pageDom = this._processTemplate(html);
+      let pageDom = document.createElement("div")
+      html = this._processTemplate(html);
+      pageDom.innerHTML = html;
 
       this._app.setPageTitle(`Bewertungen zu ${this._data.name}`, {isSubPage: true});
       this._app.setPageCss(css);
       this._app.setPageHeader(pageDom.querySelector("header"));
       this._app.setPageContent(pageDom.querySelector("main"));
+  }
+
+  _processTemplate(html) {
+      return html;
   }
 }

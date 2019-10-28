@@ -65,7 +65,7 @@ class Database {
                 "name":       "Cafe Emaille",
                 "typ":        "Mittag- und Abendessen",
                 "gruendungsjahr": 2005,
-                "bewertung":   "In Fahrt",
+                "bewertung":   "4.5",
                 "link":       "https://cafeemaille.de/",
                 "beschreibung":"Das Studentenlokal mit Emailleschildern an den Wänden und Biergarten serviert Frühstück und herzhafte Küche.",
             },{
@@ -126,13 +126,13 @@ class Database {
         }
     }
     /**
-     * Gibt alle in der Datenbank gespeicherten Bücher zurück. Hier gilt
+     * Gibt alle in der Datenbank gespeicherten Restaurants zurück. Hier gilt
      * dasselbe wie im Kommentar zur Methode createDemoData() geschrieben.
      * Alle Dokumente auf einmal auszulesen ist nur dann eine gute Idee,
      * wenn man weiß, dass es nicht viele geben kann. Besser wäre daher,
      * die Menge mit der where()-Funktion von Firebase einzuschränken.
      *
-     * @returns Promise-Objekt mit den gespeicherten Büchern
+     * @returns Promise-Objekt mit den gespeicherten Restaurants
      */
     async selectAllRestaurants() {
         let result = await this._restaurants.orderBy("name").get();
@@ -147,9 +147,9 @@ class Database {
     }
 
     /**
-     * Gibt ein einzelnes Buch anhand seiner ID zurück.
-     * @param id: ID des gesuchten Buches
-     * @returns Promise-Objekt mit dem gesuchten Buch
+     * Gibt ein einzelnes Restaurant anhand seiner ID zurück.
+     * @param id: ID des gesuchten Restaurants
+     * @returns Promise-Objekt mit dem gesuchten Restaurant
      */
     async selectRestaurantById(id) {
         let result = await this._restaurants.doc(id).get();
@@ -157,27 +157,27 @@ class Database {
     }
 
     /**
-     * Speichert ein einzelnes Buch in der Datenbank. Das hierfür übergebene
+     * Speichert ein einzelnes Restaurant in der Datenbank. Das hierfür übergebene
      * Objekt sollte folgenden Aufbau haben:
      *
      *      {
-     *          id:        "MeinBuch1",
-     *          title:     "Name des Buches",
+     *          id:        "MeinRestaurant1",
+     *          title:     "Name des Restaurants",
      *          authors:   "Namen der Autoren",
      *          edition:   "8. Auflage",
      *          publisher: "Name des Verlags",
      *          year:      2019,
      *      }
      *
-     * @param restaurants: Zu speicherndes Buch-Objekt
+     * @param restaurants: Zu speicherndes Restaurant-Objekt
      */
-    saveRestaurants(restaurant) {
+    saveRestaurant(restaurant) {
         this._restaurants.doc(restaurant.id).set(restaurant);
     }
 
     /**
-     * Löscht ein einzelnes Buch aus der Datenbank.
-     * @param id: ID des zu löschenden Buches
+     * Löscht ein einzelnes Restaurant aus der Datenbank.
+     * @param id: ID des zu löschenden Restaurants
      * @returns Promise-Objekt zum Abfangen von Fehlern oder Warten auf Erfolg
      */
     async deleteRestaurantById(id) {
@@ -185,13 +185,13 @@ class Database {
     }
 
     /**
-     * Speichert die übergebenen Bücher in der Datenbank. Die hier übergebene
+     * Speichert die übergebenen Restaurants in der Datenbank. Die hier übergebene
      * Liste sollte folgenden Aufbau haben:
      *
      *      [
      *          {
-     *              id:        "MeinBuch1",
-     *              title:     "Name des Buches",
+     *              id:        "MeinRestaurant1",
+     *              title:     "Name des Restaurants",
      *              authors:   "Namen der Autoren",
      *              edition:   "8. Auflage",
      *              publisher: "Name des Verlags",
@@ -216,8 +216,8 @@ class Database {
     }
 
     /**
-     * Löscht eines oder mehrerer Bücher aus der Datenbank.
-     * @param ids: Liste der IDs der zu löschenden Bücher
+     * Löscht eines oder mehrerer Restaurants aus der Datenbank.
+     * @param ids: Liste der IDs der zu löschenden Restaurants
      * @returns Promise-Objekt zum Abfangen von Fehlern oder Warten auf Erfolg
      */
     async deleteRestaurantsById(ids) {
