@@ -82,6 +82,7 @@ header nav i {
 
 header nav .page-name {
     font-weight: bold;
+    color: white;
 }
 
 header nav .logo {
@@ -127,6 +128,7 @@ header nav .menu-left {
 header nav .menu-left .go-back,
 header nav .menu-left .dont-go-back {
     flex: 1;
+    color: white;
 }
 
 header nav .menu-left li {
