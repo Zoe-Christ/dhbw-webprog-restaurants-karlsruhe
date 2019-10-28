@@ -38,8 +38,8 @@ class Database {
         // Dabei können beliebig viele "Collections" angesprochen werden,
         // die in etwa den Tabellen einer klassischen Datenbank entsprechen.
         this._db = firebase.firestore();
-        this._restaurants = this._db.collection("restaurants");
-        this._comments = this._db.collection("comments");
+        // this._restaurants = this._db.collection("restaurants");
+        // this._comments = this._db.collection("comments");
     }
 
     /**
@@ -57,9 +57,10 @@ class Database {
      */
     async createDemoData() {
         let restaurants = await this.selectAll("restaurants");
+        let reviews = await this.selectAll("reviews");
 
         if (restaurants.length < 1) {
-            this.saveRestaurants([{
+            this.saveDocs("restaurants", [{
                 "id":          "1",
                 "img":        "restaurants/emaille.jpg",
                 "name":       "Cafe Emaille",
@@ -124,6 +125,45 @@ class Database {
                 "beschreibung": "Umfangreich und vielfältig, für jeden etwas. Mit Produkten aus der Region, ausgezeichnet von Schmeck-den-Süden."
             },]);
         }
+
+        if(reviews.length < 1) {
+          this.saveDocs("reviews", [{
+            "id": "1c1",
+            "autor": "Sara Weis",
+            "kommentar": "Sehr leckeres Essen zu günstigen Preisen und schnelle Bedienung.",
+            "bewertung": 5
+          }, {
+            "id": "2c1",
+            "autor": "Joseph Stein",
+            "kommentar": "Sehr schön zum Draußensitzen im Sommer. Leider kann man nicht mit Karte zahlen.",
+            "bewertung": 4
+          }, {
+            "id": "3c1",
+            "autor": "Tim Frey",
+            "kommentar": "Gutes Kellerbier - leider sitzt man etwas weit auseinander.",
+            "bewertung": 3,
+          }, {
+            "id": "4c1",
+            "autor": "Lara Osthaus",
+            "kommentar": "Das Essen ist sehr lecker, aber man muss recht lange darauf warten.",
+            "bewertung": 3,
+          }, {
+            "id": "5c1",
+            "autor": "Lukas Schade",
+            "kommentar": "Sehr gute Pizza und offene Küche. Besonders zu empfehlen an Donnerstagen, wenn man Cocktails würfeln kann.",
+            "bewertung": 5,
+          }, {
+            "id": "6c1",
+            "autor": "Martina Weckerle",
+            "kommentar": "Cooles Konzept, da das Essen direkt vor den Kunden zubereitet wird. Teilweise sind die Wartezeiten allerdings relativ lang und die Portiionen nicht groß genug.",
+            "bewertung": 4,
+          }, {
+            "id": "7c1",
+            "autor": "Markus Becker",
+            "kommentar": "Das Highlight war definitiv die Rutsche! Das Essen ist jedoch auch nicht schlecht und das Personal sehr freundlich.",
+            "bewertung": 4,
+          },]);
+        }
     }
     /**
      * Gibt alle in der Datenbank gespeicherten Docs zurück. Hier gilt
@@ -176,7 +216,7 @@ class Database {
      * @param docs: Zu speicherndes doc-Objekt
      * @param collection: Collection in die gespeichert werden soll
      */
-    saveDoc(doc, collection) {
+    saveDoc(collection, doc) {
         // this._restaurants.doc(doc.id).set(doc);
         this._db.collection(collection).doc(doc.id).set(doc);
     }
@@ -214,7 +254,7 @@ class Database {
      * @param collection: Collection in die gespeichert werden soll
      * @returns Promise-Objekt zum Abfangen von Fehlern oder Warten auf Erfolg
      */
-    async saveDocs(docs, collection) {
+    async saveDocs(collection, docs) {
         let batch = this._db.batch();
 
         docs.forEach(doc => {
