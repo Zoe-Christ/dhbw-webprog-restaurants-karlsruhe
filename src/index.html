@@ -21,7 +21,7 @@
         <!-- Klassen für die einzelnen App-Seiten -->
         <script src="page-overview/page-overview.js"></script>
         <script src="page-detail/page-detail.js"></script>
-         <!-- <script src="ueber-uns/ueber-uns.js"></script> -->
+        <script src="ueber-uns/ueber-uns.js"></script>
         <script src="reviews/reviews.js"></script>
         <script src="page-not-found/page-not-found.js"></script>
 
@@ -43,17 +43,10 @@
                     url: "^/Detail/(.*)$",
                     klass: PageDetail,
                 },
-<<<<<<< HEAD
-                // {
-                //      url: "^/Wir/(.*)$",
-                //      klass: UeberUns,
-                //  }
-=======
                 {
                      url: "^/Wir/$",
                      klass: UeberUns,
                  }
->>>>>>> 987767f97996f4a0b82efeb3b5d8e69c6cc9265e
                 ,{
                     url: "^/Reviews/(.*)$",
                     klass: Reviews,

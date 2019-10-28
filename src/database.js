@@ -140,7 +140,7 @@ class Database {
 
         result.forEach(entry => {
             let restaurant = entry.data();
-            restaurants.push(restaurants);
+            restaurants.push(restaurant);
         });
 
         return restaurants;
@@ -171,7 +171,7 @@ class Database {
      *
      * @param restaurants: Zu speicherndes Buch-Objekt
      */
-    saveBook(restaurant) {
+    saveRestaurants(restaurant) {
         this._restaurants.doc(restaurant.id).set(restaurant);
     }
 
