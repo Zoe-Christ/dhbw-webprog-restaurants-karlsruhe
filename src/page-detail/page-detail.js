@@ -20,7 +20,7 @@ class PageDetail {
     async show(matches) {
         // URL-Parameter auswerten
         this._recordId = matches[1];
-        this._data = await this._app.database.selectRestaurantById(this._recordId);
+        this._data = await this._app.database.selectById(this._recordId, "restaurants");
 
         // Anzuzeigenden Seiteninhalt nachladen
         let html = await fetch("page-detail/page-detail.html");

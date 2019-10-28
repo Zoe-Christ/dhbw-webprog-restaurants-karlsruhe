@@ -51,7 +51,7 @@ class PageOverview {
         let mainElement = pageDom.querySelector("main");
         let templateElement = pageDom.querySelector("#template-tile");
 
-        let restaurants = await this._app.database.selectAllRestaurants();
+        let restaurants = await this._app.database.selectAll("restaurants");
 
         restaurants.forEach(restaurant => {
             let html = templateElement.innerHTML;

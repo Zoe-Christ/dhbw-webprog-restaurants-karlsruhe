@@ -56,7 +56,7 @@ class Database {
      * @returns Promise-Objekt zum Abfangen von Fehlern oder Warten auf Erfolg
      */
     async createDemoData() {
-        let restaurants = await this.selectAllRestaurants();
+        let restaurants = await this.selectAll("restaurants");
 
         if (restaurants.length < 1) {
             this.saveRestaurants([{
@@ -126,72 +126,81 @@ class Database {
         }
     }
     /**
-     * Gibt alle in der Datenbank gespeicherten Restaurants zurück. Hier gilt
+     * Gibt alle in der Datenbank gespeicherten Docs zurück. Hier gilt
      * dasselbe wie im Kommentar zur Methode createDemoData() geschrieben.
      * Alle Dokumente auf einmal auszulesen ist nur dann eine gute Idee,
      * wenn man weiß, dass es nicht viele geben kann. Besser wäre daher,
      * die Menge mit der where()-Funktion von Firebase einzuschränken.
      *
-     * @returns Promise-Objekt mit den gespeicherten Restaurants
+     * @param collection: Collection aus der geladen wird
+     * @returns Promise-Objekt mit den gespeicherten Docs
      */
-    async selectAllRestaurants() {
-        let result = await this._restaurants.orderBy("name").get();
-        let restaurants = [];
+    async selectAll(collection) {
+        let coll = this._db.collection(collection);
+        let result = await coll.orderBy("name").get();
+        let docs = [];
 
         result.forEach(entry => {
-            let restaurant = entry.data();
-            restaurants.push(restaurant);
+            let doc = entry.data();
+            docs.push(doc);
         });
 
-        return restaurants;
+        return docs;
     }
 
     /**
-     * Gibt ein einzelnes Restaurant anhand seiner ID zurück.
-     * @param id: ID des gesuchten Restaurants
-     * @returns Promise-Objekt mit dem gesuchten Restaurant
+     * Gibt ein einzelnes Doc anhand seiner ID zurück.
+     * @param id: ID des gesuchten docs
+     * @param collection: Collection aus der geladen wird
+     * @returns Promise-Objekt mit dem gesuchten Doc
      */
-    async selectRestaurantById(id) {
-        let result = await this._restaurants.doc(id).get();
+    async selectById(id, collection) {
+        let coll = this._db.collection(collection);
+        let result = await coll.doc(id).get();
         return result.data();
     }
 
     /**
-     * Speichert ein einzelnes Restaurant in der Datenbank. Das hierfür übergebene
+     * Speichert ein einzelnes doc in der Datenbank. Das hierfür übergebene
      * Objekt sollte folgenden Aufbau haben:
      *
      *      {
-     *          id:        "MeinRestaurant1",
-     *          title:     "Name des Restaurants",
+     *          id:        "MeinDoc1",
+     *          title:     "Name des Docs",
      *          authors:   "Namen der Autoren",
      *          edition:   "8. Auflage",
      *          publisher: "Name des Verlags",
      *          year:      2019,
      *      }
      *
-     * @param restaurants: Zu speicherndes Restaurant-Objekt
+     * @param docs: Zu speicherndes doc-Objekt
+     * @param collection: Collection in die gespeichert werden soll
      */
-    saveRestaurant(restaurant) {
-        this._restaurants.doc(restaurant.id).set(restaurant);
+    saveDoc(doc, collection) {
+        // this._restaurants.doc(doc.id).set(doc);
+        this._db.collection(collection).doc(doc.id).set(doc);
     }
 
     /**
-     * Löscht ein einzelnes Restaurant aus der Datenbank.
-     * @param id: ID des zu löschenden Restaurants
+     * Löscht ein einzelnes doc aus der Datenbank.
+     * @param id: ID des zu löschenden docs
+     * @param collection: Collection aus der gelöscht werden soll
      * @returns Promise-Objekt zum Abfangen von Fehlern oder Warten auf Erfolg
      */
-    async deleteRestaurantById(id) {
-        return this._restaurants.doc(id).delete();
+    async deleteDocById(id, collection) {
+        // return this._restaurants.doc(id).delete();
+        return this._db.collection(collection).doc(id).delete();
+
     }
 
     /**
-     * Speichert die übergebenen Restaurants in der Datenbank. Die hier übergebene
+     * Speichert die übergebenen Docs in der Datenbank. Die hier übergebene
      * Liste sollte folgenden Aufbau haben:
      *
      *      [
      *          {
-     *              id:        "MeinRestaurant1",
-     *              title:     "Name des Restaurants",
+     *              id:        "MeinDoc1",
+     *              title:     "Name des Docs",
      *              authors:   "Namen der Autoren",
      *              edition:   "8. Auflage",
      *              publisher: "Name des Verlags",
@@ -201,130 +210,37 @@ class Database {
      *          },
      *     ]
      *
-     * @param restaurants: Liste mit den zu speichernden Objekten
+     * @param docs: Liste mit den zu speichernden Objekten
+     * @param collection: Collection in die gespeichert werden soll
      * @returns Promise-Objekt zum Abfangen von Fehlern oder Warten auf Erfolg
      */
-    async saveRestaurants(restaurants) {
+    async saveDocs(docs, collection) {
         let batch = this._db.batch();
 
-        restaurants.forEach(restaurant => {
-            let dbRestaurant = this._restaurants.doc(restaurant.id);
-            batch.set(dbRestaurant, restaurant);
+        docs.forEach(doc => {
+            // let dbDoc = this._restaurants.doc(doc.id);
+            let dbDoc = this._db.collection(collection).doc(doc.id);
+            batch.set(dbDoc, doc);
         });
 
         return batch.commit();
     }
 
     /**
-     * Löscht eines oder mehrerer Restaurants aus der Datenbank.
-     * @param ids: Liste der IDs der zu löschenden Restaurants
+     * Löscht eines oder mehrere Docs aus der Datenbank.
+     * @param ids: Liste der IDs der zu löschenden Docs
+     * @param collection: Collection aus der gelöscht werden soll
      * @returns Promise-Objekt zum Abfangen von Fehlern oder Warten auf Erfolg
      */
-    async deleteRestaurantsById(ids) {
+    async deleteDocsById(ids, collection) {
         let batch = this._db.batch();
 
         ids.forEach(id => {
-            let dbRestaurant = this._restaurants.doc(id);
-            batch.delete(dbRestaurant);
+            // let dbDoc = this._restaurants.doc(id);
+            let dbDoc = this._db.collection(collection).doc(id);
+            batch.delete(dbDoc);
         });
 
         return batch.commit();
     }
 }
-
-
-// class Database {
-//     /**
-//      * Konstruktor.
-//      */
-//
-//     constructor() {
-//
-//         this._data = [
-//             {
-//                 id:          1,
-//                 img:        "restaurants/emaille.jpg",
-//                 name:       "Cafe Emaille",
-//                 typ:        "Mittag- und Abendessen",
-//                 gruendungsjahr: 2005,
-//                 bewertung:   "In Fahrt",
-//                 link:       "https://cafeemaille.de/",
-//                 beschreibung:"Das Studentenlokal mit Emailleschildern an den Wänden und Biergarten serviert Frühstück und herzhafte Küche.",
-//             },{
-//                 id:          2,
-//                 img:        "restaurants/bleu.png",
-//                 name:       "Cafe Bleu",
-//                 typ:        "Mittag- und Abendessen",
-//                 gruendungsjahr: 1968,
-//                 bewertung:   "Westlich von Island gesunken",
-//                 link:       "https://www.cafe-bleu.de/",
-//                 beschreibung:"Das Café-Restaurant mit Biergarten bietet deftige Hausmannskost in uriger Aufmachung mit Emailleschildern."
-//             },{
-//                 id:          3,
-//                 img:        "restaurants/oxford.png",
-//                 name:       "Oxford Cafe",
-//                 typ:        "Mittag- und Abendessen",
-//                 gruendungsjahr: 1958,
-//                 bewertung:   "In Fahrt",
-//                 link:       "https://oxford-cafe.de/",
-//                 beschreibung:"Das Oxford Cafe begeistert dich täglich mit seiner vielfältigen Auswahl an Getränken und internationalen Bieren."
-//             },{
-//                 id:          4,
-//                 img:        "restaurants/stoevchen.jpg",
-//                 name:       "Stoevchen",
-//                 typ:        "Frühstück-, Mittag- und Abendessen",
-//                 gruendungsjahr: 1916,
-//                 bewertung:   "In Fahrt",
-//                 link:       "https://www.stoevchen.com/",
-//                 beschreibung:"Leckere Cocktails, Hammer Frühstück und gutes Essen zu günstigen Preisen gibt es bei uns im Stövchen Karlsruhe."
-//             },{
-//                 id:          5,
-//                 img:        "restaurants/aposto.jpg",
-//                 name:       "Aposto",
-//                 typ:        "Mittag- und Abendessen",
-//                 gruendungsjahr: 2006,
-//                 bewertung:   "Kollision im Ärmelkanal",
-//                 link:       "https://karlsruhe.aposto.eu/",
-//                 beschreibung:"Hausgemachte Pasta, Pizza und Grillgerichte an edlen hellen Holztischen zwischen Säulen und auf der Terrasse."
-//             },{
-//                 id:          6,
-//                 img:        "restaurants/vapiano.jpg",
-//                 name:       "Vapiano",
-//                 typ:        "Mittag- und Abendessen",
-//                 gruendungsjahr: 2010,
-//                 bewertung:   "Museum im Portsmouth",
-//                 link:       "https://de.vapiano.com/de/nc/restaurants/vapiano-karlsruhe-karlstrasse-11-1/",
-//                 beschreibung:"Mischung aus Pasta-Lokal, Pizzeria, Lounge und Bar nach italienischem Vorbild. Selbstbedienung ist ein wesentliches Element des Konzepts von Vapiano."
-//             },{
-//                 id:          7,
-//                 img:        "restaurants/badisches_brauhaus.jpg",
-//                 name:       "Badisches Brauhaus",
-//                 typ:        "Mittag- und Abendessen",
-//                 gruendungsjahr: 1999,
-//                 bewertung:   "Kulturdenkmal in Bremen-Vegesack",
-//                 link:       "https://www.badisch-brauhaus.de/",
-//                 beschreibung: "Umfangreich und vielfältig, für jeden etwas. Mit Produkten aus der Region, ausgezeichnet von Schmeck-den-Süden."
-//             },
-//         ];
-//     }
-//
-//     /**
-//      * Diese Methode sucht einen Datensazt anhand seiner ID in der Datenbank
-//      * und liefert den ersten, gefundenen Treffer zurück.
-//      *
-//      * @param  {Number} id Datensatz-ID
-//      * @return {Object} Gefundener Datensatz
-//      */
-//     getRecordById(id) {
-//         id = parseInt(id);
-//         return this._data.find(r => r.id === id);
-//     }
-//
-//     /**
-//      * Diese Methode gibt eine Liste mit allen Datensätzen zurück.
-//      * @return {Array} Liste aller Datensätze
-//      */
-//     getAllRecords() {
-//         return this._data;
-//     }
-// }
