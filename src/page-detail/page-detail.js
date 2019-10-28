@@ -68,7 +68,7 @@ class PageDetail {
 
         // Event Handler für den Button registrieren
         pageDom.querySelectorAll(".id").forEach(e => e.textContent = this._recordId);
-        pageDom.querySelector("#show-more-button").addEventListener("click", () => this._onShowMoreButtonClicked());
+        pageDom.querySelector("#review-button").addEventListener("click", () => this._onReviewButtonClicked());
 
         // Fertig bearbeitetes HTML-Element zurückgeben
         return pageDom;
@@ -78,7 +78,7 @@ class PageDetail {
      * Beispiel für einen einfachen Event Handler, der bei Klick auf einen
      * Button aufgerufen wird.
      */
-    _onShowMoreButtonClicked() {
-        alert(this._data.name);
+    _onReviewButtonClicked() {
+        location.hash = "Reviews";
     }
 }
