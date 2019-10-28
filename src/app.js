@@ -1,13 +1,8 @@
 "use strict";
 
-/**
- * Klasse App: Steuert die Navigation innerhalb der Anwendung
- *
- * Diese Klasse ist sozusagen die Hauptklasse unserer Anwendung. Sie kümmert
- * sich darum, den richtigen Inhalt zu finden und einzublenden, den der
- * Anwender gerade sehen will, wobei der Inhalt selbst hierfür von anderen
- * Klassen bereitgestellt wird.
- */
+
+ /* Klasse App: Steuert die Navigation innerhalb der Anwendung*/
+
 class App {
     /**
      * Konstruktor. Im Parameter pages muss eine Liste mit den vorhandenen
@@ -39,8 +34,7 @@ class App {
 
     /**
      * Startmethode der App. Hier werden die Event Listener für das generelle
-     * Funktionieren der App registriert. Diese Methode muss daher aus der
-     * index.html heraus aufgerufen werden.
+     * Funktionieren der App registriert. 
      */
     run() {
         // Globale Event Listener registrieren
