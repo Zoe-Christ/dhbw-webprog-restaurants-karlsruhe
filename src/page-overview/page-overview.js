@@ -32,7 +32,7 @@ class PageOverview {
         let pageDom = document.createElement("div");
         pageDom.innerHTML = html;
 
-        this._renderBoatTiles(pageDom);
+        await this._renderRestaurantTiles(pageDom);
 
         this._app.setPageTitle("Übersicht");
         this._app.setPageCss(css);
@@ -47,17 +47,20 @@ class PageOverview {
      * @param {HTMLElement} pageDom Wurzelelement der eingelesenen HTML-Datei
      * mit den HTML-Templates dieser Seite.
      */
-    _renderBoatTiles(pageDom) {
+    async _renderRestaurantTiles(pageDom) {
         let mainElement = pageDom.querySelector("main");
         let templateElement = pageDom.querySelector("#template-tile");
 
-        this._app.database.getAllRecords().forEach(boat => {
+        let restaurants = await this._app.database.selectAllRestaurants();
+
+        restaurants.forEach(restaurant => {
             let html = templateElement.innerHTML;
-            html = html.replace("{HREF}", `#/Detail/${boat.id}`);
-            html = html.replace("{IMG}", boat.img);
-            html = html.replace("{NAME}", boat.name);
+            html = html.replace("{HREF}", `#/Detail/${restaurant.id}`);
+            html = html.replace("{IMG}", restaurant.img);
+            html = html.replace("{NAME}", restaurant.name);
 
             mainElement.innerHTML += html;
         });
+
     }
 }
