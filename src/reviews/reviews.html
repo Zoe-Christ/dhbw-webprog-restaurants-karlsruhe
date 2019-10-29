@@ -1,25 +1,45 @@
 <header>
-<!--    <h1 style = "font-family: Arial">Restaurants in Karlsruhe</h1>-->
-</header>
-  <div class="dropdownMenu">
-    <label for="reihenfolge">
-      <input type="button" name="dropdownBtn" value="Ordnen nach" id="reihenfolge" class="dropdown-button">
-    </label>
-    <div class="dropdown-content">
-      <a href="{HREF}">neueste</a>
-      <a href="{HREF}">hilfreichste</a>
+  <div class="top-buttons">
+
+    <div class="dropdownMenu">
+      <button type="button" onclick="showDropDown()" name="dropdownBtn" class="dropdown-button">
+        Ordnen nach
+      </button>
+      <div id="reihenfolge" class="dropdown-content">
+        <a href="{HREF}">neueste</a>
+        <a href="{HREF}">hilfreichste</a>
+      </div>
+    </div>
+
+    <div id="plus-button">
+      <button type="button" onclick="newReview()">Bewertung hinzufügen</button>
     </div>
   </div>
-
-<header>
-<!--    <h1 style = "font-family: Arial">Restaurants in Karlsruhe</h1>-->
 </header>
 
-<body>
-  <main>
-    <div class="view-reviews">
-
-
-    </div>
-  </main>
-</body>
+<main>
+  <table id="review-template">
+    <thead>
+      <tr>
+        <th>{DATUM}</th>
+        <th>{BEWERTUNG}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{KOMMENTAR}</td>
+      </tr>
+      <tr>
+        {AUTOR}
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <label> War diese Bewertung hilfreich?
+          <button type="button">ja</button>
+          <button type="button">nein</button>
+        </label>
+      </tr>
+    </tfoot>
+  </table>
+</main>

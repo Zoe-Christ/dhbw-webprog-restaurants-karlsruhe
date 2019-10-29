@@ -127,43 +127,67 @@ class Database {
         }
 
         if(reviews.length < 1) {
-          this.saveDocs("reviews", [{
+          await this.saveDocs("reviews", [{
             "id": "1c1",
+            "restaurant": "1",
             "autor": "Sara Weis",
             "kommentar": "Sehr leckeres Essen zu günstigen Preisen und schnelle Bedienung.",
-            "bewertung": 5
+            "bewertung": 5,
+            "hilfreich": 0,
+            datum: firebase.firestore.FieldValue.serverTimestamp()
           }, {
             "id": "2c1",
+            "restaurant": "2",
             "autor": "Joseph Stein",
             "kommentar": "Sehr schön zum Draußensitzen im Sommer. Leider kann man nicht mit Karte zahlen.",
-            "bewertung": 4
+            "bewertung": 4,
+            "hilfreich": 0,
+            datum: firebase.firestore.FieldValue.serverTimestamp()
           }, {
             "id": "3c1",
+            "restaurant": "3",
             "autor": "Tim Frey",
             "kommentar": "Gutes Kellerbier - leider sitzt man etwas weit auseinander.",
             "bewertung": 3,
+            "hilfreich": 0,
+            datum: firebase.firestore.FieldValue.serverTimestamp()
           }, {
             "id": "4c1",
+            "restaurant": "4",
             "autor": "Lara Osthaus",
             "kommentar": "Das Essen ist sehr lecker, aber man muss recht lange darauf warten.",
             "bewertung": 3,
+            "hilfreich": 0,
+            datum: firebase.firestore.FieldValue.serverTimestamp()
           }, {
             "id": "5c1",
+            "restaurant": "5",
             "autor": "Lukas Schade",
             "kommentar": "Sehr gute Pizza und offene Küche. Besonders zu empfehlen an Donnerstagen, wenn man Cocktails würfeln kann.",
             "bewertung": 5,
+            "hilfreich": 0,
+            datum: firebase.firestore.FieldValue.serverTimestamp()
           }, {
             "id": "6c1",
+            "restaurant": "6",
             "autor": "Martina Weckerle",
             "kommentar": "Cooles Konzept, da das Essen direkt vor den Kunden zubereitet wird. Teilweise sind die Wartezeiten allerdings relativ lang und die Portiionen nicht groß genug.",
             "bewertung": 4,
+            "hilfreich": 0,
+            datum: firebase.firestore.FieldValue.serverTimestamp()
           }, {
             "id": "7c1",
+            "restaurant": "7",
             "autor": "Markus Becker",
             "kommentar": "Das Highlight war definitiv die Rutsche! Das Essen ist jedoch auch nicht schlecht und das Personal sehr freundlich.",
             "bewertung": 4,
+            "hilfreich": 0,
+            datum: firebase.firestore.FieldValue.serverTimestamp()
           },]);
+
         }
+
+
     }
     /**
      * Gibt alle in der Datenbank gespeicherten Docs zurück. Hier gilt
@@ -282,5 +306,18 @@ class Database {
         });
 
         return batch.commit();
+    }
+
+    async selectReviewsByRestaurantId (resId) {
+      let coll = this._db.collection("reviews");
+      let result = await coll.where("restaurant", "==", resId).get();
+      let reviews = [];
+
+      result.forEach(entry => {
+          let doc = entry.data();
+          reviews.push(doc);
+      });
+
+      return reviews;
     }
 }

@@ -11,7 +11,7 @@ class Reviews {
   async show(matches) {
       // URL-Parameter auswerten
       this._recordId = matches[1];
-      this._data = this._app.database.getRecordById(this._recordId);
+      this._data = this._app.database.selectById(this._recordId, "reviews");
 
       // Anzuzeigenden Seiteninhalt nachladen
       let html = await fetch("reviews/reviews.html");
@@ -26,9 +26,10 @@ class Reviews {
       }
 
       // Seite zur Anzeige bringen
-      let pageDom = document.createElement("div")
-      html = this._processTemplate(html);
+      let pageDom = document.createElement("div");
       pageDom.innerHTML = html;
+
+      await this._showReviews(pageDom);
 
       this._app.setPageTitle(`Bewertungen zu ${this._data.name}`, {isSubPage: true});
       this._app.setPageCss(css);
@@ -36,7 +37,52 @@ class Reviews {
       this._app.setPageContent(pageDom.querySelector("main"));
   }
 
-  _processTemplate(html) {
-      return html;
+  /**
+  * @param {HTMLElement} pageDom
+  */
+  async _showReviews(pageDom) {
+    let mainElement = pageDom.querySelector("main");
+    let templateElement = pageDom.querySelector("#template-review");
+
+    // TODO set Dropdown href
+
+    let reviewsData = this._app.database.selectReviewsByRestaurantId(this._recordId);
+
+    reviewsData.forEach(review => {
+      let html = templateElement.innerHTML;
+      html = html.replace("{DATUM}", review.datum);
+      html = html.replace("{BEWERTUNG}", review.bewertung);
+      html = html.replace("{KOMMENTAR}", review.kommentar);
+      html = html.replace("{AUTOR}", review.autor);
+
+      mainElement.innerHTML += html;
+    });
+
+    return pageDom;
   }
+
+  /* When the user clicks on the button,
+  toggle between hiding and showing the dropdown content */
+  // showDropDown() {
+  //   document.getElementById("reihenfolge").classList.toggle("show");
+  // }
+  //
+  // // Close the dropdown menu if the user clicks outside of it
+  // window.onclick = (event) => {
+  //   if (!event.target.matches('.dropdown-button')) {
+  //     var dropdowns = document.getElementsByClassName("dropdown-content");
+  //     var i;
+  //     for (i = 0; i < dropdowns.length; i++) {
+  //       var openDropdown = dropdowns[i];
+  //       if (openDropdown.classList.contains('show')) {
+  //         openDropdown.classList.remove('show');
+  //       }
+  //     }
+  //   }
+  // }
+
+  newReview() {
+
+  }
+
 }
