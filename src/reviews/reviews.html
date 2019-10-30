@@ -18,28 +18,22 @@
 </header>
 
 <main>
-  <table id="review-template">
-    <thead>
-      <tr>
-        <th>{DATUM}</th>
-        <th>{BEWERTUNG}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{KOMMENTAR}</td>
-      </tr>
-      <tr>
-        {AUTOR}
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <label> War diese Bewertung hilfreich?
-          <button type="button">ja</button>
-          <button type="button">nein</button>
-        </label>
-      </tr>
-    </tfoot>
-  </table>
+
+  <div id="review-template">
+    <div class="review-head">
+      {DATUM}
+      {BEWERTUNG}
+    </div>
+    <div class="review-body">
+      {KOMMENTAR} <br>
+      {AUTOR}
+    </div>
+    <div class="review-foot">
+      <label> War diese Bewertung hilfreich?
+        <button type="button">ja</button>
+        <button type="button">nein</button>
+      </label>
+    </div>
+  </div>
+
 </main>

@@ -37,7 +37,7 @@ class PageDetail {
         // Seite zur Anzeige bringen
         let pageDom = this._processTemplate(html);
 
-        this._app.setPageTitle(`${this._data.name}`, {isSubPage: true});
+        this._app.setPageTitle(` ${this._data.name}`, {isSubPage: true});
         this._app.setPageCss(css);
         this._app.setPageHeader(pageDom.querySelector("header"));
         this._app.setPageContent(pageDom.querySelector("main"));
@@ -79,6 +79,6 @@ class PageDetail {
      * Button aufgerufen wird.
      */
     _onReviewButtonClicked() {
-        location.hash = "#Reviews";
+      location.hash = `#/Reviews/${this._data.id}`;
     }
 }

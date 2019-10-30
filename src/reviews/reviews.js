@@ -11,7 +11,8 @@ class Reviews {
   async show(matches) {
       // URL-Parameter auswerten
       this._recordId = matches[1];
-      this._data = this._app.database.selectById(this._recordId, "reviews");
+      this._data = await this._app.database.selectById(this._recordId, "restaurants");
+      console.log(this._data);
 
       // Anzuzeigenden Seiteninhalt nachladen
       let html = await fetch("reviews/reviews.html");
@@ -42,18 +43,20 @@ class Reviews {
   */
   async _showReviews(pageDom) {
     let mainElement = pageDom.querySelector("main");
-    let templateElement = pageDom.querySelector("#template-review");
+    let templateElement = pageDom.querySelector("#review-template");
 
     // TODO set Dropdown href
 
-    let reviewsData = this._app.database.selectReviewsByRestaurantId(this._recordId);
+    let reviewsData = await this._app.database.selectReviewsByRestaurantId(this._recordId);
+    console.log(reviewsData);
+    let options = {day: 'numeric', month: 'long', year: 'numeric'};
 
     reviewsData.forEach(review => {
       let html = templateElement.innerHTML;
-      html = html.replace("{DATUM}", review.datum);
+      html = html.replace("{DATUM}", `${review.datum.toDate().toLocaleDateString("ge-GE", options)}`);
       html = html.replace("{BEWERTUNG}", review.bewertung);
       html = html.replace("{KOMMENTAR}", review.kommentar);
-      html = html.replace("{AUTOR}", review.autor);
+      html = html.replace("{AUTOR}", `~ ${review.autor}`);
 
       mainElement.innerHTML += html;
     });

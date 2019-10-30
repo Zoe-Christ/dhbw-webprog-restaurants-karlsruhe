@@ -52,7 +52,7 @@ class PageOverview {
         let templateElement = pageDom.querySelector("#template-tile");
 
         let restaurants = await this._app.database.selectAll("restaurants");
-
+      
         restaurants.forEach(restaurant => {
             let html = templateElement.innerHTML;
             html = html.replace("{HREF}", `#/Detail/${restaurant.id}`);
