@@ -60,7 +60,20 @@ class PageDetail {
         //html = html.replace(/{BEWERTUNG}/g, this._data.bewertung);
         html = html.replace(/{LINK}/g, this._data.link);
         html = html.replace(/{BESCHREIBUNG}/g, this._data.beschreibung);
-
+        html = html.replace(/{OEFFNUNGMO}/g, this._data.oeffnungMo);
+        html = html.replace(/{OEFFNUNGDI}/g, this._data.oeffnungDi);
+        html = html.replace(/{OEFFNUNGMI}/g, this._data.oeffnungMi);
+        html = html.replace(/{OEFFNUNGDO}/g, this._data.oeffnungDo);
+        html = html.replace(/{OEFFNUNGFR}/g, this._data.oeffnungFr);
+        html = html.replace(/{OEFFNUNGSA}/g, this._data.oeffnungSa);
+        html = html.replace(/{OEFFNUNGSO}/g, this._data.oeffnungSo);
+        var bilder = '';
+        if(this._data.bilder){
+            for(var i=0; i< this._data.bilder.length;i++){
+                bilder+= '<img src="'+this._data.bilder[i]+'" alt="" width="400" />';
+            }
+            html = html.replace(/{BILDER}/g, bilder);
+        }
         // HTML-Template in echte DOM-Objekte umwandeln, damit wir es mit den
         // DOM-Methoden von JavaScript weiterbearbeiten können
         let pageDom = document.createElement("div");

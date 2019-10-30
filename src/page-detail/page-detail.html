@@ -50,11 +50,73 @@
 
 <main>
     <img src="{IMG}" alt="" />
-
+    <div class="oeffnungszeiten">
+        <table>
+            <tr>
+                <td>
+                    Montag:
+                </td>
+                <td>
+                    {OEFFNUNGMO} Uhr
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Dienstag:
+                </td>
+                <td>
+                    {OEFFNUNGDI} Uhr
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Mittwoch:
+                </td>
+                <td>
+                    {OEFFNUNGMI} Uhr
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Donnerstag:
+                </td>
+                <td>
+                    {OEFFNUNGDO} Uhr
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Freitag:
+                </td>
+                <td>
+                    {OEFFNUNGFR} Uhr
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Samstag:
+                </td>
+                <td>
+                    {OEFFNUNGSA} Uhr
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Sonntag:
+                </td>
+                <td>
+                    {OEFFNUNGSO} Uhr
+                </td>
+            </tr>
+        </table>
+    </div>
     <p>
         {BESCHREIBUNG}
         <a href="{LINK}" target="_blank">Hier</a>
         gelangen sie zur Webseite des Restaurants.
     </p>
     <button id="review-button">Bewertungen</button>
+    <br /><br /><iframe width="700" height="440" src="https://maps.google.com/maps?width=700&amp;height=440&amp;hl=de&amp;q=+({NAME}%20Karlsruhe)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+    <br />
+    {BILDER}
 </main>
