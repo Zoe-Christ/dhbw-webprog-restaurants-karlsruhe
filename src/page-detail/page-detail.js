@@ -67,6 +67,12 @@ class PageDetail {
         html = html.replace(/{OEFFNUNGFR}/g, this._data.oeffnungFr);
         html = html.replace(/{OEFFNUNGSA}/g, this._data.oeffnungSa);
         html = html.replace(/{OEFFNUNGSO}/g, this._data.oeffnungSo);
+        console.log(this._data.bilder);
+        var bilder = '';
+        for(var i=0; i< this._data.bilder.length;i++){
+            bilder+= '<img src="'+this._data.bilder[i]+'" alt="" width="400" />';
+        }
+        html = html.replace(/{BILDER}/g, bilder);
 
         // HTML-Template in echte DOM-Objekte umwandeln, damit wir es mit den
         // DOM-Methoden von JavaScript weiterbearbeiten können
