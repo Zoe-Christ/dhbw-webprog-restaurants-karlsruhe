@@ -67,13 +67,7 @@ class PageDetail {
         html = html.replace(/{OEFFNUNGFR}/g, this._data.oeffnungFr);
         html = html.replace(/{OEFFNUNGSA}/g, this._data.oeffnungSa);
         html = html.replace(/{OEFFNUNGSO}/g, this._data.oeffnungSo);
-        var bilder = '';
-        if(this._data.bilder){
-            for(var i=0; i< this._data.bilder.length;i++){
-                bilder+= '<img src="'+this._data.bilder[i]+'" alt="" width="400" />';
-            }
-            html = html.replace(/{BILDER}/g, bilder);
-        }
+
         // HTML-Template in echte DOM-Objekte umwandeln, damit wir es mit den
         // DOM-Methoden von JavaScript weiterbearbeiten können
         let pageDom = document.createElement("div");
@@ -82,7 +76,7 @@ class PageDetail {
         // Event Handler für den Button registrieren
         pageDom.querySelectorAll(".id").forEach(e => e.textContent = this._recordId);
         pageDom.querySelector("#review-button").addEventListener("click", () => this._onReviewButtonClicked());
-
+        pageDom.querySelector("#gallery-button").addEventListener("click", () => this._onGalleryButtonClicked());
         // Fertig bearbeitetes HTML-Element zurückgeben
         return pageDom;
     }
@@ -93,5 +87,9 @@ class PageDetail {
      */
     _onReviewButtonClicked() {
       location.hash = `#/Reviews/${this._data.id}`;
+    }
+
+    _onGalleryButtonClicked() {
+      location.hash = `#/Gallery/${this._data.id}`;
     }
 }
