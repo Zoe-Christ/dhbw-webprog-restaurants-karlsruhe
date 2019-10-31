@@ -179,7 +179,7 @@ nav li {
 #nav {
 	position: relative;
 	float: left;
-	width: 900px;
+	width: auto;
 	margin: 20px auto;
 	background: #333;
 	font-family: Arial, sans-serif;
@@ -211,11 +211,13 @@ nav li {
 	display: block;
 	color: #fff;
 	text-decoration: none;
+    border-radius: 5px;
 }
 
 #nav ul li a:hover {
-	background: #111;
-	color: #aaa;
+	background: black;
+	color: white;
+    font-weight: bold;
 }
 
 
