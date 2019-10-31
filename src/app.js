@@ -34,11 +34,11 @@ class App {
 
     /**
      * Startmethode der App. Hier werden die Event Listener für das generelle
-     * Funktionieren der App registriert. 
+     * Funktionieren der App registriert.
      */
     run() {
         // Globale Event Listener registrieren
-        document.querySelector("header nav .toggle-menu a").addEventListener("click", this._toggleHamburgerMenu);
+        //document.querySelector("header nav .toggle-menu a").addEventListener("click", this._toggleHamburgerMenu);
         document.querySelector("header nav .go-back a").addEventListener("click", () => window.history.back());
 
         // Single Page Router starten und die erste Seite aufrufen
@@ -53,7 +53,7 @@ class App {
      *
      * @param {DOMEvent} event Abgefangenes Click-Event
      */
-    _toggleHamburgerMenu(event) {
+    /*_toggleHamburgerMenu(event) {
         // Hamburger-Menu ein- oder ausblenden
         let menu = document.querySelector("header nav .menu-right");
         if (!menu) return;
@@ -69,7 +69,7 @@ class App {
         if (event) {
             event.preventDefault();
         }
-    }
+    } */
 
     /**
      * Diese Methode wertet die aktuelle URL aus und sorgt dafür, dass die
