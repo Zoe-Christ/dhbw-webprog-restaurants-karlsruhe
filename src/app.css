@@ -145,7 +145,7 @@ main a:visited {
 }
 
 main a:hover {
-    color: black;
+    color: blue;
     font-weight: 800;
 }
 nav ul {
