@@ -322,3 +322,14 @@ nav li[aria-current] a:hover {
   font-family: Arial;
   font-weight: bold;
 }
+
+/*Fußzeile*/
+footer {
+  padding: 2px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #333;
+  font-size: 40%;
+  color: white;
+}
