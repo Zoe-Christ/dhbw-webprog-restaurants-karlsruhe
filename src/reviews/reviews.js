@@ -42,35 +42,114 @@ class Reviews {
   * @param {HTMLElement} pageDom
   */
   async _showReviews(pageDom) {
-    let mainElement = pageDom.querySelector("main");
-    let templateElement = pageDom.querySelector("#review-template");
+    // Alter Code
+    // let mainElement = pageDom.querySelector("main");
+    // let templateElement = pageDom.querySelector("#review-template");
 
-    // TODO set Dropdown href
+    let tbody = pageDom.querySelector("#review-liste tbody");
+    let temp = pageDom.querySelector("#review-template");
+
+    tbody.innerHTML="";
 
     let reviewsData = await this._app.database.selectReviewsByRestaurantId(this._recordId);
     console.log(reviewsData);
     let options = {day: 'numeric', month: 'long', year: 'numeric'};
+    // mainElement.innerHTML = null;
 
     reviewsData.forEach(review => {
-      let html = templateElement.innerHTML;
-      html = html.replace("{DATUM}", `${review.datum.toDate().toLocaleDateString("ge-GE", options)}`);
-      html = html.replace("{BEWERTUNG}", review.bewertung);
-      html = html.replace("{KOMMENTAR}", review.kommentar);
-      html = html.replace("{AUTOR}", `~ ${review.autor}`);
+      let oneTemp, cells;
 
-      mainElement.innerHTML += html;
+      oneTemp = document.importNode(temp.content, true);
+
+      cells = oneTemp.querySelectorAll("td");
+      cells[0].textContent = review.datum.toDate().toLocaleDateString("ge-GE", options);
+      cells[1].textContent = "";
+      cells[2].textContent = review.bewertung;
+      cells[3].textContent = `"${review.kommentar}"`;
+      cells[4].textContent = ` - ${review.autor}`;
+
+      // Button hinzufügen
+      var jaBtn = document.createElement('input');
+      jaBtn.type = "button";
+      jaBtn.id = `ja-${review.id}`;
+      jaBtn.value = "ja";
+      jaBtn.onclick = (() => {
+        review.hilfreich = 1 ;
+      });
+      cells[5].appendChild(jaBtn);
+      // cells[5].textContent = &nbsp;
+
+      // template einpassen
+      tbody.appendChild(oneTemp);
     });
 
-    return pageDom;
+    // reviewsData.forEach(review => {
+
+      // Alter Code
+
+      // let html = templateElement.innerHTML;
+      // // html.id = "review-template-" + review.id;
+      // // html = html.replace("{DATUM}", `${review.datum.toDate().toLocaleDateString("ge-GE", options)}`);
+      // html = html.replace("{BEWERTUNG}", review.bewertung);
+      // html = html.replace("{KOMMENTAR}", review.kommentar);
+      // html = html.replace("{AUTOR}", `~ ${review.autor}`);
+      // let jaBtn = document.createElement("BUTTON");
+      // jaBtn.id = "ja-Btn-" + review.id;
+      // jaBtn.innerHTML = "ja";
+      // html = html.replace("{JA-BUTTON}", jaBtn);
+      // console.log(document.getElementById("ja-BUtton").id);
+      // document.querySelector("#ja-Button").id = review.id;
+      // console.log(document.querySelector("#ja-Button").id);
+
+      // mainElement.innerHTML = mainElement.innerHTML + html;
+
+    // });
+
+    // console.log(pageDom.querySelector("#ja-Button").parentElement.id);
+    pageDom.querySelector("#plus-button").addEventListener("click", () => this.newReview());
+    pageDom.querySelector("#cancel-new-review").addEventListener("click", () => this.cancelNewReview());
+    pageDom.querySelector("#submit-new-review").addEventListener("click", () => this.submitNewReview());
+    pageDom.querySelector("#dropdownBtn").addEventListener("click", () => this.showDropDown());
+  }
+
+  newReview() {
+    let element = document.getElementById("pop-up-review");
+    element.style.display = "block";
+  }
+
+  cancelNewReview() {
+    let element = document.getElementById("pop-up-review");
+    element.style.display = "none";
+  }
+
+  async submitNewReview() {
+    let text = document.querySelector(".pop-up-review-container");
+    let num = await this._app.database.selectById("0", "reviews");
+    console.log(num);
+    let id = "" + this._recordId + "c" + (num[this._recordId] + 1);
+    console.log(id);
+    this._app.database.saveDoc("reviews", {
+      "id": id,
+      "restaurant": this._recordId,
+      "autor": text[0].value,
+      "kommentar": text[1].value,
+      "bewertung": text[2].value,
+      "hilfreich": 0,
+      datum: firebase.firestore.FieldValue.serverTimestamp()
+    });
+  }
+
+  async hilfreichPlus() {
+
   }
 
   /* When the user clicks on the button,
   toggle between hiding and showing the dropdown content */
-  // showDropDown() {
-  //   document.getElementById("reihenfolge").classList.toggle("show");
-  // }
-  //
-  // // Close the dropdown menu if the user clicks outside of it
+  showDropDown() {
+    document.getElementById("reihenfolge").classList.toggle("show");
+  }
+
+  // Close the dropdown menu if the user clicks outside of it
   // window.onclick = (event) => {
   //   if (!event.target.matches('.dropdown-button')) {
   //     var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -84,8 +163,6 @@ class Reviews {
   //   }
   // }
 
-  newReview() {
 
-  }
 
 }
