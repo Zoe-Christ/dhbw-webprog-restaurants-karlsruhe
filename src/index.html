@@ -24,6 +24,8 @@
         <script src="ueber-uns/ueber-uns.js"></script>
         <script src="reviews/reviews.js"></script>
         <script src="page-not-found/page-not-found.js"></script>
+        <script src="gallery/gallery.js"></script>
+        <script src="contact/contact.js"></script>
 
         <!-- Fontello Icon Font (generiert auf fontello.com) -->
         <link rel="stylesheet" href="fontello/css/fontello.css" />
@@ -32,6 +34,7 @@
         <link rel="stylesheet" href="elements/button.css" />
         <link rel="stylesheet" href="elements/tab-buttons.css" />
         <link rel="stylesheet" href="elements/form.css" />
+        <link rel="stylesheet" href="contact/contact.css" />
 
         <!-- Anwendung starten -->
         <script>
@@ -48,8 +51,16 @@
                      klass: UeberUns,
                  }
                 ,{
+                    url: "^/Gallery/(.*)$",
+                    klass: Gallery,
+                }
+                ,{
                     url: "^/Reviews/(.*)$",
                     klass: Reviews,
+                },{
+                //    url: "^/Kontakt/$",
+                //    klass: Contact,
+
                 },
                 {
                     url: ".*",
@@ -66,8 +77,25 @@
     </head>
     <body>
         <!-- Kopfbereich der App -->
+        <!-- navi neu -->
+        <div class="nav-open">
+			<a href="#nav" title="Menü anzeigen">Navigation anzeigen &darr;</a>
+		</div>
+
+		<div id="nav">
+			<ul>
+				<li><a href="#">Übersicht</a></li>
+				<li><a href="#">Seite 1</a></li>
+				<li><a href="#">Seite 2</a></li>
+				<li><a href="#">Seite 3</a></li>
+				<li><a href="#/Kontakt/">Kontakt</a></li>
+				<li><a href="#/Wir/">Über uns</a></li>
+				<li><a href="#">Impressum</a></li>
+				<li class="close"><a href="#header">&uarr; Menü schließen</a></li>
+			</ul>
+		</div>
         <!-- Navigationsmenue -->
-    <nav>
+    <!-- <nav>
     	<ul>
     		<li><a href="#/">Übersicht</a>
     		</li>
@@ -80,7 +108,7 @@
     		<li><a href="#/Impressum/">Impressum</a>
     		</li>
     	</ul>
-    </nav>
+    </nav> -->
 
          <header>
 
@@ -95,9 +123,12 @@
                     </li>
                     <li class="dont-go-back hidden">
                     </li>
+<<<<<<< HEAD
                     <!-- <li class="toggle-menu small-screen-only">
+=======
+                     <li class="toggle-menu small-screen-only">
+>>>>>>> e7d53876ffe3ec7c10da1de840575c3fc761fdbc
                         <a href="#">
-                            <i class="icon-menu"></i>
                         </a>
                     </li> -->
                 </ul>
@@ -113,5 +144,50 @@
         <main id="app-main-area">
             Inhalt des Hauptbereichs
         </main>
+        <!-- Fußzeile mit dem Impressum -->
+        <footer>
+            <p>
+                <h3><center>
+                    Impressum
+                </center></h3>
+            </p>
+            <table width=100%>
+                <tr>
+                    <td>
+                        <b>Developer:</b> <br />
+                        Zoe Christ <br />
+                        Sandra Hils <br />
+                        Antonia Dieterich <br />
+                    </td>
+                    <td>
+                        <b>Phone:</b><br />
+                        +492738756135 <br />
+                        +491768945275 <br />
+                        +491605489726 <br />
+                    </td>
+                    <td>
+                        <b>Address:</b><br />
+                        Blümchenweg 7, 38226 Salzgitter <br />
+                        Sportlerstraße 12, 33129 Delbrück <br />
+                        Schneeballgasse 240, 71116 Gärtringen <br />
+                    </td>
+                    <td>
+                        <b>E-Mail</b><br />
+                        zoe.christ@gmx.com <br />
+                        s_hils@mail.de <br />
+                        andonia.d@gmail.com <br />
+                    </td>
+                    <td>
+                        <b>Zuletzt überarbeitet:</b><br />
+                        02.11.2019<br />
+                        <br />
+                        <br />
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </footer>
     </body>
 </html>

@@ -96,7 +96,7 @@ header .content h6 {
 }
 
 /* Anpassung an große Bildschirme */
-@media (max-width: 40em) {
+/* @media (max-width: 40em) {
     .small-screen-hidden {
         display: none;
     }
@@ -145,7 +145,7 @@ main a:visited {
 }
 
 main a:hover {
-    color: white;
+    color: blue;
     font-weight: 800;
 }
 nav ul {
@@ -171,9 +171,118 @@ nav li {
 	}
 }
 
+/*Navi neu */
+.nav-open {
+	display: none;
+}
+
+#nav {
+	position: relative;
+	float: left;
+	width: auto;
+	margin: 20px auto;
+	background: #333;
+	font-family: Arial, sans-serif;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 0 5px #888;
+	-moz-box-shadow: 0 0 5px #888;
+	box-shadow: 0 0 5px #888;
+}
+
+#nav ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#nav ul li {
+	float: left;
+}
+
+#nav ul li.close {
+	display: none;
+}
+
+
+#nav ul li a {
+	padding: 10px 15px;
+	display: block;
+	color: #fff;
+	text-decoration: none;
+    border-radius: 5px;
+}
+
+#nav ul li a:hover {
+	background: black;
+	color: white;
+    font-weight: bold;
+}
+
+
+
+@media screen and (max-width: 640px) {
+
+.nav-open {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: #333;
+	font-family: Arial, sans-serif;
+	display: block;
+	width: 100%;
+}
+
+.nav-open a {
+	padding: 10px 15px;
+	display: block;
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+}
+
+#nav {
+	position: fixed;
+	top: -200%;
+	left: 0;
+	float: none;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	-o-transition: all 1s ease-in-out;
+	-ms-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+}
+
+#nav:target {
+	top: 0;
+}
+
+#nav ul li {
+	float: none;
+	text-align: center;
+	border-bottom: 1px solid #555;
+}
+
+#nav ul li.close {
+	display: block;
+}
+
+#nav ul li:last-child {
+	border-bottom: none;
+}
+
+}
+
 /*Navigationsmenue*/
 
-nav a {
+/* nav a {
 	display: block;
 	padding: 0.4em;
 	text-decoration: none;
@@ -197,7 +306,7 @@ nav li[aria-current] a:focus,
 nav li[aria-current] a:hover {
 	color: black;
 	background-color: white;
-}
+} */
 
 .ueberschrift{
     position: relative;
@@ -212,4 +321,15 @@ nav li[aria-current] a:hover {
   font-size: 300%;
   font-family: Arial;
   font-weight: bold;
+}
+
+/*Fußzeile*/
+footer {
+  padding: 2px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #333;
+  font-size: 40%;
+  color: white;
 }

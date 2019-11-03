@@ -38,7 +38,11 @@ class App {
      */
     run() {
         // Globale Event Listener registrieren
+<<<<<<< HEAD
         // document.querySelector("header nav .toggle-menu a").addEventListener("click", this._toggleHamburgerMenu);
+=======
+        //document.querySelector("header nav .toggle-menu a").addEventListener("click", this._toggleHamburgerMenu);
+>>>>>>> e7d53876ffe3ec7c10da1de840575c3fc761fdbc
         document.querySelector("header nav .go-back a").addEventListener("click", () => window.history.back());
 
         // Single Page Router starten und die erste Seite aufrufen
@@ -53,7 +57,7 @@ class App {
      *
      * @param {DOMEvent} event Abgefangenes Click-Event
      */
-    _toggleHamburgerMenu(event) {
+    /*_toggleHamburgerMenu(event) {
         // Hamburger-Menu ein- oder ausblenden
         let menu = document.querySelector("header nav .menu-right");
         if (!menu) return;
@@ -69,7 +73,7 @@ class App {
         if (event) {
             event.preventDefault();
         }
-    }
+    } */
 
     /**
      * Diese Methode wertet die aktuelle URL aus und sorgt dafür, dass die
