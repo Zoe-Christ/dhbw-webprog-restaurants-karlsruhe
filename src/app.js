@@ -38,7 +38,6 @@ class App {
      */
     run() {
         // Globale Event Listener registrieren
-        //document.querySelector("header nav .toggle-menu a").addEventListener("click", this._toggleHamburgerMenu);
         document.querySelector("header nav .go-back a").addEventListener("click", () => window.history.back());
 
         // Single Page Router starten und die erste Seite aufrufen

@@ -1,8 +1,11 @@
+<!-- <head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head> -->
 <header>
   <div class="top-buttons">
 
     <div class="dropdownMenu">
-      <button type="button" onclick="showDropDown()" name="dropdownBtn" class="dropdown-button">
+      <button type="button" name="dropdownBtn" id="dropdownBtn" class="dropdown-button">
         Ordnen nach
       </button>
       <div id="reihenfolge" class="dropdown-content">
@@ -11,29 +14,73 @@
       </div>
     </div>
 
-    <div id="plus-button">
-      <button type="button" onclick="newReview()">Bewertung hinzufügen</button>
+    <button type="button" id="plus-button">Bewertung hinzufügen</button>
+
+    <div class="pop-up" id="pop-up-review">
+      <form class="pop-up-review-container">
+          Autor: <input type="text" name="autor"> <br>
+          Kommentar: <input type="text" name="bewertung"> <br>
+          Sterne: <input type="text" name="sterne"> <br>
+          <!-- <input type="submit" value="submit"> -->
+      </form>
+      <button type="button" id="cancel-new-review">Abbruch</button>
+      <button type="button" id="submit-new-review">Absenden</button>
     </div>
+
   </div>
 </header>
 
-<main>
+<body>
+  <main>
 
-  <div id="review-template">
-    <div class="review-head">
-      {DATUM}
-      {BEWERTUNG}
-    </div>
-    <div class="review-body">
-      {KOMMENTAR} <br>
-      {AUTOR}
-    </div>
-    <div class="review-foot">
-      <label> War diese Bewertung hilfreich?
-        <button type="button">ja</button>
-        <button type="button">nein</button>
-      </label>
-    </div>
-  </div>
+    <table id="review-liste">
+      <tbody>
+      </tbody>
+    </table>
 
-</main>
+    <template id="review-template">
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td colspan="3"></td>
+      </tr>
+      <tr>
+        <td colspan="3"></td>
+      </tr>
+      <tr>
+        <td colspan="3"></td>
+      </tr>
+      <tr>
+        <td colspan="3"> &nbsp;</td>
+      </tr>
+    </template>
+
+
+
+    <!-- <div id="review-template">
+      <div class="review-head">
+        {DATUM}
+        {BEWERTUNG}
+      </div>
+      <div class="review-body">
+        {KOMMENTAR} <br>
+        {AUTOR}
+      </div>
+      <div class="review-foot">
+        <p id="text-hilfreich">War diese Bewertung hilfreich?</p>
+        {JA-BUTTON}
+          <!-- <button type="button" id="ja-Button">ja</button>
+          <button type="button">nein</button> -->
+      <!-- </div>
+    </div> --> -->
+
+  </main>
+
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
+
+</body>

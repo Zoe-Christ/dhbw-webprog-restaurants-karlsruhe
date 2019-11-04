@@ -57,8 +57,6 @@ class Database {
      */
     async createDemoData() {
         let restaurants = await this.selectAll("restaurants");
-        let reviews = await this.selectAll("reviews");
-
         if (restaurants.length < 1) {
             this.saveDocs("restaurants", [{
                 "id":          "1",
@@ -126,6 +124,7 @@ class Database {
             },]);
         }
 
+        let reviews = await this.selectAll("reviews");
         if(reviews.length < 1) {
           await this.saveDocs("reviews", [{
             "id": "1c1",
@@ -183,11 +182,17 @@ class Database {
             "bewertung": 4,
             "hilfreich": 0,
             datum: firebase.firestore.FieldValue.serverTimestamp()
-          },]);
-
+          }, {
+            "id": "0",
+            "1": 1,
+            "2": 1,
+            "3": 1,
+            "4": 1,
+            "5": 1,
+            "6": 1,
+            "7": 1,
+          }]);
         }
-
-
     }
     /**
      * Gibt alle in der Datenbank gespeicherten Docs zurück. Hier gilt
