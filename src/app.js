@@ -40,6 +40,15 @@ class App {
         // Globale Event Listener registrieren
         document.querySelector("header nav .go-back a").addEventListener("click", () => window.history.back());
 
+        let impressumLink = document.querySelector("#impressum_link");
+        impressumLink.addEventListener("click", event => {
+            event.preventDefault();
+
+            let impressumElement = document.querySelector("#impressum");
+            let yPosition = impressumElement.getBoundingClientRect().top;
+            window.scrollTo(0, yPosition);
+        });
+
         // Single Page Router starten und die erste Seite aufrufen
         window.addEventListener("hashchange", () => this._handleRouting());
         this._handleRouting();
