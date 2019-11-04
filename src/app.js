@@ -118,6 +118,7 @@ class App {
 
         this._currentPageObject = new page.klass(this);
         this._currentPageObject.show(matches);
+        window.scrollTo(0, 0);
     }
 
     /**
