@@ -122,12 +122,15 @@ class Reviews {
     element.style.display = "none";
   }
 
+//async changeDocValue(collection, docId, docField, docValue)
   async submitNewReview() {
     let text = document.querySelector(".pop-up-review-container");
     let num = await this._app.database.selectById("0", "reviews");
     console.log(num);
     let id = "" + this._recordId + "c" + (num[this._recordId] + 1);
     console.log(id);
+    this._app.database.changeDocValue("reviews", "0", (""+this._recordId), (num[this._recordId] +1) )
+    console.log(await this._app.database.selectById("0", "reviews"));
     this._app.database.saveDoc("reviews", {
       "id": id,
       "restaurant": this._recordId,
@@ -137,6 +140,7 @@ class Reviews {
       "hilfreich": 0,
       datum: firebase.firestore.FieldValue.serverTimestamp()
     });
+
   }
 
   async hilfreichPlus() {

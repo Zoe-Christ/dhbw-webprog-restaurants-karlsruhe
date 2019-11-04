@@ -325,4 +325,11 @@ class Database {
 
       return reviews;
     }
+
+    async changeDocValue(collection, docId, docField, docValue) {
+      let valueUpdate = {};
+      valueUpdate[`${docField}`] = docValue;
+      this._db.collection(collection).doc(docId).update(valueUpdate);
+
+    }
 }
