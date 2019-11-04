@@ -38,8 +38,6 @@ class Database {
         // Dabei können beliebig viele "Collections" angesprochen werden,
         // die in etwa den Tabellen einer klassischen Datenbank entsprechen.
         this._db = firebase.firestore();
-        // this._restaurants = this._db.collection("restaurants");
-        // this._comments = this._db.collection("comments");
     }
 
     /**
@@ -206,7 +204,7 @@ class Database {
      */
     async selectAll(collection) {
         let coll = this._db.collection(collection);
-        let result = await coll.orderBy("name").get();
+        let result = await coll.orderBy("id").get();
         let docs = [];
 
         result.forEach(entry => {

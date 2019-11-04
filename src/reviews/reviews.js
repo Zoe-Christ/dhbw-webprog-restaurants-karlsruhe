@@ -68,42 +68,40 @@ class Reviews {
       cells[3].textContent = `"${review.kommentar}"`;
       cells[4].textContent = ` - ${review.autor}`;
 
-      // Button hinzufügen
-      var jaBtn = document.createElement('input');
+      // ja-Button
+      let jaBtn = document.createElement('input');
       jaBtn.type = "button";
       jaBtn.id = `ja-${review.id}`;
       jaBtn.value = "ja";
-      jaBtn.onclick = (() => {
-        review.hilfreich = 1 ;
+      jaBtn.onclick = (async () => {
+        let num = await this._app.database.selectById(review.id,"reviews");
+        this._app.database.changeDocValue("reviews", review.id, "hilfreich",
+          (num.hilfreich +1) );
       });
+
+      // nein-Button
+      let neinBtn = document.createElement('input');
+      neinBtn.type = "button";
+      neinBtn.id = `nein-${review.id}`;
+      neinBtn.value = "nein";
+      neinBtn.onclick = (async () => {
+        let num = await this._app.database.selectById(review.id,"reviews");
+        this._app.database.changeDocValue("reviews", review.id, "hilfreich",
+          (num.hilfreich -1) );
+      });
+
+      // cells[5].textContent = "War diese Bewertung hilfreich?"
+      cells[5].textContent = "War diese Bewertung hilfreich?"
       cells[5].appendChild(jaBtn);
-      // cells[5].textContent = &nbsp;
+      cells[5].appendChild(neinBtn);
+
+      // cells[6].textContent = &nbsp;
 
       // template einpassen
       tbody.appendChild(oneTemp);
     });
 
-    // reviewsData.forEach(review => {
 
-      // Alter Code
-
-      // let html = templateElement.innerHTML;
-      // // html.id = "review-template-" + review.id;
-      // // html = html.replace("{DATUM}", `${review.datum.toDate().toLocaleDateString("ge-GE", options)}`);
-      // html = html.replace("{BEWERTUNG}", review.bewertung);
-      // html = html.replace("{KOMMENTAR}", review.kommentar);
-      // html = html.replace("{AUTOR}", `~ ${review.autor}`);
-      // let jaBtn = document.createElement("BUTTON");
-      // jaBtn.id = "ja-Btn-" + review.id;
-      // jaBtn.innerHTML = "ja";
-      // html = html.replace("{JA-BUTTON}", jaBtn);
-      // console.log(document.getElementById("ja-BUtton").id);
-      // document.querySelector("#ja-Button").id = review.id;
-      // console.log(document.querySelector("#ja-Button").id);
-
-      // mainElement.innerHTML = mainElement.innerHTML + html;
-
-    // });
 
     // console.log(pageDom.querySelector("#ja-Button").parentElement.id);
     pageDom.querySelector("#plus-button").addEventListener("click", () => this.newReview());
@@ -125,11 +123,12 @@ class Reviews {
 //async changeDocValue(collection, docId, docField, docValue)
   async submitNewReview() {
     let text = document.querySelector(".pop-up-review-container");
+
     let num = await this._app.database.selectById("0", "reviews");
-    console.log(num);
     let id = "" + this._recordId + "c" + (num[this._recordId] + 1);
-    console.log(id);
-    this._app.database.changeDocValue("reviews", "0", (""+this._recordId), (num[this._recordId] +1) )
+    this._app.database.changeDocValue("reviews", "0", (""+this._recordId),
+      (num[this._recordId] +1) )
+
     console.log(await this._app.database.selectById("0", "reviews"));
     this._app.database.saveDoc("reviews", {
       "id": id,
