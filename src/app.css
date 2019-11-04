@@ -139,13 +139,13 @@ main {
 
 main a,
 main a:visited {
-    color: blue;
+    color: black;
     text-decoration: underline;
     transition: color 0.25s;
 }
 
 main a:hover {
-    color: blue;
+    color: black;
     font-weight: 800;
 }
 nav ul {
