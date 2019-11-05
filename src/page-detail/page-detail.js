@@ -35,7 +35,8 @@ class PageDetail {
         }
 
         // Seite zur Anzeige bringen
-        let pageDom = this._processTemplate(html);
+        let bewertung = await this.bewertungBerechnen();
+        let pageDom = this._processTemplate(html, bewertung);
 
         this._app.setPageTitle(` ${this._data.name}`, {isSubPage: true});
         this._app.setPageCss(css);
@@ -51,13 +52,13 @@ class PageDetail {
      * @param {HTMLElement} pageDom Wurzelelement der eingelesenen HTML-Datei
      * mit den HTML-Templates dieser Seite.
      */
-    _processTemplate(html) {
+      _processTemplate(html, bewertung) {
         // Platzhalter mit den eingelesenen Daten ersetzen
         html = html.replace(/{IMG}/g, this._data.img);
         html = html.replace(/{NAME}/g, this._data.name);
         html = html.replace(/{TYP}/g, this._data.typ);
         html = html.replace(/{GRUENDUNGSJAHR}/g, this._data.gruendungsjahr);
-        //html = html.replace(/{BEWERTUNG}/g, this._data.bewertung);
+        html = html.replace(/{BEWERTUNG}/g, bewertung);
         html = html.replace(/{LINK}/g, this._data.link);
         html = html.replace(/{BESCHREIBUNG}/g, this._data.beschreibung);
         html = html.replace(/{OEFFNUNGMO}/g, this._data.oeffnungMo);
@@ -91,5 +92,16 @@ class PageDetail {
 
     _onGalleryButtonClicked() {
       location.hash = `#/Gallery/${this._data.id}`;
+    }
+
+    async bewertungBerechnen() {
+      let allRestaurantReviews;
+      let bewertung = 0;
+      allRestaurantReviews = await this._app.database.selectReviewsByRestaurantId(this._recordId, "hilfreich");
+      allRestaurantReviews.forEach(review => {
+        bewertung = bewertung + parseFloat(review.bewertung);
+      });
+      bewertung = bewertung/allRestaurantReviews.length;
+      return bewertung + " von 5";
     }
 }
