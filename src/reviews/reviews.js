@@ -49,7 +49,7 @@ class Reviews {
     tbody.innerHTML="";
 
     let reviewsData = await this._app.database.selectReviewsByRestaurantId(this._recordId, "hilfreich");
-    console.log(reviewsData);
+    // console.log("reviewsLength: " + reviewsData.length);
     let options = {day: 'numeric', month: 'long', year: 'numeric'};
     // mainElement.innerHTML = null;
 
@@ -135,7 +135,7 @@ class Reviews {
     this._app.database.saveDoc("reviews", {
       "id": id,
       "restaurant": this._recordId,
-      "autor": text[0].value,
+      "autor": Number(request.body[text[0].value]),
       "kommentar": text[1].value,
       "bewertung": text[2].value,
       "hilfreich": 0,
