@@ -36,7 +36,10 @@
         this._app.setPageHeader(pageDom.querySelector("header"));
         this._app.setPageContent(pageDom.querySelector("main"));
 
-
+        let Submitbutton = document.querySelector("#submitbtn");
+        Submitbutton.addEventListener("click", event => {
+            alert("Vielen Dank für Ihre E-Mail")
+        });
 
     }
 
