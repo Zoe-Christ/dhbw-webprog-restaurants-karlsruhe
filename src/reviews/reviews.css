@@ -25,15 +25,19 @@
 
 /* Links in dropdown */
 .dropdown-content a {
-  color: white;
+  color: blue;
   padding: 5em;
   text-decoration: none;
   display: block;
+  background-color:
 }
 
   /* change color of dropdown Links on hover */
 .dropdown-content a:hover {
-    background-color: grey;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: rgb(28, 88, 150);
 }
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content
