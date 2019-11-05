@@ -135,12 +135,14 @@ class Reviews {
     this._app.database.saveDoc("reviews", {
       "id": id,
       "restaurant": this._recordId,
-      "autor": Number(request.body[text[0].value]),
+      "autor": text[0].value,
       "kommentar": text[1].value,
       "bewertung": text[2].value,
       "hilfreich": 0,
       datum: firebase.firestore.FieldValue.serverTimestamp()
     });
+
+    location.reload();
 
   }
 
@@ -148,24 +150,25 @@ class Reviews {
   toggle between hiding and showing the dropdown content */
   showDropDown() {
     document.getElementById("reihenfolge").classList.toggle("show");
-  }
+
 
   // Close the dropdown menu if the user clicks outside of it
-  // window.onclick = (event) => {
-  //   if (!event.target.matches('.dropdown-button')) {
-  //     var dropdowns = document.getElementsByClassName("dropdown-content");
-  //     var i;
-  //     for (i = 0; i < dropdowns.length; i++) {
-  //       var openDropdown = dropdowns[i];
-  //       if (openDropdown.classList.contains('show')) {
-  //         openDropdown.classList.remove('show');
-  //       }
-  //     }
-  //   }
-  // }
+    window.onclick = (event) => {
+      if (!event.target.matches('.dropdown-button')) {
+        let dropdowns = document.getElementsByClassName("dropdown-content");
+        let i;
+        for (i = 0; i < dropdowns.length; i++) {
+          let openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+  }
 
   async orderBy(orderVariable, tbody, temp) {
-    debugger;
+
     if (this.orderValue != orderVariable) {
       tbody.innerHTML="";
 
