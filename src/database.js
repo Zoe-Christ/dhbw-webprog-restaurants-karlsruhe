@@ -311,9 +311,9 @@ class Database {
         return batch.commit();
     }
 
-    async selectReviewsByRestaurantId (resId) {
+    async selectReviewsByRestaurantId (resId, orderBy) {
       let coll = this._db.collection("reviews");
-      let result = await coll.where("restaurant", "==", resId).get();
+      let result = await coll.where("restaurant", "==", resId).orderBy(orderBy, "desc").get();
       let reviews = [];
 
       result.forEach(entry => {

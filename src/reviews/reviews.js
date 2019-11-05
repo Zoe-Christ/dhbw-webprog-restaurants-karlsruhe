@@ -3,6 +3,7 @@ class Reviews {
       this._app = app;
       this._recordId = -1;
       this._data = null;
+      this.orderValue = "hilfreich";
   }
 
   /**
@@ -42,16 +43,12 @@ class Reviews {
   * @param {HTMLElement} pageDom
   */
   async _showReviews(pageDom) {
-    // Alter Code
-    // let mainElement = pageDom.querySelector("main");
-    // let templateElement = pageDom.querySelector("#review-template");
-
     let tbody = pageDom.querySelector("#review-liste tbody");
     let temp = pageDom.querySelector("#review-template");
 
     tbody.innerHTML="";
 
-    let reviewsData = await this._app.database.selectReviewsByRestaurantId(this._recordId);
+    let reviewsData = await this._app.database.selectReviewsByRestaurantId(this._recordId, "hilfreich");
     console.log(reviewsData);
     let options = {day: 'numeric', month: 'long', year: 'numeric'};
     // mainElement.innerHTML = null;
@@ -101,13 +98,18 @@ class Reviews {
       tbody.appendChild(oneTemp);
     });
 
-
-
     // console.log(pageDom.querySelector("#ja-Button").parentElement.id);
     pageDom.querySelector("#plus-button").addEventListener("click", () => this.newReview());
     pageDom.querySelector("#cancel-new-review").addEventListener("click", () => this.cancelNewReview());
     pageDom.querySelector("#submit-new-review").addEventListener("click", () => this.submitNewReview());
     pageDom.querySelector("#dropdownBtn").addEventListener("click", () => this.showDropDown());
+
+    let dropdownElement = pageDom.querySelector("#reihenfolge");
+    let elements = dropdownElement.querySelectorAll("a");
+    console.log("elemente: " + elements);
+    // debugger;
+    elements[0].addEventListener("click", () => this.orderBy("hilfreich", tbody, temp));
+    elements[1].addEventListener("click", () => this.orderBy("datum", tbody, temp));
   }
 
   newReview() {
@@ -142,10 +144,6 @@ class Reviews {
 
   }
 
-  async hilfreichPlus() {
-
-  }
-
   /* When the user clicks on the button,
   toggle between hiding and showing the dropdown content */
   showDropDown() {
@@ -166,6 +164,61 @@ class Reviews {
   //   }
   // }
 
+  async orderBy(orderVariable, tbody, temp) {
+    debugger;
+    if (this.orderValue != orderVariable) {
+      tbody.innerHTML="";
 
+      let reviewsData = await this._app.database.selectReviewsByRestaurantId(this._recordId, orderVariable);
+      console.log(reviewsData);
+      let options = {day: 'numeric', month: 'long', year: 'numeric'};
+      // mainElement.innerHTML = null;
 
+      reviewsData.forEach(review => {
+        let oneTemp, cells;
+
+        oneTemp = document.importNode(temp.content, true);
+
+        cells = oneTemp.querySelectorAll("td");
+        cells[0].textContent = review.datum.toDate().toLocaleDateString("ge-GE", options);
+        cells[1].textContent = "";
+        cells[2].textContent = review.bewertung;
+        cells[3].textContent = `"${review.kommentar}"`;
+        cells[4].textContent = ` - ${review.autor}`;
+
+        // ja-Button
+        let jaBtn = document.createElement('input');
+        jaBtn.type = "button";
+        jaBtn.id = `ja-${review.id}`;
+        jaBtn.value = "ja";
+        jaBtn.onclick = (async () => {
+          let num = await this._app.database.selectById(review.id,"reviews");
+          this._app.database.changeDocValue("reviews", review.id, "hilfreich",
+            (num.hilfreich +1) );
+        });
+
+        // nein-Button
+        let neinBtn = document.createElement('input');
+        neinBtn.type = "button";
+        neinBtn.id = `nein-${review.id}`;
+        neinBtn.value = "nein";
+        neinBtn.onclick = (async () => {
+          let num = await this._app.database.selectById(review.id,"reviews");
+          this._app.database.changeDocValue("reviews", review.id, "hilfreich",
+            (num.hilfreich -1) );
+        });
+
+        // cells[5].textContent = "War diese Bewertung hilfreich?"
+        cells[5].textContent = "War diese Bewertung hilfreich?"
+        cells[5].appendChild(jaBtn);
+        cells[5].appendChild(neinBtn);
+
+        // cells[6].textContent = &nbsp;
+
+        // template einpassen
+        tbody.appendChild(oneTemp);
+      });
+      this.orderValue = orderVariable;
+    }
+  }
 }
