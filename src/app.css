@@ -232,6 +232,11 @@ nav li {
 	font-family: Arial, sans-serif;
 	display: block;
 	width: 100%;
+    z-index: 10000000;
+}
+
+.navigation {
+    z-index: 10000000;
 }
 
 .nav-open a {
@@ -258,6 +263,7 @@ nav li {
 	-o-transition: all 1s ease-in-out;
 	-ms-transition: all 1s ease-in-out;
 	transition: all 1s ease-in-out;
+
 }
 
 #nav:target {
@@ -279,34 +285,6 @@ nav li {
 }
 
 }
-
-/*Navigationsmenue*/
-
-/* nav a {
-	display: block;
-	padding: 0.4em;
-	text-decoration: none;
-	font-weight: bold;
-	text-align: center;
-	color: white;
-	background-color: black;
-	transition: all .25s ease-in;
-    font-family: arial;
-}
-
-nav li[aria-current] a {
-	background-color: firebrick;
-	color: gold;
-
-}
-
-nav a:focus,
-nav a:hover,
-nav li[aria-current] a:focus,
-nav li[aria-current] a:hover {
-	color: black;
-	background-color: white;
-} */
 
 .ueberschrift{
     position: relative;
