@@ -50,6 +50,8 @@ iframe{
     max-width: 100%;
 }
 
+
+
 .tab-buttons {
     margin-top: 1.5rem;
     margin-bottom: calc(var(--content-padding) * -1);
@@ -69,4 +71,19 @@ main > img {
     font-size: 20px;
     margin-left: 200px;
     display: inline-block;
+}
+@media (max-width: 600px) {
+    /* main{
+        text-align: center;
+
+    } */
+    .oeffnungszeiten{
+        margin-left: 0px;
+    }
+    .page-heading{
+        margin-left: 20px;
+    }
+    .tab-buttons{
+        margin-left: 20px;
+    }
 }
