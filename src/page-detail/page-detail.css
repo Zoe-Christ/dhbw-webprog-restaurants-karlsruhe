@@ -46,6 +46,9 @@
         padding-right: 5em;
     }
 }
+iframe{
+    max-width: 100%;
+}
 
 .tab-buttons {
     margin-top: 1.5rem;
