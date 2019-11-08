@@ -65,6 +65,13 @@ class Database {
                 "bewertung":   "4.5",
                 "link":       "https://cafeemaille.de/",
                 "beschreibung":"Das Studentenlokal mit Emailleschildern an den Wänden und Biergarten serviert Frühstück und herzhafte Küche.",
+                "oeffnungMo":   "08:00-01:00",
+                "oeffnungDi":   "08:00-01:00",
+                "oeffnungMi":   "08:00-01:00",
+                "oeffnungDo":   "08:00-01:00",
+                "oeffnungFr":   "08:00-01:00",
+                "oeffnungSa":   "08:00-01:00",
+                "oeffnungSo":   "08:00-01:00",
             },{
                 "id":          "2",
                 "img":        "restaurants/bleu.png",
@@ -73,7 +80,14 @@ class Database {
                 "gruendungsjahr": 1968,
                 "bewertung":   "Westlich von Island gesunken",
                 "link":       "https://www.cafe-bleu.de/",
-                "beschreibung":"Das Café-Restaurant mit Biergarten bietet deftige Hausmannskost in uriger Aufmachung mit Emailleschildern."
+                "beschreibung":"Das Café-Restaurant mit Biergarten bietet deftige Hausmannskost in uriger Aufmachung mit Emailleschildern.",
+                "oeffnungMo":   "08:00-01:00",
+                "oeffnungDi":   "08:00-01:00",
+                "oeffnungMi":   "08:00-01:00",
+                "oeffnungDo":   "08:00-01:00",
+                "oeffnungFr":   "08:00-01:00",
+                "oeffnungSa":   "08:00-01:00",
+                "oeffnungSo":   "08:00-01:00",
             },{
                 "id":          "3",
                 "img":        "restaurants/oxford.png",
@@ -82,7 +96,14 @@ class Database {
                 "gruendungsjahr": 1958,
                 "bewertung":   "In Fahrt",
                 "link":       "https://oxford-cafe.de/",
-                "beschreibung":"Das Oxford Cafe begeistert dich täglich mit seiner vielfältigen Auswahl an Getränken und internationalen Bieren."
+                "beschreibung":"Das Oxford Cafe begeistert dich täglich mit seiner vielfältigen Auswahl an Getränken und internationalen Bieren.",
+                "oeffnungMo":   "11:00-01:00",
+                "oeffnungDi":   "11:00-01:00",
+                "oeffnungMi":   "11:00-01:00",
+                "oeffnungDo":   "11:00-01:00",
+                "oeffnungFr":   "11:00-03:00",
+                "oeffnungSa":   "11:00-03:00",
+                "oeffnungSo":   "12:00-01:00",
             },{
                 "id":          "4",
                 "img":        "restaurants/stoevchen.jpg",
@@ -91,7 +112,14 @@ class Database {
                 "gruendungsjahr": 1916,
                 "bewertung":   "In Fahrt",
                 "link":       "https://www.stoevchen.com/",
-                "beschreibung":"Leckere Cocktails, Hammer Frühstück und gutes Essen zu günstigen Preisen gibt es bei uns im Stövchen Karlsruhe."
+                "beschreibung":"Leckere Cocktails, Hammer Frühstück und gutes Essen zu günstigen Preisen gibt es bei uns im Stövchen Karlsruhe.",
+                "oeffnungMo":   "09:00-01:00",
+                "oeffnungDi":   "09:00-01:00",
+                "oeffnungMi":   "09:00-01:00",
+                "oeffnungDo":   "09:00-01:00",
+                "oeffnungFr":   "09:00-03:00",
+                "oeffnungSa":   "09:00-03:00",
+                "oeffnungSo":   "09:00-01:00",
             },{
                 "id":          "5",
                 "img":        "restaurants/aposto.jpg",
@@ -100,7 +128,14 @@ class Database {
                 "gruendungsjahr": 2006,
                 "bewertung":   "Kollision im Ärmelkanal",
                 "link":       "https://karlsruhe.aposto.eu/",
-                "beschreibung":"Hausgemachte Pasta, Pizza und Grillgerichte an edlen hellen Holztischen zwischen Säulen und auf der Terrasse."
+                "beschreibung":"Hausgemachte Pasta, Pizza und Grillgerichte an edlen hellen Holztischen zwischen Säulen und auf der Terrasse.",
+                "oeffnungMo":   "09:30-01:00",
+                "oeffnungDi":   "09:30-01:00",
+                "oeffnungMi":   "09:30-01:00",
+                "oeffnungDo":   "09:30-01:00",
+                "oeffnungFr":   "09:30-02:00",
+                "oeffnungSa":   "09:30-02:00",
+                "oeffnungSo":   "09:30-01:00",
             },{
                 "id":          "6",
                 "img":        "restaurants/vapiano.jpg",
@@ -109,7 +144,14 @@ class Database {
                 "gruendungsjahr": 2010,
                 "bewertung":   "Museum im Portsmouth",
                 "link":       "https://de.vapiano.com/de/nc/restaurants/vapiano-karlsruhe-karlstrasse-11-1/",
-                "beschreibung":"Mischung aus Pasta-Lokal, Pizzeria, Lounge und Bar nach italienischem Vorbild. Selbstbedienung ist ein wesentliches Element des Konzepts von Vapiano."
+                "beschreibung":"Mischung aus Pasta-Lokal, Pizzeria, Lounge und Bar nach italienischem Vorbild. Selbstbedienung ist ein wesentliches Element des Konzepts von Vapiano.",
+                "oeffnungMo":   "11:00-23:30",
+                "oeffnungDi":   "11:00-23:30",
+                "oeffnungMi":   "11:00-23:30",
+                "oeffnungDo":   "11:00-23:30",
+                "oeffnungFr":   "11:00-00:30",
+                "oeffnungSa":   "11:00-00:30",
+                "oeffnungSo":   "11:00-23:30",
             },{
                 "id":          "7",
                 "img":        "restaurants/badisches_brauhaus.jpg",
@@ -118,7 +160,14 @@ class Database {
                 "gruendungsjahr": 1999,
                 "bewertung":   "Kulturdenkmal in Bremen-Vegesack",
                 "link":       "https://www.badisch-brauhaus.de/",
-                "beschreibung": "Umfangreich und vielfältig, für jeden etwas. Mit Produkten aus der Region, ausgezeichnet von Schmeck-den-Süden."
+                "beschreibung": "Umfangreich und vielfältig, für jeden etwas. Mit Produkten aus der Region, ausgezeichnet von Schmeck-den-Süden.",
+                "oeffnungMo":   "11:30-00:00",
+                "oeffnungDi":   "11:30-00:00",
+                "oeffnungMi":   "11:30-00:00",
+                "oeffnungDo":   "11:30-00:00",
+                "oeffnungFr":   "11:30-01:00",
+                "oeffnungSa":   "11:30-01:00",
+                "oeffnungSo":   "11:30-00:00",
             },]);
         }
 
