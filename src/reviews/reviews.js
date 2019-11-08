@@ -46,9 +46,7 @@ class Reviews {
     let wrapper = pageDom.querySelector("#rev-wrapper");
     let temp = pageDom.querySelector("#review-template");
 
-    // wrapper.innerHTML="";
-
-    let reviewsData = await this._app.database.selectReviewsByRestaurantId(this._recordId, "hilfreich");
+    let reviewsData = await this._app.database.selectReviewsByRestaurantId(this._recordId, "datum");
     // console.log("reviewsLength: " + reviewsData.length);
     let options = {day: 'numeric', month: 'long', year: 'numeric'};
     // mainElement.innerHTML = null;
@@ -99,6 +97,12 @@ class Reviews {
       wrapper.appendChild(oneTemp);
     });
 
+    let newReviewTemp = pageDom.querySelector("#new-review-template");
+    let secondTemp = newReviewTemp.content.cloneNode(true);
+    wrapper.appendChild(secondTemp);
+
+
+
     // console.log(pageDom.querySelector("#ja-Button").parentElement.id);
     pageDom.querySelector("#plus-button").addEventListener("click", () => this.newReview());
     pageDom.querySelector("#cancel-new-review").addEventListener("click", () => this.cancelNewReview());
@@ -114,18 +118,17 @@ class Reviews {
   }
 
   newReview() {
-    let element = document.getElementById("pop-up-review");
-    element.style.display = "block";
+    // location.hash = "#create-review"
   }
 
   cancelNewReview() {
-    let element = document.getElementById("pop-up-review");
-    element.style.display = "none";
+    location.reload();
   }
 
 //async changeDocValue(collection, docId, docField, docValue)
   async submitNewReview() {
-    let text = document.querySelector(".pop-up-review-container");
+    let text = document.querySelector(".new-review-content");
+    console.log(text);
 
     let num = await this._app.database.selectById("0", "reviews");
     let id = "" + this._recordId + "c" + (num[this._recordId] + 1);

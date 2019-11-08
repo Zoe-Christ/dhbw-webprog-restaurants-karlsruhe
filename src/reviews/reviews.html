@@ -21,21 +21,9 @@
     <!-- Neue Review hinzufuegen -->
     <div class="new-review">
       <!-- Add Button -->
-      <button type="button" id="plus-button">Bewertung hinzufügen</button>
+      <button type="button" id="plus-button" class="add-button">Bewertung hinzufügen</button>
 
-      <!-- Pop Up neue Review Beginn -->
-      <div class="pop-up" id="pop-up-review">
-        <form class="pop-up-review-container">
-            Autor: <input type="text" name="autor"> <br>
-            Kommentar: <input type="text" name="bewertung"> <br>
-            Sterne: <input type="text" name="sterne"> <br>
-        </form>
-        <button type="button" id="cancel-new-review">Abbruch</button>
-        <button type="button" id="submit-new-review">Absenden</button>
-      </div>
-      <!-- Pop Up neue Review Ende -->
     </div>
-    <!-- Neue Review hinzufügen Ende -->
 
       <!-- Platz zum Einfügen von Review Containern -->
 
@@ -60,5 +48,27 @@
       </div>
     </div>
   </template>
+
+  <!-- Pop Up neue Review Beginn -->
+  <template id="new-review-template">
+    <div class="fourth-wrapper">
+      <a href="create-review"></a>
+      <div class="new-review-container box">
+        <p class="new-review-header">Fügen Sie eine neue Bewertung hinzu:</p>
+        <form class="new-review-content">
+          Autor: <input type="text" name="autor"> <br>
+          Kommentar: <input type="text" name="bewertung"> <br>
+          Sterne: <input type="text" name="sterne"> <br>
+        </form>
+      </div>
+      <div class="submit-review box">
+        <button type="button" id="cancel-new-review" class="hilfreich-button">Abbruch</button>
+      </div>
+      <div class="cancel-review box">
+        <button type="button" id="submit-new-review" class="hilfreich-button">Absenden</button>
+      </div>
+    </div>
+  </template>
+    <!-- Pop Up neue Review Ende -->
 
 </main>

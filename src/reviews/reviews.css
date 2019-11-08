@@ -14,7 +14,8 @@
   border: white;
   color: #fff;
   border-radius: 0.2em;
-  padding: 0.5em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
   /* font-size: 150%; */
 }
 
@@ -33,7 +34,7 @@
   grid-column: 1 / span 2;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr 3fr 2fr;
+  grid-template-rows: 0.5fr 1fr 1fr;
   grid-gap: 0.5em;
   /* background-color: #696969; */
   box-shadow: 0 0 5px #888;
@@ -44,12 +45,14 @@
 .date {
   grid-column: 1;
   grid-row: 1;
+  padding-top: 0.5em;
 }
 
 .stars {
   grid-column: 2;
   grid-row: 1;
   justify-self: end;
+  padding-top: 0.5em;
 }
 
 .comment {
@@ -61,7 +64,39 @@
 .helpful {
   grid-column: 1 / span 2;
   grid-row: 3;
+  padding-bottom: 0.5em;
 }
+
+/* new-review */
+.fourth-wrapper {
+  grid-column: 1 / span 2;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: 2.5fr 0.5fr;
+  grid-gap: 0.5em;
+  /* background-color: #696969; */
+  box-shadow: 0 0 5px #888;
+  /* grid-gap: 0.5em; */
+  /* margin: 1em; */
+}
+
+.new-review-container {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+
+
+
+.submit-review {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.cancel-review {
+  grid-column: 2;
+  grid-row: 2;
+}
+
 
 /* Dropdown Button on Hover and Focus */
 .dropdown-button:hover, .dropdown-button:focus {
@@ -98,10 +133,6 @@
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content
 container when the user clicks on the dropdown button)  */
 .show {display:block;}
-
-.pop-up {
-  display: none;
-}
 
 .review-button {
   font-size: 90%;
