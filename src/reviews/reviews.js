@@ -43,10 +43,10 @@ class Reviews {
   * @param {HTMLElement} pageDom
   */
   async _showReviews(pageDom) {
-    let tbody = pageDom.querySelector("#review-liste tbody");
+    let wrapper = pageDom.querySelector("#rev-wrapper");
     let temp = pageDom.querySelector("#review-template");
 
-    tbody.innerHTML="";
+    // wrapper.innerHTML="";
 
     let reviewsData = await this._app.database.selectReviewsByRestaurantId(this._recordId, "hilfreich");
     // console.log("reviewsLength: " + reviewsData.length);
@@ -54,21 +54,22 @@ class Reviews {
     // mainElement.innerHTML = null;
 
     reviewsData.forEach(review => {
-      let oneTemp, cells;
+      let oneTemp, boxes;
 
-      oneTemp = document.importNode(temp.content, true);
+      oneTemp = temp.content.cloneNode(true)
 
-      cells = oneTemp.querySelectorAll("td");
-      cells[0].textContent = review.datum.toDate().toLocaleDateString("ge-GE", options);
-      cells[1].textContent = "";
-      cells[2].textContent = review.bewertung;
-      cells[3].textContent = `"${review.kommentar}"`;
-      cells[4].textContent = ` - ${review.autor}`;
+      let contents = oneTemp.querySelectorAll(".review-content");
+      console.log("contents: " + contents);
+      contents[0].innerHTML = review.datum.toDate().toLocaleDateString("ge-GE", options);
+      contents[1].innerHTML = `${review.bewertung} von 5 Sternen`;
+      contents[2].innerHTML = `"${review.kommentar}" - ${review.autor}`;
+      // contents[3].innerHTML = "War diese Bewertung hilfreich?"
 
       // ja-Button
       let jaBtn = document.createElement('input');
       jaBtn.type = "button";
       jaBtn.id = `ja-${review.id}`;
+      jaBtn.className += "hilfreich-button"
       jaBtn.value = "ja";
       jaBtn.onclick = (async () => {
         let num = await this._app.database.selectById(review.id,"reviews");
@@ -80,6 +81,7 @@ class Reviews {
       let neinBtn = document.createElement('input');
       neinBtn.type = "button";
       neinBtn.id = `nein-${review.id}`;
+      neinBtn.className += "hilfreich-button"
       neinBtn.value = "nein";
       neinBtn.onclick = (async () => {
         let num = await this._app.database.selectById(review.id,"reviews");
@@ -88,14 +90,13 @@ class Reviews {
       });
 
       // cells[5].textContent = "War diese Bewertung hilfreich?"
-      cells[5].textContent = "War diese Bewertung hilfreich?"
-      cells[5].appendChild(jaBtn);
-      cells[5].appendChild(neinBtn);
+      contents[3].appendChild(jaBtn);
+      contents[3].appendChild(neinBtn);
 
       // cells[6].textContent = &nbsp;
 
       // template einpassen
-      tbody.appendChild(oneTemp);
+      wrapper.appendChild(oneTemp);
     });
 
     // console.log(pageDom.querySelector("#ja-Button").parentElement.id);
@@ -185,7 +186,7 @@ class Reviews {
         cells = oneTemp.querySelectorAll("td");
         cells[0].textContent = review.datum.toDate().toLocaleDateString("ge-GE", options);
         cells[1].textContent = "";
-        cells[2].textContent = review.bewertung;
+        cells[2].textContent = `${review.bewertung} von 5 Sternen`;
         cells[3].textContent = `"${review.kommentar}"`;
         cells[4].textContent = ` - ${review.autor}`;
 
@@ -194,6 +195,7 @@ class Reviews {
         jaBtn.type = "button";
         jaBtn.id = `ja-${review.id}`;
         jaBtn.value = "ja";
+        jaBtn.className = "hilfreich-button";
         jaBtn.onclick = (async () => {
           let num = await this._app.database.selectById(review.id,"reviews");
           this._app.database.changeDocValue("reviews", review.id, "hilfreich",
@@ -205,6 +207,7 @@ class Reviews {
         neinBtn.type = "button";
         neinBtn.id = `nein-${review.id}`;
         neinBtn.value = "nein";
+        neinBtn.className = "hilfreich-button";
         neinBtn.onclick = (async () => {
           let num = await this._app.database.selectById(review.id,"reviews");
           this._app.database.changeDocValue("reviews", review.id, "hilfreich",
