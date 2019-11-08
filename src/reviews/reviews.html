@@ -1,73 +1,74 @@
-<!-- <head>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-</head> -->
 <header>
 
 </header>
 
-<body>
-  <main>
+<main>
+  <!-- Beginn wrapper -->
+  <div class="wrapper" id="rev-wrapper">
 
-    <table id="review-liste">
-      <thead>
-        <tr>
-          <td>
-            <!-- Dropdown Menue Beginn -->
-            <div class="dropdownMenu">
-            <button type="button" name="dropdownBtn" id="dropdownBtn" class="dropdown-button">
-              Ordnen nach
-            </button>
-            <div id="reihenfolge" class="dropdown-content">
-              <a>hilfreichste</a>
-              <a>neueste</a>
-            </div>
-          </div>
-          <!-- Dropdown Menue Ende -->
-        </td>
-        <td>
-          <!-- Add Button -->
-          <button type="button" id="plus-button">Bewertung hinzufügen</button>
-          <!-- Pop Up neue Review Beginn -->
-          <div class="pop-up" id="pop-up-review">
-            <form class="pop-up-review-container">
-                Autor: <input type="text" name="autor"> <br>
-                Kommentar: <input type="text" name="bewertung"> <br>
-                Sterne: <input type="text" name="sterne"> <br>
-            </form>
-            <button type="button" id="cancel-new-review">Abbruch</button>
-            <button type="button" id="submit-new-review">Absenden</button>
-          </div>
-          <!-- Pop Up neue Review Ende -->
-        </td>
-        </tr>
+    <!-- Dropdown Menue Beginn -->
+    <div class="dropdown-menu">
+      <button type="button" name="dropdownBtn" id="dropdownBtn" class= "dropdown-button">
+        Ordnen nach
+      </button>
+      <div id="reihenfolge" class="dropdown-content">
+        <a>hilfreichste</a>
+        <a>neueste</a>
+      </div>
+    </div>
+    <!-- Dropdown Menue Ende -->
 
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
+    <!-- Neue Review hinzufuegen -->
+    <div class="new-review">
+      <!-- Add Button -->
+      <button type="button" id="plus-button" class="add-button">Bewertung hinzufügen</button>
 
-    <template id="review-template">
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td colspan="3"></td>
-      </tr>
-      <tr>
-        <td colspan="3"></td>
-      </tr>
-      <tr>
-        <td colspan="3"></td>
-      </tr>
-      <tr>
-        <td colspan="3"> &nbsp;</td>
-      </tr>
-    </template>
+    </div>
 
+      <!-- Platz zum Einfügen von Review Containern -->
 
-  </main>
+  </div>
+  <!-- Ende Wrapper 1 -->
 
+  <template id="review-template">
+    <div class="third-wrapper">
+      <div class="box date review-content">
+        <!-- <p class="review-content"></p> -->
+      </div>
+      <div class="box stars review-content">
+        <!-- <p class="review-content"></p> -->
+      </div>
+      <div class="box comment">
+        <p class="review-content">
+          <!-- Kommentar und Autor -->
+        </p>
+      </div>
+      <div class="box helpful review-content">
+        <p>War diese Bewertung hilfreich?</p>
+      </div>
+    </div>
+  </template>
 
-</body>
+  <!-- Pop Up neue Review Beginn -->
+  <template id="new-review-template">
+    <div class="fourth-wrapper">
+      <a href="create-review"></a>
+      <div class="new-review-container box">
+        <p class="new-review-header">Fügen Sie eine neue Bewertung hinzu:</p>
+        <form class="new-review-content">
+          Autor: <input type="text" name="autor"> <br>
+          Kommentar: <input type="text" name="bewertung"> <br>
+          Sterne: <input type="text" name="sterne"> <br>
+        </form>
+      </div>
+      <div class="submit-review box">
+        <button type="button" id="cancel-new-review" class="hilfreich-button">Abbruch</button>
+      </div>
+      <div class="cancel-review box">
+        <button type="button" id="submit-new-review" class="hilfreich-button">Absenden</button>
+      </div>
+    </div>
+  </template>
+    <!-- Pop Up neue Review Ende -->
+
+</main>

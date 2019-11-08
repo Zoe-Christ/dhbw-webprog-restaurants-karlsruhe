@@ -1,15 +1,105 @@
-/* Dropdown Button */
-.dropdownBtn {
-  background-color: white;
-  color: black;
-  padding: 5em;
-  border: none;
-  cursor: pointer;
-  min-width: 16em;
+/* Grid Layout */
+
+.wrapper {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: repeat(2, 1fr);
+  margin-left: 1em;
+  margin-right: 1em;
+  /* grid-template-rows: 10% 90%; */
 }
 
+.box {
+  background-color: black;
+  border: white;
+  color: #fff;
+  border-radius: 0.2em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  /* font-size: 150%; */
+}
+
+.dropdown-menu {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.new-review {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+}
+
+.third-wrapper {
+  grid-column: 1 / span 2;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 0.5fr 1fr 1fr;
+  grid-gap: 0.5em;
+  /* background-color: #696969; */
+  box-shadow: 0 0 5px #888;
+  /* grid-gap: 0.5em; */
+  /* margin: 1em; */
+}
+
+.date {
+  grid-column: 1;
+  grid-row: 1;
+  padding-top: 0.5em;
+}
+
+.stars {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  padding-top: 0.5em;
+}
+
+.comment {
+  grid-column: 1 / span 2;
+  grid-row: 2;
+  align-self: center;
+}
+
+.helpful {
+  grid-column: 1 / span 2;
+  grid-row: 3;
+  padding-bottom: 0.5em;
+}
+
+/* new-review */
+.fourth-wrapper {
+  grid-column: 1 / span 2;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: 2.5fr 0.5fr;
+  grid-gap: 0.5em;
+  /* background-color: #696969; */
+  box-shadow: 0 0 5px #888;
+  /* grid-gap: 0.5em; */
+  /* margin: 1em; */
+}
+
+.new-review-container {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+
+
+
+.submit-review {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.cancel-review {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+
 /* Dropdown Button on Hover and Focus */
-.dropdownBtn:hover, .dropdownBtn:focus {
+.dropdown-button:hover, .dropdown-button:focus {
   background-color: grey;
 }
 
@@ -29,21 +119,41 @@
   padding: 5em;
   text-decoration: none;
   display: block;
-  background-color:
+  /* background-color: */
 }
 
   /* change color of dropdown Links on hover */
 .dropdown-content a:hover {
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    background-color: rgb(28, 88, 150);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: rgb(28, 88, 150);
 }
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content
 container when the user clicks on the dropdown button)  */
 .show {display:block;}
 
-.pop-up {
-  display: none;
+.review-button {
+  font-size: 90%;
+
+  border: 0;
+  padding: 0.5em;
+
+  /* margin-bottom: 1em; */
+  color: white;
+  background-color: rgb(17, 68, 121);
+  transition: background-color 0.25s;
+}
+
+.hilfreich-button {
+  font-size: 90%;
+
+  border: 0;
+  padding: 0.5em;
+  /* margin: 0.5em; */
+  /* margin-bottom: 1em; */
+  color: white;
+  background-color: rgb(17, 68, 121);
+  transition: background-color 0.25s;
 }
