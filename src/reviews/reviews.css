@@ -34,7 +34,7 @@
   grid-column: 1 / span 2;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 0.5fr 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
   grid-gap: 0.5em;
   /* background-color: #696969; */
   box-shadow: 0 0 5px #888;
@@ -72,7 +72,7 @@
   grid-column: 1 / span 2;
   display: grid;
   grid-template-columns: auto auto;
-  grid-template-rows: 2.5fr 0.5fr;
+  grid-template-rows: 2.5fr auto;
   grid-gap: 0.5em;
   /* background-color: #696969; */
   box-shadow: 0 0 5px #888;
