@@ -5,7 +5,9 @@
       background-color: black;
 
  }
-
+.page-heading{
+    margin-left: 20px;
+}
 .page-heading > div {
     order: 1;
     flex: 1;
@@ -46,10 +48,14 @@
         padding-right: 5em;
     }
 }
+iframe{
+    max-width: 100%;
+}
 
 .tab-buttons {
     margin-top: 1.5rem;
     margin-bottom: calc(var(--content-padding) * -1);
+    margin-left: 20px;
 }
 
 main > img {
@@ -64,6 +70,17 @@ main > img {
 }
 .oeffnungszeiten{
     font-size: 20px;
-    margin-left: 200px;
+    margin-left: 100px;
     display: inline-block;
+}
+@media (max-width: 600px) {
+    .oeffnungszeiten{
+        margin-left: 0px;
+    }
+    .page-heading{
+        margin-left: 20px;
+    }
+    .tab-buttons{
+        margin-left: 20px;
+    }
 }

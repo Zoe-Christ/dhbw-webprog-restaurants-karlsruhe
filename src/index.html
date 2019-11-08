@@ -82,7 +82,7 @@
 			<a href="#nav" title="Menü anzeigen">Navigation anzeigen &darr;</a>
 		</div>
 
-		<div id="nav">
+		<div id="nav" class="navigation">
 			<ul>
 				<li><a href="#">Übersicht</a></li>
 				<li><a href="#">Seite 1</a></li>
@@ -94,21 +94,7 @@
 				<li class="close"><a href="#header">&uarr; Menü schließen</a></li>
 			</ul>
 		</div>
-        <!-- Navigationsmenue -->
-    <!-- <nav>
-    	<ul>
-    		<li><a href="#/">Übersicht</a>
-    		</li>
-    		<li><a href="#/Seite1/">Seite 2</a>
-    		</li>
-    		<li><a href="#/Seite2/">Seite 3</a>
-    		</li>
-    		<li><a href="#/Wir/">Über uns</a>
-    		</li>
-    		<li><a href="#/Impressum/">Impressum</a>
-    		</li>
-    	</ul>
-    </nav> -->
+
 
          <header>
 
@@ -124,13 +110,6 @@
                     <li class="dont-go-back hidden">
                     </li>
 
-                    <!-- <li class="toggle-menu small-screen-only">
-=======
-                     <li class="toggle-menu small-screen-only">
->>>>>>> e7d53876ffe3ec7c10da1de840575c3fc761fdbc
-                        <a href="#">
-                        </a>
-                    </li> -->
                 </ul>
 
             </nav>
@@ -144,50 +123,44 @@
         <main id="app-main-area">
             Inhalt des Hauptbereichs
         </main>
+        </body>
         <!-- Fußzeile mit dem Impressum -->
         <footer>
-            <p>
+           <p>
                 <h3 id="impressum"><center>
                     Impressum
                 </center></h3>
             </p>
-            <table width=100%>
-                <tr>
-                    <td>
-                        <b>Developer:</b> <br />
-                        Zoe Christ <br />
-                        Sandra Hils <br />
-                        Antonia Dieterich <br />
-                    </td>
-                    <td>
-                        <b>Phone:</b><br />
-                        +492738756135 <br />
-                        +491768945275 <br />
-                        +491605489726 <br />
-                    </td>
-                    <td>
-                        <b>Address:</b><br />
-                        Blümchenweg 7, 38226 Salzgitter <br />
-                        Sportlerstraße 12, 33129 Delbrück <br />
-                        Schneeballgasse 240, 71116 Gärtringen <br />
-                    </td>
-                    <td>
-                        <b>E-Mail</b><br />
-                        zoe.christ@gmx.com <br />
-                        s_hils@mail.de <br />
-                        antonia.d@gmail.com <br />
-                    </td>
-                    <td>
-                        <b>Zuletzt überarbeitet:</b><br />
-                        02.11.2019<br />
-                        <br />
-                        <br />
-                    </td>
 
-                </tr>
-
-            </table>
-
-        </footer>
-    </body>
+<table width=100% class="impressum">
+  <thead>
+    <tr>
+      <th>Developer</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>EMail</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-label="Dev">Zoe Christ</td>
+      <td data-label="Phone">016069357903</td>
+      <td data-label="Address">Blümchengasse 12, 38226 Salzgitter</td>
+      <td data-label="EMail">christ.zoe@gmx.com</td>
+    </tr>
+    <tr>
+      <td data-label="Dev">Antonia Dieterich</td>
+      <td data-label="Phone">0173590854</td>
+      <td data-label="Address">Schneeweg 24, 71116 Gärtringen</td>
+      <td data-label="EMail">a-dieterich@web.de</td>
+    </tr>
+    <tr>
+      <td data-label="Dev">Sandra Hils</td>
+      <td data-label="Phone">015369090</td>
+      <td data-label="Address">Sunnyroad 50, 33129 Delbrück</td>
+      <td data-label="EMail">sandra.hils@mail.com</td>
+    </tr>
+  </tbody>
+</table>
+    </footer>
 </html>
