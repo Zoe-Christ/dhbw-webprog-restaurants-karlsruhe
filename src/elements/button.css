@@ -11,6 +11,8 @@ button {
     color: white;
     background-color: rgb(17, 68, 121);
     transition: background-color 0.25s;
+    box-shadow: 0 0 0.1em #6495ED;
+    border-radius: 0.2em;
 }
 
 button:hover {

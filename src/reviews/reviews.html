@@ -8,12 +8,16 @@
 
     <!-- Dropdown Menue Beginn -->
     <div class="dropdown-menu">
-      <button type="button" name="dropdownBtn" id="dropdownBtn" class= "dropdown-button">
+      <button type="button" name="dropdownBtn" id="dropdownBtn" class= "dropdown-button review-button">
         Ordnen nach
       </button>
+      <!-- <ul id="reihenfolge" class="dropdown-content">
+        <li>hilfreichste</li>
+        <li>neueste</li>
+      </ul> -->
       <div id="reihenfolge" class="dropdown-content">
-        <a>hilfreichste</a>
-        <a>neueste</a>
+        <a id="dropdown-content-hilfreich">hilfreichste</a>
+        <a id="dropdown-content-neu">neueste</a>
       </div>
     </div>
     <!-- Dropdown Menue Ende -->
@@ -21,7 +25,7 @@
     <!-- Neue Review hinzufuegen -->
     <div class="new-review">
       <!-- Add Button -->
-      <button type="button" id="plus-button" class="add-button">Bewertung hinzufügen</button>
+      <button type="button" id="plus-button" class="add-button review-button">Bewertung hinzufügen</button>
 
     </div>
 
@@ -51,21 +55,20 @@
 
   <!-- Pop Up neue Review Beginn -->
   <template id="new-review-template">
-    <div class="fourth-wrapper">
-      <a href="create-review"></a>
+    <div id="new-review-anchor" class="fourth-wrapper">
       <div class="new-review-container box">
         <p class="new-review-header">Fügen Sie eine neue Bewertung hinzu:</p>
         <form class="new-review-content">
-          Autor: <input type="text" name="autor"> <br>
-          Kommentar: <input type="text" name="bewertung"> <br>
-          Sterne: <input type="text" name="sterne"> <br>
+          Autor: <input class="review-input" type="text" name="autor"> <br>
+          Kommentar: <textarea class="review-input" name="bewertung" rows="3" cols="80"></textarea> <br>
+          Sterne: <input class="review-input" type="text" name="sterne"> <br>
         </form>
       </div>
       <div class="submit-review box">
-        <button type="button" id="cancel-new-review" class="hilfreich-button">Abbruch</button>
+        <button type="button" id="submit-new-review" class="hilfreich-button">Absenden</button>
       </div>
       <div class="cancel-review box">
-        <button type="button" id="submit-new-review" class="hilfreich-button">Absenden</button>
+        <button type="button" id="cancel-new-review" class="hilfreich-button">Abbruch</button>
       </div>
     </div>
   </template>

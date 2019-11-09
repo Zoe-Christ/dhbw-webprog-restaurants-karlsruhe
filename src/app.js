@@ -117,7 +117,43 @@ class App {
         }
 
         this._currentPageObject = new page.klass(this);
-        this._currentPageObject.show(matches);
+        if(sort==null) {
+          this._currentPageObject.show(matches);
+        } else {
+          this._currentPageObject.show(matches, sort);
+        }
+
+        window.scrollTo(0, 0);
+    }
+
+    /**
+    * Macht das gleiche wie _handleRouting(), aber erlaubt dabei einen
+    * Parameter, mit dessen Hilfe sich die Bewertungen neu andordnen
+    * lassen
+    */
+
+    _handleRouting(sort) {
+        let pageUrl = location.hash.slice(1);
+
+        if (pageUrl.length === 0) {
+            pageUrl = "/";
+        }
+
+        let matches = null;
+        let page = this._pages.find(p => matches = pageUrl.match(p.url));
+
+        if (!page) {
+            console.error(`Keine Seite zur URL ${pageUrl} gefunden!`);
+            return;
+        }
+
+        this._currentPageObject = new page.klass(this);
+        if(sort==null) {
+          this._currentPageObject.show(matches);
+        } else {
+          this._currentPageObject.show(matches, sort);
+        }
+
         window.scrollTo(0, 0);
     }
 

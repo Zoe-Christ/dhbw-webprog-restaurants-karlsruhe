@@ -6,7 +6,6 @@
   grid-template-columns: repeat(2, 1fr);
   margin-left: 1em;
   margin-right: 1em;
-  /* grid-template-rows: 10% 90%; */
 }
 
 .box {
@@ -16,7 +15,6 @@
   border-radius: 0.2em;
   padding-left: 0.5em;
   padding-right: 0.5em;
-  /* font-size: 150%; */
 }
 
 .dropdown-menu {
@@ -36,10 +34,7 @@
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto 1fr auto;
   grid-gap: 0.5em;
-  /* background-color: #696969; */
   box-shadow: 0 0 5px #888;
-  /* grid-gap: 0.5em; */
-  /* margin: 1em; */
 }
 
 .date {
@@ -74,18 +69,13 @@
   grid-template-columns: auto auto;
   grid-template-rows: 2.5fr auto;
   grid-gap: 0.5em;
-  /* background-color: #696969; */
   box-shadow: 0 0 5px #888;
-  /* grid-gap: 0.5em; */
-  /* margin: 1em; */
 }
 
 .new-review-container {
   grid-column: 1 / span 2;
   grid-row: 1;
 }
-
-
 
 .submit-review {
   grid-column: 1;
@@ -95,20 +85,18 @@
 .cancel-review {
   grid-column: 2;
   grid-row: 2;
+  justify-self: end;
 }
 
-
-/* Dropdown Button on Hover and Focus */
-.dropdown-button:hover, .dropdown-button:focus {
-  background-color: grey;
+.dropdown-button {
+  position: relative;
+  width: auto;
 }
-
 /* Dropdown Content (Hidden by default) */
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: white;
-  min-width: 16em;
+  width: 100%
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
@@ -116,17 +104,27 @@
 /* Links in dropdown */
 .dropdown-content a {
   color: blue;
-  padding: 5em;
+  list-style-type: none;
   text-decoration: none;
   display: block;
-  /* background-color: */
+  font-size: 90%;
+  border: 0;
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+  padding-left: 0.9em;
+  padding-right: 0.9em;
+  color: white;
+  background-color: rgb(17, 68, 121);
+  transition: background-color 0.25s;
+  box-shadow: 0 0 0.1em #6495ED;
+  border-radius: 0.2em;
 }
 
   /* change color of dropdown Links on hover */
 .dropdown-content a:hover {
-  color: white;
-  font-weight: bold;
   cursor: pointer;
+  color: white;
+  font-weight: normal;
   background-color: rgb(28, 88, 150);
 }
 
@@ -136,24 +134,43 @@ container when the user clicks on the dropdown button)  */
 
 .review-button {
   font-size: 90%;
-
   border: 0;
   padding: 0.5em;
-
-  /* margin-bottom: 1em; */
   color: white;
   background-color: rgb(17, 68, 121);
   transition: background-color 0.25s;
+  box-shadow: 0 0 0.1em #6495ED;
+  border-radius: 0.2em;
+}
+
+.review-button:hover {
+    cursor: pointer;
+    background-color: rgb(28, 88, 150);
+}
+
+.new-review-header {
+  font-weight: bold;
+}
+
+.review-input {
+  font-family: "Arial", sans-serif;
+  font-size: 16pt;
 }
 
 .hilfreich-button {
   font-size: 90%;
-
   border: 0;
   padding: 0.5em;
-  /* margin: 0.5em; */
-  /* margin-bottom: 1em; */
+  margin-right: 0.5em;
+  margin-bottom: 0.5em;
   color: white;
   background-color: rgb(17, 68, 121);
   transition: background-color 0.25s;
+  box-shadow: 0 0 0.1em #6495ED;
+  border-radius: 0.2em;
+}
+
+.hilfreich-button:hover {
+  cursor: pointer;
+  background-color: rgb(28, 88, 150);
 }

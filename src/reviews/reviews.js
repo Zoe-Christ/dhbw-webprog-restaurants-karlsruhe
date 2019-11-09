@@ -3,13 +3,14 @@ class Reviews {
       this._app = app;
       this._recordId = -1;
       this._data = null;
-      this.orderValue = "hilfreich";
+      this.orderValue = "datum";
   }
 
   /**
    * Seite anzeigen. Wird von der App-Klasse aufgerufen.
    */
-  async show(matches) {
+  async show(matches, sort) {
+      sort = sort || null;
       // URL-Parameter auswerten
       this._recordId = matches[1];
       this._data = await this._app.database.selectById(this._recordId, "restaurants");
@@ -31,7 +32,12 @@ class Reviews {
       let pageDom = document.createElement("div");
       pageDom.innerHTML = html;
 
-      await this._showReviews(pageDom);
+      if (sort == null) {
+        await this._showReviews(pageDom, this.orderValue);
+      } else {
+        await this._showReviews(pageDom, sort);
+      }
+
 
       this._app.setPageTitle(`Bewertungen zu ${this._data.name}`, {isSubPage: true});
       this._app.setPageCss(css);
@@ -42,11 +48,12 @@ class Reviews {
   /**
   * @param {HTMLElement} pageDom
   */
-  async _showReviews(pageDom) {
+  async _showReviews(pageDom, sort) {
+    console.log("sort: " + sort);
     let wrapper = pageDom.querySelector("#rev-wrapper");
     let temp = pageDom.querySelector("#review-template");
 
-    let reviewsData = await this._app.database.selectReviewsByRestaurantId(this._recordId, "datum");
+    let reviewsData = await this._app.database.selectReviewsByRestaurantId(this._recordId, sort);
     // console.log("reviewsLength: " + reviewsData.length);
     let options = {day: 'numeric', month: 'long', year: 'numeric'};
     // mainElement.innerHTML = null;
@@ -113,12 +120,20 @@ class Reviews {
     let elements = dropdownElement.querySelectorAll("a");
     console.log("elemente: " + elements);
     // debugger;
-    elements[0].addEventListener("click", () => this.orderBy("hilfreich", tbody, temp));
-    elements[1].addEventListener("click", () => this.orderBy("datum", tbody, temp));
+    elements[0].addEventListener("click", () => this.orderBy("hilfreich"));
+    elements[1].addEventListener("click", () => this.orderBy("datum"));
   }
 
   newReview() {
-    // location.hash = "#create-review"
+      event.preventDefault();
+
+      let submitNewReviewDiv = document.querySelector("#new-review-anchor");
+      let yPosition = submitNewReviewDiv.getBoundingClientRect().top;
+      window.scrollTo(0, yPosition);
+
+    // Single Page Router starten und die erste Seite aufrufen
+    // window.addEventListener("hashchange", () => _app._handleRouting());
+    // _app._handleRouting();
   }
 
   cancelNewReview() {
@@ -155,7 +170,6 @@ class Reviews {
   showDropDown() {
     document.getElementById("reihenfolge").classList.toggle("show");
 
-
   // Close the dropdown menu if the user clicks outside of it
     window.onclick = (event) => {
       if (!event.target.matches('.dropdown-button')) {
@@ -171,63 +185,10 @@ class Reviews {
     }
   }
 
-  async orderBy(orderVariable, tbody, temp) {
-
-    if (this.orderValue != orderVariable) {
-      tbody.innerHTML="";
-
-      let reviewsData = await this._app.database.selectReviewsByRestaurantId(this._recordId, orderVariable);
-      console.log(reviewsData);
-      let options = {day: 'numeric', month: 'long', year: 'numeric'};
-      // mainElement.innerHTML = null;
-
-      reviewsData.forEach(review => {
-        let oneTemp, cells;
-
-        oneTemp = document.importNode(temp.content, true);
-
-        cells = oneTemp.querySelectorAll("td");
-        cells[0].textContent = review.datum.toDate().toLocaleDateString("ge-GE", options);
-        cells[1].textContent = "";
-        cells[2].textContent = `${review.bewertung} von 5 Sternen`;
-        cells[3].textContent = `"${review.kommentar}"`;
-        cells[4].textContent = ` - ${review.autor}`;
-
-        // ja-Button
-        let jaBtn = document.createElement('input');
-        jaBtn.type = "button";
-        jaBtn.id = `ja-${review.id}`;
-        jaBtn.value = "ja";
-        jaBtn.className = "hilfreich-button";
-        jaBtn.onclick = (async () => {
-          let num = await this._app.database.selectById(review.id,"reviews");
-          this._app.database.changeDocValue("reviews", review.id, "hilfreich",
-            (num.hilfreich +1) );
-        });
-
-        // nein-Button
-        let neinBtn = document.createElement('input');
-        neinBtn.type = "button";
-        neinBtn.id = `nein-${review.id}`;
-        neinBtn.value = "nein";
-        neinBtn.className = "hilfreich-button";
-        neinBtn.onclick = (async () => {
-          let num = await this._app.database.selectById(review.id,"reviews");
-          this._app.database.changeDocValue("reviews", review.id, "hilfreich",
-            (num.hilfreich -1) );
-        });
-
-        // cells[5].textContent = "War diese Bewertung hilfreich?"
-        cells[5].textContent = "War diese Bewertung hilfreich?"
-        cells[5].appendChild(jaBtn);
-        cells[5].appendChild(neinBtn);
-
-        // cells[6].textContent = &nbsp;
-
-        // template einpassen
-        tbody.appendChild(oneTemp);
-      });
-      this.orderValue = orderVariable;
+  async orderBy(orderVariable) {
+    if (this._orderValue != orderVariable) {
+      this._orderValue = orderVariable;
+      this._app._handleRouting(orderVariable);
     }
   }
 }
