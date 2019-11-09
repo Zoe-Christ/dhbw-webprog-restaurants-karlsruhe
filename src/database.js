@@ -72,6 +72,7 @@ class Database {
                 "oeffnungFr":   "08:00-01:00",
                 "oeffnungSa":   "08:00-01:00",
                 "oeffnungSo":   "08:00-01:00",
+                "bilder": ["restaurants/hammer3.jpg" , "restaurants/hammer5.jpg" ],
             },{
                 "id":          "2",
                 "img":        "restaurants/bleu.png",
@@ -88,7 +89,7 @@ class Database {
                 "oeffnungFr":   "08:00-01:00",
                 "oeffnungSa":   "08:00-01:00",
                 "oeffnungSo":   "08:00-01:00",
-                "bilder": ["restaurants/bleu.jpg" , "restaurants/bleu.png"]
+                "bilder": ["restaurants/bleu1.jpg" , "restaurants/hintergrund_cafe_bleu_02.jpg" , "restaurants/cafe-bleu-karlsruhe.jpg"],
             },{
                 "id":          "3",
                 "img":        "restaurants/oxford.png",
@@ -105,6 +106,7 @@ class Database {
                 "oeffnungFr":   "11:00-03:00",
                 "oeffnungSa":   "11:00-03:00",
                 "oeffnungSo":   "12:00-01:00",
+                "bilder": ["restaurants/photo0jpg.jpg" , "restaurants/l.jpg"],
             },{
                 "id":          "4",
                 "img":        "restaurants/stoevchen.jpg",
@@ -121,6 +123,7 @@ class Database {
                 "oeffnungFr":   "09:00-03:00",
                 "oeffnungSa":   "09:00-03:00",
                 "oeffnungSo":   "09:00-01:00",
+                "bilder": ["restaurants/56f2c8780aef0.jpg" , "restaurants/photo1jpg.jpg"],
             },{
                 "id":          "5",
                 "img":        "restaurants/aposto.jpg",
@@ -137,6 +140,7 @@ class Database {
                 "oeffnungFr":   "09:30-02:00",
                 "oeffnungSa":   "09:30-02:00",
                 "oeffnungSo":   "09:30-01:00",
+                "bilder": ["restaurants/pizza.jpg" , "restaurants/Download.jpg" , "restaurants/Download (1).jpg","58809716_2275654172526624_5687719273546418066_n.jpg"],
             },{
                 "id":          "6",
                 "img":        "restaurants/vapiano.jpg",
@@ -153,6 +157,7 @@ class Database {
                 "oeffnungFr":   "11:00-00:30",
                 "oeffnungSa":   "11:00-00:30",
                 "oeffnungSo":   "11:00-23:30",
+                "bilder": ["restaurants/Download (2).jpg" , "restaurants/csm_menu7_b22051ca4f.jpg" , "restaurants/vapiano3.jpg"],
             },{
                 "id":          "7",
                 "img":        "restaurants/badisches_brauhaus.jpg",
@@ -169,6 +174,7 @@ class Database {
                 "oeffnungFr":   "11:30-01:00",
                 "oeffnungSa":   "11:30-01:00",
                 "oeffnungSo":   "11:30-00:00",
+                "bilder": ["restaurants/IMG_0664_2-1.jpg" , "restaurants/rinderfilet-mit-pommes.jpg" , "restaurants/cafe-bleu-karlsruhe.jpg"],
             },]);
         }
 
