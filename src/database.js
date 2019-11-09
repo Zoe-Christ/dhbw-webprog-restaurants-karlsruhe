@@ -174,7 +174,7 @@ class Database {
                 "oeffnungFr":   "11:30-01:00",
                 "oeffnungSa":   "11:30-01:00",
                 "oeffnungSo":   "11:30-00:00",
-                "bilder": ["restaurants/IMG_0664_2-1.jpg" , "restaurants/rinderfilet-mit-pommes.jpg" , "restaurants/cafe-bleu-karlsruhe.jpg"],
+                "bilder": ["restaurants/IMG_0664_2-1.jpg" , "restaurants/rinderfilet-mit-pommes.jpg"],
             },]);
         }
 
