@@ -88,6 +88,7 @@ class Database {
                 "oeffnungFr":   "08:00-01:00",
                 "oeffnungSa":   "08:00-01:00",
                 "oeffnungSo":   "08:00-01:00",
+                "bilder": ["restaurants/bleu.jpg" , "restaurants/bleu.png"]
             },{
                 "id":          "3",
                 "img":        "restaurants/oxford.png",
