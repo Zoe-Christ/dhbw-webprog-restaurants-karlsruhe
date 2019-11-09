@@ -76,7 +76,10 @@ main > img {
 }
 @media (max-width: 600px) {
     .oeffnungszeiten{
-        margin-left: 0px;
+        margin-left: 20px;
+        margin-rigth: 200px;
+        font-size: 15px;
+        margin-top: 30px;
     }
     .page-heading{
         margin-left: 20px;
