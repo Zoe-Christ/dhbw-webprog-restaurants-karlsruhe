@@ -141,6 +141,7 @@ nav li {
 }
 
 /*Navi neu */
+
 .nav-open {
 	display: none;
 }
@@ -204,6 +205,7 @@ nav li {
     z-index: 10000000;
 }
 
+
 .navigation {
     z-index: 10000000
 }
@@ -215,6 +217,7 @@ nav li {
 	text-align: center;
 	text-decoration: none;
 }
+
 
 #nav {
 	position: fixed;
@@ -269,7 +272,6 @@ nav li {
   font-family: Arial;
   font-weight: bold;
 }
-
 
 
 footer {
