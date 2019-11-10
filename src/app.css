@@ -335,6 +335,7 @@ font-weight: bold;
 .topnav {
   background-color: #333;
   overflow: hidden;
+
 }
 
 /* Style the links inside the navigation bar */
@@ -347,17 +348,18 @@ font-weight: bold;
   text-decoration: none;
   font-size: 20px;
   z-index: 10000000;
+  font-family: Arial;
 }
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: #414951;
+  background-color: #1a1a1a;
   color: white;
 }
 
-/* Add an active class to highlight the current page */
+/* Add an active class to highlight the curre page */
 .topnav a.active {
-  background-color: #4CAF50;
+  background-color: #ffa500;
   color: white;
 }
 
