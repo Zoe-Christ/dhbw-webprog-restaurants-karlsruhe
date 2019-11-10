@@ -1,10 +1,6 @@
-/**
- * Stylesheet zur Klasse App: Hauptstylesheet der Anwendung.
- *
- * Hier sollten nur allgemeine Sachen stehen, die das Layout als Ganzes
- * betreffen. Also solche Dinge wie Schriftart und Größe, Farben sowie das
- * Layout im Allgemeinen betreffend.
- */
+
+/* Stylesheet */
+
 @import url('https://fonts.googleapis.com/css?family=Rubik');
 
 /*
@@ -117,170 +113,7 @@ main a:hover {
     color: lightblue;
     font-weight: bold;
 }
-/*
-nav ul {
-	margin: 0;
-	padding: 0;
-	display: flex;
-	flex-direction: column;
-}
 
-nav li {
-	list-style: none;
-	padding: 0;
-	font-size: 1.5em;
-}
-
-@media (min-width: 45em) {
-	nav ul {
-		flex-direction: row;
-	}
-	nav li {
-		flex: 1;
-		font-size: 1em;
-	}
-}
-*/
-
-/*Navi neu */
-
-/*
-
-.nav-open {
-	display: none;
-}
-
-#nav {
-	position: relative;
-	float: left;
-	width: auto;
-	margin: 20px auto;
-	background: #333;
-	font-family: Arial, sans-serif;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	-webkit-box-shadow: 0 0 5px #888;
-	-moz-box-shadow: 0 0 5px #888;
-	box-shadow: 0 0 5px #888;
-}
-
-#nav ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-#nav ul li {
-	float: left;
-}
-
-#nav ul li.close {
-	display: none;
-}
-
-
-#nav ul li a {
-	padding: 10px 15px;
-	display: block;
-	color: #fff;
-	text-decoration: none;
-    border-radius: 5px;
-}
-
-#nav ul li a:hover {
-	background: black;
-	color: white;
-    font-weight: bold;
-}
-
-
-
-@media screen and (max-width: 600px) {
-
-.nav-open {
-	position: fixed;
-	top: 0;
-	left: 0;
-	background: #333;
-	font-family: Arial, sans-serif;
-	display: block;
-	width: 100%;
-    z-index: 10000000;
-}
-
-
-.navigation {
-    z-index: 10000000
-}
-
-
-.nav-open a {
-	padding: 10px 15px;
-	display: block;
-	color: #fff;
-	text-align: center;
-	text-decoration: none;
-}
-
-
-#nav {
-	position: fixed;
-	top: -200%;
-	left: 0;
-	float: none;
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	-webkit-border-radius: 0;
-	-moz-border-radius: 0;
-	border-radius: 0;
-	-webkit-transition: all 1s ease-in-out;
-	-moz-transition: all 1s ease-in-out;
-	-o-transition: all 1s ease-in-out;
-	-ms-transition: all 1s ease-in-out;
-	transition: all 1s ease-in-out;
-
-}
-
-#nav:target {
-	top: 0;
-}
-
-#nav ul li {
-	float: none;
-	text-align: center;
-	border-bottom: 1px solid #555;
-}
-
-#nav ul li.close {
-	display: block;
-}
-
-#nav ul li:last-child {
-	border-bottom: none;
-}
-
-}
-*/
-
-/*
-.ueberschrift{
-    position: relative;
-    text-align: center;
-    color: white;
-}
-.centered{
-    position: absolute;
-  top: 23%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 300%;
-  font-family: Arial;
-  font-weight: bold;
-}
-
-*/
 
 /* Impressum */
 footer {
@@ -329,16 +162,16 @@ font-weight: bold;
 }
 }
 
-/* Navigation */
+/* Navigationsmenue */
 
-/* Add a black background color to the top navigation */
+/* Hintergrundfarbe */
 .topnav {
   background-color: #333;
   overflow: hidden;
 
 }
 
-/* Style the links inside the navigation bar */
+/* Aussehen und Position */
 .topnav a {
   float: left;
   display: block;
@@ -351,24 +184,24 @@ font-weight: bold;
   font-family: Arial;
 }
 
-/* Change the color of links on hover */
+/* Farben bei hover */
 .topnav a:hover {
   background-color: #1a1a1a;
   color: white;
 }
 
-/* Add an active class to highlight the curre page */
+/* Farbe der Übersichtsseite */
 .topnav a.active {
   background-color: #ffa500;
   color: white;
 }
 
-/* Hide the link that should open and close the topnav on small screens */
+/* link für kleine Displays verstecken */
 .topnav .icon {
   display: none;
 }
 
-/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+/* Anpassung auf kleine Displays */
 @media screen and (max-width: 600px) {
   .topnav a:not(:first-child) {display: none;}
   .topnav a.icon {
@@ -377,7 +210,7 @@ font-weight: bold;
   }
 }
 
-/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+/* Aussehen auf kleinen Displays */
 @media screen and (max-width: 600px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive a.icon {
@@ -392,4 +225,4 @@ font-weight: bold;
   }
 }
 
-/* ende Navi */
+/* ende Navigationsmenue */
