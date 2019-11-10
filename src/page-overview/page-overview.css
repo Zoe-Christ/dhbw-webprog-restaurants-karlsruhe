@@ -44,9 +44,29 @@
 @media screen and (max-width: 640px){
     .centered {
         font-size: 100%;
-        margin-top: 3em;
+        margin-top: 1em;
         background-color: #333;
         border-radius: 9px;
 
     }
+
+    .ueberschrift{
+        font-size: 50%;
+    }
+}
+
+.ueberschrift{
+    position: relative;
+    text-align: center;
+    color: white;
+
+}
+.centered{
+    position: absolute;
+  top: 23%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 300%;
+  font-family: Arial;
+  font-weight: bold;
 }
