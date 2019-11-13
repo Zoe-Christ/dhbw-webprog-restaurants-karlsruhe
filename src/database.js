@@ -111,7 +111,7 @@ class Database {
                 "id":          "4",
                 "img":        "restaurants/stoevchen.jpg",
                 "name":       "Stoevchen",
-                "typ":        "Frühstück-, Mittag- und Abendessen",
+                "typ":        "Frühstück, Mittag- und Abendessen",
                 "gruendungsjahr": 1916,
                 "bewertung":   "In Fahrt",
                 "link":       "https://www.stoevchen.com/",
