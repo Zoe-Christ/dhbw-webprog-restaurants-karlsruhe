@@ -11,6 +11,8 @@
      <link rel="shortcut icon" href="favicon.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
         <!-- Klasse App: Steuert die gesamte Anwendung -->
         <script src="app.js"></script>
         <link rel="stylesheet" href="app.css" />
@@ -77,26 +79,18 @@
     </head>
     <body>
         <!-- Kopfbereich der App -->
-        <!-- navi neu -->
-        <div class="nav-open">
-			<a href="#nav" title="Menü anzeigen">Navigation anzeigen &darr;</a>
-		</div>
 
-		<div id="nav" class="navigation">
-			<ul>
-				<li><a href="#">Übersicht</a></li>
-				<li><a href="#">Seite 1</a></li>
-				<li><a href="#">Seite 2</a></li>
-				<li><a href="#">Seite 3</a></li>
-				<li><a href="#/Kontakt/">Kontakt</a></li>
-				<li><a href="#/Wir/">Über uns</a></li>
-				<li><a id="impressum_link">Impressum</a></li>
-				<li class="close"><a href="#header">&uarr; Menü schließen</a></li>
-			</ul>
-		</div>
-
-
+        <!-- Navigationsmenü -->
          <header>
+             <div class="topnav" id="myTopnav">
+                       <a href="#" class="active">Home</a>
+                       <a href="#/Kontakt/">Kontakt</a>
+                       <a href="#/Wir/">Über uns</a>
+                       <a id="impressum_link">Impressum</a>
+                       <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                           <i class="fa fa-bars"></i>
+                       </a>
+                   </div>
 
             <nav>
 
@@ -109,7 +103,6 @@
                     </li>
                     <li class="dont-go-back hidden">
                     </li>
-
                 </ul>
 
             </nav>

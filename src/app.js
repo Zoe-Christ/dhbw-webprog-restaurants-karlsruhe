@@ -30,6 +30,8 @@ class App {
         // Datenbank-Objekt zum Lesen und Speichern von Daten
         this.database = new Database();
         this.database.createDemoData();
+
+
     }
 
     /**
@@ -52,7 +54,12 @@ class App {
         // Single Page Router starten und die erste Seite aufrufen
         window.addEventListener("hashchange", () => this._handleRouting());
         this._handleRouting();
+
+
+
     }
+
+
 
     /**
      * Hilfsmethode zum Ein- und Ausblenden des Hamburger-Menüs aus kleinen
@@ -196,6 +203,8 @@ class App {
         } else {
             document.querySelector("header nav .go-back").classList.add("hidden");
             document.querySelector("header nav .dont-go-back").classList.remove("hidden");
+
+
         }
     }
 
@@ -209,6 +218,7 @@ class App {
     setPageCss(css) {
         document.querySelector("#page-css").innerHTML = css;
     }
+
 
     /**
     * Austauschen des Inhalts im Kopfbereich der App. Diese Methode muss
@@ -236,6 +246,8 @@ class App {
             container.appendChild(child);
         }
     }
+
+
 
     /**
      * Austauschen des Inhalts im Hauptbereich der App. Diese Methode muss
@@ -265,4 +277,16 @@ class App {
     }
 
 
+
+
+}
+
+/* Navigationsmenü */
+function myFunction() {
+var x = document.getElementById("myTopnav");
+if (x.className === "topnav") {
+x.className += " responsive";
+} else {
+x.className = "topnav";
+}
 }
