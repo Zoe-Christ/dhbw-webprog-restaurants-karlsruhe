@@ -1,1 +1,68 @@
 /*CSS ueber uns */
+
+
+
+h1 {
+    font-size: 24pt;
+    font-family: Arial;
+    text-align: center;
+}
+
+p{
+    font-size: 16pt;
+    line-height: 1.5em;
+}
+
+.box {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+  color: black
+}
+
+
+
+.box tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+.box th,
+.box td {
+  padding: .625em;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.box th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  .box {
+    border: 0;
+  }
+
+  .box tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+
+  .box td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: center;
+  }
+
+  .box td:last-child {
+    border-bottom: 0;
+  }
+}
