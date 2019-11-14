@@ -226,3 +226,7 @@ font-weight: bold;
 }
 
 /* ende Navigationsmenue */
+
+.menu-left {
+    list-style-type: none;
+}
