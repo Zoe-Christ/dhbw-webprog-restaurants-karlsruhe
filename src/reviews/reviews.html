@@ -39,13 +39,29 @@
       <div class="box date review-content">
         <!-- <p class="review-content"></p> -->
       </div>
-      <div class="box stars review-content">
+      <div class="box stars-outer">
+        <div class="stars-inner review-content">
+          <div class="star-empty">
+            <i class="icon-star-empty"></i>
+            <i class="icon-star-empty"></i>
+            <i class="icon-star-empty"></i>
+            <i class="icon-star-empty"></i>
+            <i class="icon-star-empty"></i>
+          </div>
+          <div class="star">
+            <i class="icon-star"></i>
+            <i class="icon-star"></i>
+            <i class="icon-star"></i>
+            <i class="icon-star"></i>
+            <i class="icon-star"></i>
+          </div>
+        </div>
         <!-- <p class="review-content"></p> -->
       </div>
-      <div class="box comment">
-        <p class="review-content">
+      <div class="box comment review-content">
+        <!-- <div class="review-content"> -->
           <!-- Kommentar und Autor -->
-        </p>
+        <!-- </div> -->
       </div>
       <div class="box helpful review-content">
         <p>War diese Bewertung hilfreich?</p>
@@ -61,7 +77,22 @@
         <form class="new-review-content">
           Autor: <input class="review-input" type="text" name="autor"> <br>
           Kommentar: <textarea class="review-input" name="bewertung" rows="3" cols="80"></textarea> <br>
-          Sterne: <input class="review-input" type="text" name="sterne"> <br>
+          <div class="review-star-grid">
+            <div id="review-star-empty-id" class="review-star-empty">
+              <i class="icon-star-empty"></i>
+              <i class="icon-star-empty"></i>
+              <i class="icon-star-empty"></i>
+              <i class="icon-star-empty"></i>
+              <i class="icon-star-empty"></i>
+            </div>
+            <div class="review-star">
+              <i class="icon-star review-star-full"></i>
+              <i class="icon-star review-star-full"></i>
+              <i class="icon-star review-star-full"></i>
+              <i class="icon-star review-star-full"></i>
+              <i class="icon-star review-star-full"></i>
+            </div>
+          </div>
         </form>
       </div>
       <div class="submit-review box">

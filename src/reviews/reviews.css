@@ -43,17 +43,121 @@
   padding-top: 0.5em;
 }
 
-.stars {
+.stars-outer {
   grid-column: 2;
   grid-row: 1;
   justify-self: end;
+
+  font-family: FontAwesome;
+}
+
+.stars-outer::before {
+  /* color: white; */
+}
+
+.stars-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.icon-star {
+  color: #f8ce0b;
+  display: none;
+  margin-right: -0.3em;
+}
+
+.icon-star-empty {
+  color: #f8ce0b;
+  margin-right: -0.3em;
+}
+
+@media only (min-width: 600px) {
+  .icon-star {
+    display: none;
+    margin-right: 0em;
+  }
+
+  .icon-star-empty {
+    margin-right: 0em;
+  }
+}
+
+.star {
+  grid-column: 1;
+  grid-row: 1;
   padding-top: 0.5em;
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.star-empty {
+  grid-column: 1;
+  grid-row: 1;
+  padding-top: 0.5em;
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+textarea {
+  margin-bottom: 0em;
+}
+
+form {
+  margin-bottom: 0.5em;
+}
+
+.review-star-grid {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 2fr 1fr 2fr;
+  grid-template-rows: 1fr;
+  font-size: 25pt;
+  margin-top: 0em;
+}
+
+.review-star {
+  grid-column: 2;
+  grid-row: 1;
+  padding-top: 0em;
+  margin-bottom: 0em;
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.review-star-empty {
+  grid-column: 2;
+  grid-row: 1;
+  padding-top: 0em;
+  margin-bottom: 0em;
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */ */
+}
+
+.show-stars {
+  display: inline;
+}
+
+.review-star-empty:hover {
+  cursor: pointer;
 }
 
 .comment {
   grid-column: 1 / span 2;
   grid-row: 2;
-  align-self: center;
+  place-self: center;
 }
 
 .helpful {
@@ -130,7 +234,9 @@
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content
 container when the user clicks on the dropdown button)  */
-.show {display:block;}
+.show {
+  display:block;
+}
 
 .review-button {
   font-size: 90%;

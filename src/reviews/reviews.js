@@ -4,6 +4,7 @@ class Reviews {
       this._recordId = -1;
       this._data = null;
       this.orderValue = "datum";
+      this.counterStar = 0;
   }
 
   /**
@@ -54,21 +55,25 @@ class Reviews {
     let temp = pageDom.querySelector("#review-template");
 
     let reviewsData = await this._app.database.selectReviewsByRestaurantId(this._recordId, sort);
-    // console.log("reviewsLength: " + reviewsData.length);
+    //Optionen für Datum
     let options = {day: 'numeric', month: 'long', year: 'numeric'};
-    // mainElement.innerHTML = null;
 
     reviewsData.forEach(review => {
-      let oneTemp, boxes;
+      let oneTemp, boxes, stars;
 
       oneTemp = temp.content.cloneNode(true)
 
       let contents = oneTemp.querySelectorAll(".review-content");
       console.log("contents: " + contents);
+      // Datum
       contents[0].innerHTML = review.datum.toDate().toLocaleDateString("ge-GE", options);
-      contents[1].innerHTML = `${review.bewertung} von 5 Sternen`;
-      contents[2].innerHTML = `"${review.kommentar}" - ${review.autor}`;
-      // contents[3].innerHTML = "War diese Bewertung hilfreich?"
+      //Sterne
+      stars = oneTemp.querySelectorAll(".icon-star");
+      for (let i=0; i<review.bewertung; i++) {
+        stars[i].style.display = 'inline';
+      }
+      //Kommentar und Autor
+      contents[2].innerHTML = `"${review.kommentar}" ~ ${review.autor}`;
 
       // ja-Button
       let jaBtn = document.createElement('input');
@@ -94,11 +99,8 @@ class Reviews {
           (num.hilfreich -1) );
       });
 
-      // cells[5].textContent = "War diese Bewertung hilfreich?"
       contents[3].appendChild(jaBtn);
       contents[3].appendChild(neinBtn);
-
-      // cells[6].textContent = &nbsp;
 
       // template einpassen
       wrapper.appendChild(oneTemp);
@@ -106,7 +108,52 @@ class Reviews {
 
     let newReviewTemp = pageDom.querySelector("#new-review-template");
     let secondTemp = newReviewTemp.content.cloneNode(true);
+    let reviewStarsEmpty = secondTemp.querySelectorAll(".icon-star-empty");
+    let reviewStars = secondTemp.querySelectorAll(".icon-star");
+
+    // ClickListener bei Sternen in neuer Review
+    for (let i=0; i<reviewStarsEmpty.length;i++) {
+      reviewStarsEmpty[i].addEventListener("click", () => this.onClickStar(i));
+    };
+
     wrapper.appendChild(secondTemp);
+
+    // //MouseOver bei Sternen in neuer Review
+    // for (let i=0; i<reviewStarsEmpty.length;i++) {
+    //   reviewStarsEmpty[i].hover(() => {
+    //     for(let j=0; j<=i; j++) {
+    //       reviewStars[j].style.cursor = 'pointer';
+    //       reviewStarsEmpty[j].style.cursor = 'pointer';
+    //       reviewStars[j].toggleClass('show');
+    //       console.log("mouseover: " + event.target);
+    //     }
+    //   });
+    // };
+    //   addEventListener("mouseover", () => {
+    //     if (this.counterStar == 0) {
+    //       console.log("" + this.counterStar);
+    //       for(let j=0; j<=i; j++) {
+    //         reviewStars[j].style.cursor = 'pointer';
+    //         reviewStarsEmpty[j].style.cursor = 'pointer';
+    //         reviewStars[j].style.display = 'inline';
+    //         console.log("mouseover: " + event.target);
+    //       }
+    //     } else {}
+    //   });
+    // };
+
+    //MouseOut bei Sternen in neuer review
+    // for (let i=0; i<reviewStarsEmpty.length;i++) {
+    //   reviewStarsEmpty[i].addEventListener("mouseout", () => {
+    //     if (this.counterStar == 0) {
+    //       console.log("" + this.counterStar);
+    //       for(let j=0; j<=i; j++) {
+    //         reviewStars[j].style.display = 'none';
+    //         console.log("mouseout: " + event.target);
+    //       }
+    //     } else {}
+    //   });
+    // };
 
 
 
@@ -156,11 +203,12 @@ class Reviews {
       "restaurant": this._recordId,
       "autor": text[0].value,
       "kommentar": text[1].value,
-      "bewertung": text[2].value,
+      "bewertung": this.counterStar.toString(),
       "hilfreich": 0,
       datum: firebase.firestore.FieldValue.serverTimestamp()
     });
 
+    this.counterStar = 0;
     location.reload();
 
   }
@@ -190,5 +238,27 @@ class Reviews {
       this._orderValue = orderVariable;
       this._app._handleRouting(orderVariable);
     }
+  }
+
+  async onClickStar(starNumber) {
+    let temp, reviewStars, clickedCheckContainer;
+    //wird verwendet um später die korrekte Sternenzahl in der Datenbank zu speichern
+    this.counterStar = starNumber+1;
+
+    temp = document.getElementById("new-review-template");
+    reviewStars = document.getElementsByClassName("review-star-full");
+    clickedCheckContainer = document.getElementById("review-star-empty-id");
+
+    console.log("" + this.counterStar);
+    for(let i=0; i<=starNumber; i++) {
+      //die Sternenanzahl, die geklickt wurde, wird sichtbar gemacht
+      reviewStars[i].classList.add("show-stars");
+    }
+
+    /* dem div "review-star-empty" wird die Klasse star-clicked hinzugefügt
+    ** so wird später das mouseover event nur ausgeführt, falls die Sterne nicht
+    ** schon geklickt wurden
+    */
+    clickedCheckContainer.classList.add("star-clicked")
   }
 }
