@@ -1,5 +1,4 @@
-/* Grid Layout */
-
+/* Äußeres Grid-Layout */
 .wrapper {
   display: grid;
   grid-gap: 1em;
@@ -8,6 +7,7 @@
   margin-right: 1em;
 }
 
+/* Formatieren aller Felder des Grids */
 .box {
   background-color: black;
   border: white;
@@ -17,17 +17,20 @@
   padding-right: 0.5em;
 }
 
+/* Platzieren des Dropdown-Menues */
 .dropdown-menu {
   grid-column: 1;
   grid-row: 1;
 }
 
+/* Platzieren des "Bewertung hinzufügen"-Buttons */
 .new-review {
   grid-column: 2;
   grid-row: 1;
   justify-self: end;
 }
 
+/* Erstes inneres Grid-Layout für existierende Bewertungen*/
 .third-wrapper {
   grid-column: 1 / span 2;
   display: grid;
@@ -37,41 +40,42 @@
   box-shadow: 0 0 5px #888;
 }
 
+/* Platzieren des Datums der Bewertung */
 .date {
   grid-column: 1;
   grid-row: 1;
   padding-top: 0.5em;
 }
 
+/* Platzieren des äüßeren Containers für vergebene Sterne */
 .stars-outer {
   grid-column: 2;
   grid-row: 1;
   justify-self: end;
-
   font-family: FontAwesome;
 }
 
-.stars-outer::before {
-  /* color: white; */
-}
-
+/* Grid-Layout um die vollen und die leeren Sterne exakt übereinander zu legen */
 .stars-inner {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
 }
 
+/* Formatieren der vollen Sterne */
 .icon-star {
   color: #f8ce0b;
   display: none;
   margin-right: -0.3em;
 }
 
+/* Formatieren der leeren Sterne */
 .icon-star-empty {
   color: #f8ce0b;
   margin-right: -0.3em;
 }
 
+/* Anordnen der vollen Sterne im Grid-Layout "stars-inner" */
 .star {
   grid-column: 1;
   grid-row: 1;
@@ -83,6 +87,7 @@
   display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
 }
 
+/* Anordnen der leeren Sterne im Grid-Layout "stars-inner"  */
 .star-empty {
   grid-column: 1;
   grid-row: 1;
@@ -94,23 +99,26 @@
   display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
 }
 
+/* Platzieren des Bewertungstext*/
 .comment {
   grid-column: 1 / span 2;
   grid-row: 2;
   place-self: center;
 }
 
+/* Textausrichtung des Bewertungstextes */
 .comment p {
   text-align: center;
 }
 
+/* Platzieren und formatieren des Containers für die "hilfreich"-Buttons */
 .helpful {
   grid-column: 1 / span 2;
   grid-row: 3;
   padding-bottom: 0.5em;
 }
 
-/* Neue Bewertung schreiben */
+/* Zweiter innerer Container für das Formular zum Ausfüllen einer neuen Bewertung */
 .fourth-wrapper {
   grid-column: 1 / span 2;
   display: grid;
@@ -120,19 +128,23 @@
   box-shadow: 0 0 5px #888;
 }
 
+/* Platzieren des Formulars zum Ausfüllen einer neuen Bewertung */
 .new-review-container {
   grid-column: 1 / span 2;
   grid-row: 1;
 }
 
+/* Formatieren der textarea */
 textarea {
   margin-bottom: 0em;
 }
 
+/* Formatieren des Formulars */
 form {
   margin-bottom: 0.5em;
 }
 
+/* Grid-Layout zum Übereinanderlegen der vollen und leeren Sterne */
 .review-star-grid {
   display: grid;
   align-items: center;
@@ -142,6 +154,7 @@ form {
   margin-top: 0em;
 }
 
+/* Anordnen der vollen Sterne */
 .review-star {
   grid-column: 2;
   grid-row: 1;
@@ -154,6 +167,7 @@ form {
   display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
 }
 
+/* Anordnen der leeren Sterne */
 .review-star-empty {
   grid-column: 2;
   grid-row: 1;
@@ -166,18 +180,22 @@ form {
   display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */ */
 }
 
+/* Klasse zum sichtbar machen der vollen Sterne */
 .show-stars {
   display: inline;
 }
 
+/* Hovern über leeren Sternen */
 .review-star-empty i:hover {
   cursor: pointer;
 }
 
+/* Hovern über vollen Sternen */
 .review-star i:hover {
   cursor: pointer;
 }
 
+/* Platzieren der Buttons zum Absenden und Abbrechen einer neuen Bewertung */
 .submit-cancel-review {
   grid-column: 2;
   grid-row: 2;
@@ -189,7 +207,10 @@ form {
   position: relative;
   width: auto;
 }
-/* Dropdown Content (Hidden by default) */
+
+/* Dropdown Inhalt (Hidden by default)
+** gleiche Breite wie Dropdown Button
+ */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -198,7 +219,7 @@ form {
   z-index: 1;
 }
 
-/* Links in dropdown */
+/* Auswahlmöglichkeiten im Dropdown-Menue */
 .dropdown-content a {
   color: blue;
   list-style-type: none;
@@ -217,7 +238,7 @@ form {
   border-radius: 0.2em;
 }
 
-  /* change color of dropdown Links on hover */
+  /* Verändern der Auswahlmöglichkeiten beim Hovern */
 .dropdown-content a:hover {
   cursor: pointer;
   color: white;
@@ -225,12 +246,14 @@ form {
   background-color: rgb(28, 88, 150);
 }
 
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content
-container when the user clicks on the dropdown button)  */
+/* Klasse zum Anzeigen des Dropdown-Inhaltes */
 .show {
   display:block;
 }
 
+/* Formatieren des Buttons zum Hinzufügen einer neuen Bewertung und zum sortieren
+** der Bewertungen
+ */
 .review-button {
   font-size: 90%;
   border: 0;
@@ -242,11 +265,14 @@ container when the user clicks on the dropdown button)  */
   border-radius: 0.2em;
 }
 
+/* Hover-Effekt bei den Buttons zum Hinzufügen einer neuen Bewertung und zum sortieren
+** der Bewertungen */
 .review-button:hover {
     cursor: pointer;
     background-color: rgb(28, 88, 150);
 }
 
+/* Anpassem der Formular-Überschrift */
 .new-review-header {
   font-weight: bold;
 }
@@ -256,6 +282,7 @@ container when the user clicks on the dropdown button)  */
   /* font-size: 16pt; */
 }
 
+/* Formatieren des Buttons zum hochzählen der "hilfreich"-Variable in einer Bewertung */
 .icon-thumbs-up, .icon-thumbs-down, .hilfreich-button {
   font-size: 90%;
   border: 0;
@@ -269,18 +296,8 @@ container when the user clicks on the dropdown button)  */
   border-radius: 0.2em;
 }
 
+/* Hover-Effekt bei Buttons zum hochzählen der "hilfreich"-Variable in einer Bewertung */
 .icon-thumbs-up:hover, .icon-thumbs-down:hover, .hilfreich-button {
   cursor: pointer;
   background-color: rgb(28, 88, 150);
-}
-
-@media only (min-width: 600px) {
-  .icon-star {
-    display: none;
-    margin-right: 0em;
-  }
-
-  .icon-star-empty {
-    margin-right: 0em;
-  }
 }

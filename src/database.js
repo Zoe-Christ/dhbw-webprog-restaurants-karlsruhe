@@ -177,76 +177,6 @@ class Database {
                 "bilder": ["restaurants/IMG_0664_2-1.jpg" , "restaurants/rinderfilet-mit-pommes.jpg"],
             },]);
         }
-
-        let reviews = await this.selectAll("reviews");
-        if(reviews.length < 1) {
-          await this.saveDocs("reviews", [{
-            "id": "1c1",
-            "restaurant": "1",
-            "autor": "Sara Weis",
-            "kommentar": "Sehr leckeres Essen zu günstigen Preisen und schnelle Bedienung.",
-            "bewertung": 5,
-            "hilfreich": 0,
-            datum: firebase.firestore.FieldValue.serverTimestamp()
-          }, {
-            "id": "2c1",
-            "restaurant": "2",
-            "autor": "Joseph Stein",
-            "kommentar": "Sehr schön zum Draußensitzen im Sommer. Leider kann man nicht mit Karte zahlen.",
-            "bewertung": 4,
-            "hilfreich": 0,
-            datum: firebase.firestore.FieldValue.serverTimestamp()
-          }, {
-            "id": "3c1",
-            "restaurant": "3",
-            "autor": "Tim Frey",
-            "kommentar": "Gutes Kellerbier - leider sitzt man etwas weit auseinander.",
-            "bewertung": 3,
-            "hilfreich": 0,
-            datum: firebase.firestore.FieldValue.serverTimestamp()
-          }, {
-            "id": "4c1",
-            "restaurant": "4",
-            "autor": "Lara Osthaus",
-            "kommentar": "Das Essen ist sehr lecker, aber man muss recht lange darauf warten.",
-            "bewertung": 3,
-            "hilfreich": 0,
-            datum: firebase.firestore.FieldValue.serverTimestamp()
-          }, {
-            "id": "5c1",
-            "restaurant": "5",
-            "autor": "Lukas Schade",
-            "kommentar": "Sehr gute Pizza und offene Küche. Besonders zu empfehlen an Donnerstagen, wenn man Cocktails würfeln kann.",
-            "bewertung": 5,
-            "hilfreich": 0,
-            datum: firebase.firestore.FieldValue.serverTimestamp()
-          }, {
-            "id": "6c1",
-            "restaurant": "6",
-            "autor": "Martina Weckerle",
-            "kommentar": "Cooles Konzept, da das Essen direkt vor den Kunden zubereitet wird. Teilweise sind die Wartezeiten allerdings relativ lang und die Portiionen nicht groß genug.",
-            "bewertung": 4,
-            "hilfreich": 0,
-            datum: firebase.firestore.FieldValue.serverTimestamp()
-          }, {
-            "id": "7c1",
-            "restaurant": "7",
-            "autor": "Markus Becker",
-            "kommentar": "Das Highlight war definitiv die Rutsche! Das Essen ist jedoch auch nicht schlecht und das Personal sehr freundlich.",
-            "bewertung": 4,
-            "hilfreich": 0,
-            datum: firebase.firestore.FieldValue.serverTimestamp()
-          }, {
-            "id": "0",
-            "1": 1,
-            "2": 1,
-            "3": 1,
-            "4": 1,
-            "5": 1,
-            "6": 1,
-            "7": 1,
-          }]);
-        }
     }
     /**
      * Gibt alle in der Datenbank gespeicherten Docs zurück. Hier gilt
@@ -285,18 +215,41 @@ class Database {
 
     /**
      * Speichert ein einzelnes doc in der Datenbank. Das hierfür übergebene
-     * Objekt sollte folgenden Aufbau haben:
+     * Objekt sollte bei Restaurants folgenden Aufbau haben:
      *
      *      {
-     *          id:        "MeinDoc1",
-     *          title:     "Name des Docs",
-     *          authors:   "Namen der Autoren",
-     *          edition:   "8. Auflage",
-     *          publisher: "Name des Verlags",
-     *          year:      2019,
-     *      }
+     *          "id":          "7",
+     *           "img":        "restaurants/badisches_brauhaus.jpg",
+     *           "name":       "Badisches Brauhaus",
+     *           "typ":        "Mittag- und Abendessen",
+     *           "gruendungsjahr": 1999,
+     *           "bewertung":   "Kulturdenkmal in Bremen-Vegesack",
+     *           "link":       "https://www.badisch-brauhaus.de/",
+     *           "beschreibung": "Umfangreich und vielfältig, für jeden etwas. Mit Produkten aus der Region, ausgezeichnet von Schmeck-den-Süden.",
+     *           "oeffnungMo":   "11:30-00:00",
+     *           "oeffnungDi":   "11:30-00:00",
+     *           "oeffnungMi":   "11:30-00:00",
+     *           "oeffnungDo":   "11:30-00:00",
+     *           "oeffnungFr":   "11:30-01:00",
+     *           "oeffnungSa":   "11:30-01:00",
+     *           "oeffnungSo":   "11:30-00:00",
+     *           "bilder": ["restaurants/IMG_0664_2-1.jpg" , "restaurants/rinderfilet-mit-pommes.jpg"],
+     *      },
      *
-     * @param docs: Zu speicherndes doc-Objekt
+     * Objekt sollte bei Bewertungen folgenden Aufbau haben:
+
+     *      {
+     *          "id":          "1c1",
+     *           "autor":      "Sara weis",
+     *           "bewertung":   "5",
+     *           "datum":       "firebase.firestore.FieldValue.serverTimestamp()",
+     *           "hilfreich":   0,
+     *           "kommentar":   "Sehr leckeres Essen zu günstigen Preisen und schnelle Bedienung.",
+     *           "restaurant":   "1"
+     *      },
+     *
+     *
+     * @param docs: Doc das zu speichern ist
      * @param collection: Collection in die gespeichert werden soll
      */
     saveDoc(collection, doc) {
@@ -311,7 +264,6 @@ class Database {
      * @returns Promise-Objekt zum Abfangen von Fehlern oder Warten auf Erfolg
      */
     async deleteDocById(id, collection) {
-        // return this._restaurants.doc(id).delete();
         return this._db.collection(collection).doc(id).delete();
 
     }
@@ -321,18 +273,29 @@ class Database {
      * Liste sollte folgenden Aufbau haben:
      *
      *      [
-     *          {
-     *              id:        "MeinDoc1",
-     *              title:     "Name des Docs",
-     *              authors:   "Namen der Autoren",
-     *              edition:   "8. Auflage",
-     *              publisher: "Name des Verlags",
-     *              year:      2019,
-     *          }, {
+     *         {
+     *          "id":          "7",
+     *           "img":        "restaurants/badisches_brauhaus.jpg",
+     *           "name":       "Badisches Brauhaus",
+     *           "typ":        "Mittag- und Abendessen",
+     *           "gruendungsjahr": 1999,
+     *           "bewertung":   "Kulturdenkmal in Bremen-Vegesack",
+     *           "link":       "https://www.badisch-brauhaus.de/",
+     *           "beschreibung": "Umfangreich und vielfältig, für jeden etwas. Mit Produkten aus der Region, ausgezeichnet von Schmeck-den-Süden.",
+     *           "oeffnungMo":   "11:30-00:00",
+     *           "oeffnungDi":   "11:30-00:00",
+     *           "oeffnungMi":   "11:30-00:00",
+     *           "oeffnungDo":   "11:30-00:00",
+     *           "oeffnungFr":   "11:30-01:00",
+     *           "oeffnungSa":   "11:30-01:00",
+     *           "oeffnungSo":   "11:30-00:00",
+     *           "bilder": ["restaurants/IMG_0664_2-1.jpg" , "restaurants/rinderfilet-mit-pommes.jpg"],
+     *      }, {
      *              ...
      *          },
      *     ]
      *
+     * oder entsprechend mit review-Objekten
      * @param docs: Liste mit den zu speichernden Objekten
      * @param collection: Collection in die gespeichert werden soll
      * @returns Promise-Objekt zum Abfangen von Fehlern oder Warten auf Erfolg
@@ -367,6 +330,12 @@ class Database {
         return batch.commit();
     }
 
+    /**
+    * Gibt alle Bewertungen zurück, die zu einem Restaurant gehören
+    * @param resId:ID des restaurants
+    * @param orderBy: String nach dem die zurückgegebenen Reviews sortiert werden sollen
+    * @returns Promise-Objekt zum Abfangen von Fehlern oder Warten auf Erfolg
+    */
     async selectReviewsByRestaurantId (resId, orderBy) {
       let coll = this._db.collection("reviews");
       let result = await coll.where("restaurant", "==", resId).orderBy(orderBy, "desc").get();
@@ -380,10 +349,16 @@ class Database {
       return reviews;
     }
 
+    /**
+    * Ändert einzelnen Wert eines Docs
+    * @param collection:Collection in der das Doc angelegt ist
+    * @param docId: ID des zu änderenden Docs
+    * @param docField: String mit dem Namen des Feldes des Docs das geändert werden muss
+    * @param docValue: Wert auf den geändert werden soll
+    */
     async changeDocValue(collection, docId, docField, docValue) {
       let valueUpdate = {};
       valueUpdate[`${docField}`] = docValue;
       this._db.collection(collection).doc(docId).update(valueUpdate);
-
     }
 }

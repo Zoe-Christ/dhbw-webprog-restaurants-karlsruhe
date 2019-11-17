@@ -11,18 +11,12 @@
       <button type="button" name="dropdownBtn" id="dropdownBtn" class= "dropdown-button review-button">
         Ordnen nach
       </button>
-      <!-- <ul id="reihenfolge" class="dropdown-content">
-        <li>hilfreichste</li>
-        <li>neueste</li>
-      </ul> -->
       <div id="reihenfolge" class="dropdown-content">
         <a id="dropdown-content-hilfreich">hilfreichste</a>
         <a id="dropdown-content-neu">neueste</a>
       </div>
     </div>
-    <!-- Dropdown Menue Ende -->
-
-    <!-- Neue Review hinzufuegen -->
+    <!-- Button - Neue Review hinzufuegen -->
     <div class="new-review">
       <!-- Add Button -->
       <button type="button" id="plus-button" class="add-button review-button">Bewertung hinzufügen</button>
@@ -34,11 +28,12 @@
   </div>
   <!-- Ende Wrapper 1 -->
 
+  <!-- Vorlage zum Einfügen der existierenden Bewertungen -->
   <template id="review-template">
     <div class="third-wrapper">
-      <div class="box date review-content">
-        <!-- <p class="review-content"></p> -->
-      </div>
+      <!-- Datum -->
+      <div class="box date review-content"></div>
+      <!-- Bewertung als Sterne angezeigt -->
       <div class="box stars-outer">
         <div class="stars-inner review-content">
           <div class="star-empty">
@@ -56,32 +51,35 @@
             <i class="icon-star"></i>
           </div>
         </div>
-        <!-- <p class="review-content"></p> -->
       </div>
+      <!-- Kommentar zur abgegebenen Bewertung -->
       <div class="box comment">
         <p class="review-content"></p>
       </div>
+      <!-- Beurteilung, ob die Bewertung hilfreich war -->
       <div class="box helpful review-content">
         <p>War diese Bewertung hilfreich?</p>
       </div>
     </div>
   </template>
 
-  <!-- Pop Up neue Review Beginn -->
+  <!-- Formular zum Erstellen einer neuen Bewertung -->
   <template id="new-review-template">
     <div id="new-review-anchor" class="fourth-wrapper">
       <div class="new-review-container box">
         <p class="new-review-header">Fügen Sie eine neue Bewertung hinzu:</p>
         <form class="new-review-content">
+          <!-- Input-Felder für den Autor der Bewertung und den Kommentar -->
           Autor: <textarea class="review-input" name="autor" placeholder="Vorname Nachname" rows="1" cols="90"></textarea> <br>
           Kommentar: <textarea class="review-input" name="bewertung" placeholder="Schreiben Sie hier Ihre Bewertung." rows="3" cols="90"></textarea> <br>
+          <!-- Sterne, die für die Bewertung vergeben werden können -->
           <div class="review-star-grid">
             <div id="review-star-empty-id" class="review-star-empty">
-              <i class="icon-star-empty review-star-empty2"></i>
-              <i class="icon-star-empty review-star-empty2"></i>
-              <i class="icon-star-empty review-star-empty2"></i>
-              <i class="icon-star-empty review-star-empty2"></i>
-              <i class="icon-star-empty review-star-empty2"></i>
+              <i class="icon-star-empty"></i>
+              <i class="icon-star-empty"></i>
+              <i class="icon-star-empty"></i>
+              <i class="icon-star-empty"></i>
+              <i class="icon-star-empty"></i>
             </div>
             <div class="review-star">
               <i class="icon-star review-star-full"></i>
@@ -93,12 +91,12 @@
           </div>
         </form>
       </div>
+      <!-- Absende-Button und Abbruch-Button für die neue Bewertung -->
       <div class="submit-cancel-review box">
         <i><button type="button" id="submit-new-review" class="hilfreich-button">Absenden</button></i>
         <i><button type="button" id="cancel-new-review" class="hilfreich-button">Abbruch</button></i>
       </div>
     </div>
   </template>
-    <!-- Pop Up neue Review Ende -->
 
 </main>

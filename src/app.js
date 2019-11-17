@@ -137,6 +137,8 @@ class App {
     * Macht das gleiche wie _handleRouting(), aber erlaubt dabei einen
     * Parameter, mit dessen Hilfe sich die Bewertungen neu andordnen
     * lassen
+    * @param sort: String mit dem angeben wird, nach was die anzuzeigenden Inhalte
+    * geordnet werden sollen
     */
 
     _handleRouting(sort) {

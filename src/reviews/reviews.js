@@ -3,7 +3,9 @@ class Reviews {
       this._app = app;
       this._recordId = -1;
       this._data = null;
+      // Default-Wert nach dem die Bewertungen geordnet werden
       this.orderValue = "datum";
+      // Dient zur Zwischenspeicherung der Anzahl der Sterne aus dem Bewertungsformular
       this.counterStar = 0;
   }
 
@@ -33,6 +35,7 @@ class Reviews {
       let pageDom = document.createElement("div");
       pageDom.innerHTML = html;
 
+      // Dient dem neu-ordnen der Bewertungen bei Nutzung des "Ordnen nach"-Buttons
       if (sort == null) {
         await this._showReviews(pageDom, this.orderValue);
       } else {
@@ -48,6 +51,7 @@ class Reviews {
 
   /**
   * @param {HTMLElement} pageDom
+  * @param sort: String nach dem Sortiert wird
   */
   async _showReviews(pageDom, sort) {
     console.log("sort: " + sort);
@@ -55,9 +59,10 @@ class Reviews {
     let temp = pageDom.querySelector("#review-template");
 
     let reviewsData = await this._app.database.selectReviewsByRestaurantId(this._recordId, sort);
-    //Optionen für Datum
+    //Anzeige-Optionen für das Datum
     let options = {day: 'numeric', month: 'numeric', year: 'numeric'};
 
+    // Hinzufügen der Bewertungen im Vorlagen-Format
     reviewsData.forEach(review => {
       let oneTemp, boxes, stars;
 
@@ -67,15 +72,16 @@ class Reviews {
       console.log("contents: " + contents);
       // Datum
       contents[0].innerHTML = review.datum.toDate().toLocaleDateString("ge-GE", options);
-      //Sterne
+      // Ausgefüllte Sterne überlagern die leeren Sterne
       stars = oneTemp.querySelectorAll(".icon-star");
       for (let i=0; i<review.bewertung; i++) {
-        stars[i].style.display = 'inline';
+        stars[i].classList.add("show-stars");
       }
       //Kommentar und Autor
       contents[2].innerHTML = `"${review.kommentar}" <br><br>~ ${review.autor}`;
 
-      // ja-Button
+      // ja-Button als "Facebook-Like" mit ClickListener für das hochzählen der
+      // hilfreich-Variable einer review
       let jaBtn = document.createElement('i');
       jaBtn.id = `ja-${review.id}`;
       jaBtn.className += "icon-thumbs-up"
@@ -85,7 +91,8 @@ class Reviews {
           (num.hilfreich +1) );
       });
 
-      // nein-Button
+      // nein-Button als "Facebook-Dislike" mit ClickListener für das
+      // runterzählen der hilfreich-Variable einer review
       let neinBtn = document.createElement('i');
       neinBtn.id = `nein-${review.id}`;
       neinBtn.className += "icon-thumbs-down"
@@ -98,41 +105,46 @@ class Reviews {
       contents[3].appendChild(jaBtn);
       contents[3].appendChild(neinBtn);
 
-      // template einpassen
+      // Befüllte Vorlage hinzufügen
       wrapper.appendChild(oneTemp);
     });
 
+    // Hinzufügen des Formulars zum Erstellen einer neuen Bewertung
     let newReviewTemp = pageDom.querySelector("#new-review-template");
     let secondTemp = newReviewTemp.content.cloneNode(true);
     let reviewStarsEmpty = secondTemp.querySelectorAll(".icon-star-empty");
     let reviewStars = secondTemp.querySelectorAll(".icon-star");
 
-    // ClickListener bei Sternen in neuer Review
+    // ClickListener für volle und leere Sterne in neuer Review
     for (let i=0; i<reviewStarsEmpty.length;i++) {
       reviewStarsEmpty[i].addEventListener("click", () => this.onClickStar(i));
-      // reviewStarsEmpty[i].addEventListener("mouseover", () => this.whenMouseOver(i));
     };
 
     for (let i=0; i<reviewStars.length;i++) {
       reviewStars[i].addEventListener("click", () => this.onClickStar(i));
     };
 
+    // Bewertungsformular hinzufügen
     wrapper.appendChild(secondTemp);
 
-    // console.log(pageDom.querySelector("#ja-Button").parentElement.id);
+    // ClickListener für den "Hinzufüge"-, "Abbruch"- "Absende"- und "Ordnen nach"-Button registrieren
     pageDom.querySelector("#plus-button").addEventListener("click", () => this.newReview());
     pageDom.querySelector("#cancel-new-review").addEventListener("click", () => this.cancelNewReview());
     pageDom.querySelector("#submit-new-review").addEventListener("click", () => this.submitNewReview());
     pageDom.querySelector("#dropdownBtn").addEventListener("click", () => this.showDropDown());
 
+    // Registrieren der ClickListener für die Auswahlmöglichkeiten von "Ordnen nach"
     let dropdownElement = pageDom.querySelector("#reihenfolge");
     let elements = dropdownElement.querySelectorAll("a");
     console.log("elemente: " + elements);
-    // debugger;
     elements[0].addEventListener("click", () => this.orderBy("hilfreich"));
     elements[1].addEventListener("click", () => this.orderBy("datum"));
   }
 
+  /**
+  * Spingt zur Stelle, an der das Formular für eine neue Bewertung Ausgefüllte
+  * werden kann.
+  */
   newReview() {
       event.preventDefault();
 
@@ -141,14 +153,24 @@ class Reviews {
       window.scrollTo(0, yPosition);
   }
 
+  /**
+  * Abbruch des Prozesses zur Erstellung einer neuen Bewertung.
+  */
   cancelNewReview() {
     location.reload();
   }
 
-//async changeDocValue(collection, docId, docField, docValue)
+  /**
+  * Die Werte, die in das Formular eingegeben wurden, werden ausgelesen und es
+  * wird ein neues Dokument für die Datenbank erstellt und gespeichert.
+  * Sind Felder leer geblieben, oder wurde eine Auswahl nicht getroffen, so wird
+  * der Benutzer durch farbliche Kennzeichnung darauf hingewiesen, die fehlenden
+  * Werte einzutragen.
+  */
   async submitNewReview() {
     let text = document.querySelector(".new-review-content");
 
+    // Abfangen fehlender Werte
     if (text[0].value == '') {
       text[0].style.backgroundColor = '#F5A9A9';
     } else if (text[1].value == '') {
@@ -159,11 +181,14 @@ class Reviews {
         warnStars[i].style.color = 'red';
       }
     } else {
+      // Hochzählen der Anzahl an abgegebenen Bewertungen und entsprechendes
+      // Vergeben einer neuen Id
       let num = await this._app.database.selectById("0", "reviews");
       let id = "" + this._recordId + "c" + (num[this._recordId] + 1);
       this._app.database.changeDocValue("reviews", "0", (""+this._recordId),
         (num[this._recordId] +1) )
 
+      // Anlegen eines neuen Dokuments
       console.log(await this._app.database.selectById("0", "reviews"));
       this._app.database.saveDoc("reviews", {
         "id": id,
@@ -172,20 +197,24 @@ class Reviews {
         "kommentar": text[1].value,
         "bewertung": this.counterStar.toString(),
         "hilfreich": 0,
-        datum: firebase.firestore.FieldValue.serverTimestamp()
+        datum: firebase.firestore.FieldValue.serverTimestamp(),
       });
 
+      // Zurücksetzen der Variable zur Zwischenspeicherung der vergebenen Sterne
       this.counterStar = 0;
       location.reload();
     }
   }
 
-  /* When the user clicks on the button,
-  toggle between hiding and showing the dropdown content */
+  /**
+  * Es wird zwischen dem Zeigen und dem Verbergen des Dropdown-Inhaltes gewechselt.
+  * Klickt der User außerhalb des Buttons, so wird der Dropdown-Inhalt verborgen.
+  */
   showDropDown() {
+    // Anzeigen des Dropdown-Inhaltes
     document.getElementById("reihenfolge").classList.toggle("show");
 
-  // Close the dropdown menu if the user clicks outside of it
+    // Schließen des Dropdown-Menues bei Klicken außerhalb des Buttons
     window.onclick = (event) => {
       if (!event.target.matches('.dropdown-button')) {
         let dropdowns = document.getElementsByClassName("dropdown-content");
@@ -200,6 +229,10 @@ class Reviews {
     }
   }
 
+  /**
+  * Neuordnen der Bewertungen nach neuerster oder hilfreichster
+  * @param orderVariable: String , der angibt nach was geordnet werden soll
+  */
   async orderBy(orderVariable) {
     if (this._orderValue != orderVariable) {
       this._orderValue = orderVariable;
@@ -207,54 +240,29 @@ class Reviews {
     }
   }
 
+  /**
+  * Die vom Benutzer ausgewählte Zahl an Sternen für die Bewertung färbt sich gelb.
+  * Die Anzahl der Sterne wird in der Variable "counterStar" zwischengespeichert
+  * @param starNumber: number in der die Anzahl der Sterne zur Anzeige übergeben wird
+  */
   async onClickStar(starNumber) {
-    let reviewStars, clickedCheckContainer, emptyReviewStars;
+    let reviewStars;
     //wird verwendet um später die korrekte Sternenzahl in der Datenbank zu speichern
     this.counterStar = starNumber+1;
 
     reviewStars = document.getElementsByClassName("review-star-full");
-    emptyReviewStars = document.getElementsByClassName("review-star-empty2")
-    clickedCheckContainer = document.getElementById("review-star-empty-id");
-
-    /* dem div "review-star-empty" wird die Klasse star-clicked hinzugefügt
-    ** so wird später das mouseover event nur ausgeführt, falls die Sterne nicht
-    ** schon geklickt wurden
-    */
-    clickedCheckContainer.classList.add("star-clicked")
-
-    console.log("counterStar" + this.counterStar);
 
     for(let i=0; i<5; i++) {
       if (i<=starNumber) {
         //die Sternenanzahl, die geklickt wurde, wird sichtbar gemacht
         reviewStars[i].classList.add("show-stars");
       } else {
+        // falls bereits Sterne ausgewählt wurden, werden diese hier wieder leer
+        // gemacht
         if(reviewStars[i].classList.contains("show-stars")) {
           reviewStars[i].classList.remove("show-stars");
         }
       }
-      // emptyReviewStars[i].removeEventListener("mouseover", this.whenMouseOver(starNumber))
     }
   }
-
-  // async whenMouseOver(starNumber) {
-  //   let reviewStars, clickedCheckContainer;
-  //
-  //   clickedCheckContainer = document.getElementById("review-star-empty-id");
-  //
-  //   if(!clickedCheckContainer.classList.contains("star-clicked")) {
-  //     console.log("mouseover");
-  //     reviewStars = document.getElementsByClassName("review-star-full");
-  //
-  //     for(let i=0; i<=starNumber; i++) {
-  //         //die Sternenanzahl, die geklickt wurde, wird sichtbar gemacht
-  //         reviewStars[i].classList.add("show-stars");
-  //         setTimeout(() => {
-  //           reviewStars[i].classList.remove("show-stars");
-  //         }, 500);
-  //
-  //     }
-  //   }
-  //
-  // }
 }
