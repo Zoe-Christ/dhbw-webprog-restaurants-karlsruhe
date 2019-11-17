@@ -252,11 +252,11 @@ container when the user clicks on the dropdown button)  */
 }
 
 .review-input {
-  font-family: "Arial", sans-serif;
-  font-size: 16pt;
+  /* font-family: "Arial", sans-serif; */
+  /* font-size: 16pt; */
 }
 
-.icon-thumbs-up, .icon-thumbs-down {
+.icon-thumbs-up, .icon-thumbs-down, .hilfreich-button {
   font-size: 90%;
   border: 0;
   padding: 0.5em;
@@ -269,7 +269,7 @@ container when the user clicks on the dropdown button)  */
   border-radius: 0.2em;
 }
 
-.icon-thumbs-up:hover, .icon-thumbs-down:hover {
+.icon-thumbs-up:hover, .icon-thumbs-down:hover, .hilfreich-button {
   cursor: pointer;
   background-color: rgb(28, 88, 150);
 }
