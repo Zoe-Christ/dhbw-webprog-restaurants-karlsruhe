@@ -1,22 +1,31 @@
-Programmierprojekt (WWI18B2)
+Kurs: WWI18B2
+Gruppenmitglieder: Zoe Christ, Antonia Dieterich, Sandra Hils
 
-Comitting:
+Kurzbeschreibung:
+Diese Single Page App beinhaltet eine Sammlung unserer Lieblingsrestaurants in Karlsruhe. In einer Übersicht werden alle aufgelistet. Zu jedem Restaurant gibt es außerdem eine detailliertere Beschreibung und eine Seite auf der die Usern die Restaurants bewerten und ältere Bewertungen einsehen können.
 
-1) Git Link unten rechts
-2) Stage all oder einzelne Files stagen (= git add . "xyz")
-3) Commit message eingeben, dann Commit to Master drücken
-4) Push drücken
-5) Eventuelle Konflikte lösen
+Installation
+  1. Den Link aus "Clone or download" kopieren.
+  2. Anschließend einen neuen Order im Explorer anlegen.
+  3. Die Kommandozeile aufrufen und in den eben erstellten Ordner navigieren.
+  4. Den Befehl "git clone " + den kopierten Link eingeben.
+  5. Falls man mit dem Editor "Atom" arbeitet, kann hier der erstellte Ordner geöffnet werden.
+    (File > Add Project Folder... > selbst angelegter Ordner)
+  6. Ggf. installieren des atom-live-servers.
+  7. Starten des atom-live-servers.
 
-Updaten:
-1) Fetch drücken
-2) Pull drücken
+Funktionalitäten:
+  Die Startseite:
+    Auf der Sartseite sind alle Restaurants aufgelistet, über die es auf der Webseite nähere Informationen gibt. Klickt man ein Restaurant an, so gelangt man auf die Detailseite des Restaurants.
 
-Restaurants die wir dartstellen wollen:
-1)Emaillle
-2)Cafe Bleu
-3)Oxford Cafe
-4)Stövchen
-5)Aposto
-6)Vapiano
-7)Badisches Brauhaus
+  Die Kontaktseite:
+    Hier können User über ein Kontaktformular Kontakt mit uns, den Administratoren der Seite, aufnehmen.
+
+  Die "Über uns"-Seite:
+    Hier stellen wir uns kurz vor und erklären, aus welcher Motivation die Webseite entstanden ist.
+
+  Die Detailseiten:
+    Hier können User der Webseite die Öffnungszeiten, eine Kurzbeschreibung, Fotos sowie den Standort der Restaurants finden. Über einen Klick auf den "Bewertungen"-Button gelangt man auf die Bewertungsseite des Restaurants.
+
+  Die Bewertungsseiten:
+    Hier sehen User Bewertungen, die bereits zum Restaurant existieren. Sie können diese als hilfreich oder nicht hilfreich bewerten. Außerdem kann über ein Formular eine neue Bewertung erstellt werden.
