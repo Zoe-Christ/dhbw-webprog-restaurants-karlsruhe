@@ -58,7 +58,6 @@ class PageDetail {
         html = html.replace(/{NAME}/g, this._data.name);
         html = html.replace(/{TYP}/g, this._data.typ);
         html = html.replace(/{GRUENDUNGSJAHR}/g, this._data.gruendungsjahr);
-        html = html.replace(/{BEWERTUNG}/g, bewertung);
         html = html.replace(/{LINK}/g, this._data.link);
         html = html.replace(/{BESCHREIBUNG}/g, this._data.beschreibung);
         html = html.replace(/{OEFFNUNGMO}/g, this._data.oeffnungMo);
@@ -73,6 +72,30 @@ class PageDetail {
         // DOM-Methoden von JavaScript weiterbearbeiten können
         let pageDom = document.createElement("div");
         pageDom.innerHTML = html;
+
+        //Nur die Sterne, die durchschnittlich vergeben wurden, werden angezeigt
+        let reviewStars = pageDom.querySelectorAll(".star-config");
+        if(bewertung!=5) {
+          for(let i=0; i<(5-bewertung); i++) {
+            reviewStars[i].style.display='none';
+          }
+        } else {
+          reviewStars[4].style.marginRight='0em'
+        }
+
+        //Es wird mit leeren Sternen aufgefüllt
+        let emptyReviewStars = pageDom.querySelectorAll(".empty-star-config");
+        if(bewertung==5) {
+          for(let i=0; i<(4); i++) {
+            emptyReviewStars[i].style.display='none';
+          }
+        } else {
+          for(let i=0; i<(bewertung-1); i++) {
+            emptyReviewStars[i].style.display='none';
+          }
+          emptyReviewStars[3].style.marginRight='0em';
+        }
+
 
         // Event Handler für den Button registrieren
         pageDom.querySelectorAll(".id").forEach(e => e.textContent = this._recordId);
@@ -101,7 +124,8 @@ class PageDetail {
       allRestaurantReviews.forEach(review => {
         bewertung = bewertung + parseFloat(review.bewertung);
       });
-      bewertung = bewertung/allRestaurantReviews.length;
-      return bewertung + " von 5";
+      bewertung = Math.round((bewertung/allRestaurantReviews.length));
+      console.log("bewertung: " + bewertung);
+      return bewertung;
     }
 }

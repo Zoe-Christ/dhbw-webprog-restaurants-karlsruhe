@@ -38,6 +38,22 @@
     color: white;
 }
 
+.icon-star {
+  color: #f8ce0b;
+}
+
+.icon-star-empty {
+  color: #f8ce0b;
+}
+
+.star-config {
+  margin-right: -0.5em;
+}
+
+.empty-star-config {
+  margin-right: -0.5em;
+}
+
 @media (min-width: 50em) {
     .page-heading {
         display: flex;
