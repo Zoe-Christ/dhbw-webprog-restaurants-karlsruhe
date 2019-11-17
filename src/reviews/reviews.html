@@ -58,10 +58,8 @@
         </div>
         <!-- <p class="review-content"></p> -->
       </div>
-      <div class="box comment review-content">
-        <!-- <div class="review-content"> -->
-          <!-- Kommentar und Autor -->
-        <!-- </div> -->
+      <div class="box comment">
+        <p class="review-content"></p>
       </div>
       <div class="box helpful review-content">
         <p>War diese Bewertung hilfreich?</p>
@@ -79,11 +77,11 @@
           Kommentar: <textarea class="review-input" name="bewertung" rows="3" cols="80"></textarea> <br>
           <div class="review-star-grid">
             <div id="review-star-empty-id" class="review-star-empty">
-              <i class="icon-star-empty"></i>
-              <i class="icon-star-empty"></i>
-              <i class="icon-star-empty"></i>
-              <i class="icon-star-empty"></i>
-              <i class="icon-star-empty"></i>
+              <i class="icon-star-empty review-star-empty2"></i>
+              <i class="icon-star-empty review-star-empty2"></i>
+              <i class="icon-star-empty review-star-empty2"></i>
+              <i class="icon-star-empty review-star-empty2"></i>
+              <i class="icon-star-empty review-star-empty2"></i>
             </div>
             <div class="review-star">
               <i class="icon-star review-star-full"></i>
@@ -95,11 +93,9 @@
           </div>
         </form>
       </div>
-      <div class="submit-review box">
-        <button type="button" id="submit-new-review" class="hilfreich-button">Absenden</button>
-      </div>
-      <div class="cancel-review box">
-        <button type="button" id="cancel-new-review" class="hilfreich-button">Abbruch</button>
+      <div class="submit-cancel-review box">
+        <i><button type="button" id="submit-new-review" class="hilfreich-button">Absenden</button></i>
+        <i><button type="button" id="cancel-new-review" class="hilfreich-button">Abbruch</button></i>
       </div>
     </div>
   </template>

@@ -72,17 +72,6 @@
   margin-right: -0.3em;
 }
 
-@media only (min-width: 600px) {
-  .icon-star {
-    display: none;
-    margin-right: 0em;
-  }
-
-  .icon-star-empty {
-    margin-right: 0em;
-  }
-}
-
 .star {
   grid-column: 1;
   grid-row: 1;
@@ -103,6 +92,37 @@
   display: -ms-flexbox;      /* TWEENER - IE 10 */
   display: -webkit-flex;     /* NEW - Chrome */
   display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.comment {
+  grid-column: 1 / span 2;
+  grid-row: 2;
+  place-self: center;
+}
+
+.comment p {
+  text-align: center;
+}
+
+.helpful {
+  grid-column: 1 / span 2;
+  grid-row: 3;
+  padding-bottom: 0.5em;
+}
+
+/* Neue Bewertung schreiben */
+.fourth-wrapper {
+  grid-column: 1 / span 2;
+  display: grid;
+  grid-template-columns: 0.5fr 1.5fr;
+  grid-template-rows: 2.5fr auto;
+  grid-gap: 0.5em;
+  box-shadow: 0 0 5px #888;
+}
+
+.new-review-container {
+  grid-column: 1 / span 2;
+  grid-row: 1;
 }
 
 textarea {
@@ -150,48 +170,21 @@ form {
   display: inline;
 }
 
-.review-star-empty:hover {
+.review-star-empty i:hover {
   cursor: pointer;
 }
 
-.comment {
-  grid-column: 1 / span 2;
-  grid-row: 2;
-  place-self: center;
+.review-star i:hover {
+  cursor: pointer;
 }
 
-.helpful {
-  grid-column: 1 / span 2;
-  grid-row: 3;
-  padding-bottom: 0.5em;
-}
-
-/* new-review */
-.fourth-wrapper {
-  grid-column: 1 / span 2;
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: 2.5fr auto;
-  grid-gap: 0.5em;
-  box-shadow: 0 0 5px #888;
-}
-
-.new-review-container {
-  grid-column: 1 / span 2;
-  grid-row: 1;
-}
-
-.submit-review {
-  grid-column: 1;
-  grid-row: 2;
-}
-
-.cancel-review {
+.submit-cancel-review {
   grid-column: 2;
   grid-row: 2;
   justify-self: end;
 }
 
+/* Dropdown Button --> Ordne nach */
 .dropdown-button {
   position: relative;
   width: auto;
@@ -263,7 +256,7 @@ container when the user clicks on the dropdown button)  */
   font-size: 16pt;
 }
 
-.hilfreich-button {
+.icon-thumbs-up, .icon-thumbs-down {
   font-size: 90%;
   border: 0;
   padding: 0.5em;
@@ -276,7 +269,18 @@ container when the user clicks on the dropdown button)  */
   border-radius: 0.2em;
 }
 
-.hilfreich-button:hover {
+.icon-thumbs-up:hover, .icon-thumbs-down:hover {
   cursor: pointer;
   background-color: rgb(28, 88, 150);
+}
+
+@media only (min-width: 600px) {
+  .icon-star {
+    display: none;
+    margin-right: 0em;
+  }
+
+  .icon-star-empty {
+    margin-right: 0em;
+  }
 }
